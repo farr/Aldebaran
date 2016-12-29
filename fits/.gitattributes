@@ -7,3 +7,5 @@ single/7/state-5-4.dat filter=lfs diff=lfs merge=lfs -text
 single/8/state-5-4.dat filter=lfs diff=lfs merge=lfs -text
 single/9/state-5-4.dat filter=lfs diff=lfs merge=lfs -text
 single/song/state-5-4.dat filter=lfs diff=lfs merge=lfs -text
+all/state-5-4.dat filter=lfs diff=lfs merge=lfs -text
+pre-song/state-5-4.dat filter=lfs diff=lfs merge=lfs -text
