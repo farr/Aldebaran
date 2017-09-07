@@ -2,6 +2,37 @@
 
 \documentclass[modern]{aastex61}
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{xspace}
+
+\include{macros}
+% Journals
+
+
+% Astronomical abbreviations (thanks to Dan Huber)
+\newcommand{\numax}{\mbox{$\nu_{\rm max}$}\xspace}
+\newcommand{\Dnu}{\mbox{$\Delta \nu$}\xspace}
+\newcommand{\dnu}{\mbox{$\delta \nu$}\xspace}
+\newcommand{\muHz}{\mbox{$\mu$Hz}\xspace}
+\newcommand{\teff}{\mbox{$T_{\rm eff}$}\xspace}
+\newcommand{\logg}{\mbox{$\log g$}\xspace}
+\newcommand{\feh}{\mbox{$\rm{[Fe/H]}$}\xspace}
+\newcommand{\msun}{\mbox{$\mathrm{M}_{\odot}$}\xspace}
+\newcommand{\mearth}{\mbox{$\mathrm{M}_{\oplus}$}\xspace}
+\newcommand{\rsun}{\mbox{$\mathrm{R}_{\odot}$}\xspace}
+\newcommand{\kepler}{\emph{Kepler}\xspace}
+\newcommand{\hipparcos}{\emph{Hipparcos}\xspace}
+\newcommand{\gaia}{\emph{Gaia}\xspace}
+% \newcommand{\ktwo}{\textit{K2}\xspace}
+\newcommand{\ktwo}{\emph{K2}\xspace}
+\newcommand{\ksc}{{\sc k2sc}\xspace}
+\newcommand{\ksf}{{\sc k2sff}\xspace}
+\newcommand{\kms}{\,km\,s$^{-1}$} % kilometres per second
+\newcommand{\bibtex}{\textsc{Bib}\!\TeX} % bibtex. Not quite the correct typesetting, but close enough
+
+
 \begin{document}
 
 \title{Something About Ground Based Asteroseismology}
@@ -19,8 +50,8 @@
 \affiliation{School of Physics and Astronomy, University of
   Birmingham, Birmingham, B15 2TT, United Kingdom}
 
-\author{Benjamin Pope}
-\affiliation{Oxford or NYU or ??}
+\author[0000-0003-2595-9114]{Benjamin Pope}
+\affiliation{Sydney Institute for Astronomy, School of Physics, University of Sydney, Sydney NSW 2006, Australia} % for the moment - if it is a couple of months til this is published I should say NYU
 
 \author{Thomas North}
 \affiliation{School of Physics and Astronomy, University of Birmingham, Birmingham, B15 2TT, United Kingdom}
@@ -32,7 +63,7 @@
 \affiliation{School of Physics and Astronomy, University of
   Birmingham, Birmingham, B15 2TT, United Kingdom}
 
-\email{w.farr@bham.ac.uk, G.R.Davies@bham.ac.uk, Benjamin.Pope@physics.ox.ac.uk, txn016@student.bham.ac.uk, jimbarrett27@gmail.com}
+\email{w.farr@bham.ac.uk, G.R.Davies@bham.ac.uk, b.pope@sydney.edu.au, txn016@student.bham.ac.uk, jimbarrett27@gmail.com}
 
 \begin{abstract}
 Stuff.
@@ -49,6 +80,33 @@ Reference \citet{Kelly2014}, compare to \citet{Foreman-Mackey2017}.
 
 
 \subsection{SONG Observations}
+
+\subsection{K2 Observations}
+
+Aldebaran was observed \ktwo under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. The \kepler Space Telescope \citep{2010sci...327..977b} originally surveyed a region of the sky in the direction of Cygnus and Lyra, with the aim both to find transiting planets, and to study stellar interiors with asteroseismology. After 3.5 years of service, \kepler suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo, balancing the third axis uncontrolled by its reaction wheels by orienting carefully perpendicular to the Sun. This unusual observing strategy requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns. 
+
+As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We therefore use halo photometry \citep[as originally implemented in]{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve. The brightness of this halo varies in the same way as that of the primary star, and we therefore construct our halo light curve $\mathbf{f}$ as a weighted linear combination of individual pixel-level time series $\mathbf{p}_j$, i.e. 
+
+\begin{equation}
+	f_i = \sum_{j=1}^{M} w_j p_{ij}.
+\end{equation}
+
+\noindent We choose the weights $w_j$ such that they lie between 0~and~1, add to 1, and minimize the Total Variation (TV) of the weighted light curve. In the continuous case, $n$-th order TV is defined as the integral of the absolute value of the $n$-th derivative of a function; in the discrete case, replacing the derivative with finite differences, first-order TV becomes
+
+\begin{equation}
+\text{TV} = \dfrac{\sum_{i=1}^{N} |{f}_i - {f}_{i-1}|}{\sum_{j=1}^{N} {f}_j}
+\end{equation}
+
+\noindent and likewise second-order TV the equivalent expression in second-order finite differences. 
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{Aldebaran_lc.png}
+\caption{\ktwo lightcurve of Aldebaran.}
+\label{k2_lightcurve}
+\end{figure}
 
 \subsection{Stellar Parameters}
 
