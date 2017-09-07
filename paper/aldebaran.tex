@@ -73,6 +73,8 @@ Stuff.
 
 \section{Time-Domain Models}
 
+It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly-sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series of only a few points and which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology difficult or impossible from the ground for stars with oscillation frequencies ranging from $\sim 12$~h to $\sim$~a few days. 
+
 Reference \citet{Kelly2014}, compare to \citet{Foreman-Mackey2017}.
 
 \section{Aldebaran}
@@ -83,23 +85,14 @@ Reference \citet{Kelly2014}, compare to \citet{Foreman-Mackey2017}.
 
 \subsection{K2 Observations}
 
-Aldebaran was observed \ktwo under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. The \kepler Space Telescope \citep{2010sci...327..977b} originally surveyed a region of the sky in the direction of Cygnus and Lyra, with the aim both to find transiting planets, and to study stellar interiors with asteroseismology. After 3.5 years of service, \kepler suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo, balancing the third axis uncontrolled by its reaction wheels by orienting carefully perpendicular to the Sun. This unusual observing strategy requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns. 
+In order to verify the results of the novel analysis presented above, we sought to obtain an independent detection of the oscillations of Aldebaran and compare the frequencies determined with the two methods. 
 
-As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We therefore use halo photometry \citep[as originally implemented in]{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve. The brightness of this halo varies in the same way as that of the primary star, and we therefore construct our halo light curve $\mathbf{f}$ as a weighted linear combination of individual pixel-level time series $\mathbf{p}_j$, i.e. 
+Aldebaran was therefore observed with \ktwo under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. The \kepler Space Telescope \citep{2010sci...327..977b} %originally surveyed a region of the sky in the direction of Cygnus and Lyra, with the aim both to find transiting planets, and to study stellar interiors with asteroseismology. After 3.5 years of service, \kepler 
+suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo \citep{howell14}, balancing the third axis uncontrolled by its reaction wheels by orienting carefully perpendicular to the Sun. This unusual observing strategy requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns. 
 
-\begin{equation}
-	f_i = \sum_{j=1}^{M} w_j p_{ij}.
-\end{equation}
+As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We therefore use halo photometry \citep[as originally implemented in]{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve. The brightness of this halo varies in the same way as that of the primary star, and we therefore obtain data in a region of 20~pixel radius around the mean position of Aldebaran, and discard saturated pixels. We construct our halo light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}. We then additionally correct the halo light curve using \textsc{k2sc} \citep{k2sc}, though we find that this has a minor effect. There is somewhat higher than usual residual noise at multiples of $4 c/d$ (the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
 
-\noindent We choose the weights $w_j$ such that they lie between 0~and~1, add to 1, and minimize the Total Variation (TV) of the weighted light curve. In the continuous case, $n$-th order TV is defined as the integral of the absolute value of the $n$-th derivative of a function; in the discrete case, replacing the derivative with finite differences, first-order TV becomes
-
-\begin{equation}
-\text{TV} = \dfrac{\sum_{i=1}^{N} |{f}_i - {f}_{i-1}|}{\sum_{j=1}^{N} {f}_j}
-\end{equation}
-
-\noindent and likewise second-order TV the equivalent expression in second-order finite differences. 
-
-
+Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this light curve, we search for transits across a wide range of periods, and find no evidence either of planetary transits or an eclipsing stellar companion.
 
 \begin{figure}
 \centering
@@ -115,6 +108,28 @@ As Aldebaran is extremely bright, it saturates the \kepler detector and it is th
 \acknowledgments
 
 We thank the academy....
+
+\appendix
+
+\section{Halo Photometry}
+\label{halo}
+
+The halo photometry method proceeds as in \citet{White2017}. \textcolor{red}{More text here to explain in words.}
+The flux $f_i$ at each cadence $i$ is constructed as a weighted sum of pixel values $p_{ij}$:
+
+\begin{equation}
+	f_i = \sum_{j=1}^{M} w_j p_{ij}.
+\end{equation}
+
+\noindent We choose the weights $w_j$ such that they lie between 0~and~1, add to 1, and minimize the Total Variation (TV) of the weighted light curve. In the continuous case, $n$-th order TV is defined as the integral of the absolute value of the $n$-th derivative of a function; in the discrete case, replacing the derivative with finite differences, first-order TV becomes
+
+\begin{equation}
+\text{TV} = \dfrac{\sum_{i=1}^{N} |{f}_i - {f}_{i-1}|}{\sum_{j=1}^{N} {f}_j}
+\end{equation}
+
+\noindent and likewise second-order TV the equivalent expression in second-order finite differences. 
+
+In an improvement since \citet{White2017}, we use the \textsc{Theano} library \citep{theano} to calculate analytic derivatives for this objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to tens of seconds. 
 
 \bibliography{aldebaran}
 
