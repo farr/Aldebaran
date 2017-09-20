@@ -98,10 +98,9 @@ Aldebaran is a red giant star with spectral type K5, one of the nearest such sta
 
 In order to verify the results of the novel analysis presented above, we sought to obtain an independent detection of the oscillations of Aldebaran and compare the frequencies determined with the two methods. 
 
-Aldebaran was therefore observed with \ktwo under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. The \kepler Space Telescope \citep{2010sci...327..977b}  
-suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo \citep{howell14}, balanced by orienting perpendicular to the Sun. This requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns. 
+Aldebaran was therefore observed with the \ktwo Mission \citep{howell14}, a two-wheeled revival of the \kepler Mission \citep{2010sci...327..977b}, under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. 
 
-As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We therefore use halo photometry \citep[as originally implemented in]{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve. The brightness of this halo varies in the same way as that of the primary star, and we therefore obtain data in a region of 20~pixel radius around the mean position of Aldebaran, and discard saturated pixels. We construct our halo light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}. We then additionally correct the halo light curve using \textsc{k2sc} \citep{k2sc}, though we find that this has a minor effect. There is somewhat higher than usual residual noise at multiples of $4 c/d$ (the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
+As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep[as originally implemented in][]{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}. 
 
 Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this light curve, we search for transits across a wide range of periods, and find no evidence either of short-period planetary transits or an eclipsing stellar companion.
 
@@ -130,10 +129,14 @@ This research has made use of the SIMBAD database, operated at CDS, Strasbourg, 
 \section{Halo Photometry}
 \label{halo}
 
+The \kepler Space Telescope \citep{2010sci...327..977b}  
+suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo \citep{howell14}, balanced by orienting perpendicular to the Sun. This requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns. 
+
 The \kepler detector saturates for stars brighter than the $\sim~11^\text{th}$ magnitude. Nevertheless, the excess flux deposited in a saturated pixel spills conservatively up and down the pixel column, such that it is possible to sum this `bleed column' for bright stars and still obtain precise photometry, such as was done for the brightest star in the nominal \kepler mission, $\theta$~Cyg \citep{guzik2011,thetacygwhite,guzik2016} ($V = 4.48$). There are two main reasons why this is not possible for all bright stars in general. First, because the downlink bandwidth from \kepler is very limited, it is often not desirable to download the large pixel stamps as are required for such bright stars; these must be even larger in \ktwo to account for the reduced image stability. Second, if the bleed column for a sufficiently bright star reaches the edge of the chip, flux spills over and is not conserved, imposing a hard brightness limit that depends on the distance to the detector edge. 
 Collateral `smear' data, which are collected to help calibrate the photometric bias from stars sharing the same column as a target, can be used to reconstruct light curves for un-downloaded bright stars and thereby avoid bandwidth constraints \citep{k2smear}, but these data are still rendered unusable if the bleed column falls off the edge of the chip and contaminates the smear rows.
 
-Bright stars have a wide, complicated, position-dependent point spread function (PSF) arising from diffraction and scattering from secondary and higher-order reflections inside the instrument, with the result that they may contaminate thousands of nearby pixels with significant flux. We can therefore use this `halo' of unsaturated pixels for photometry. In this paper we proceed as in \citet{White2017}, in which the method was demonstrated on the seven bright Pleiades, with only minor changes.
+Bright stars have a wide, complicated, position-dependent point spread function (PSF) arising from diffraction and scattering from secondary and higher-order reflections inside the instrument, with the result that they may contaminate thousands of nearby pixels with significant flux. We can therefore use this `halo' of unsaturated pixels for photometry. The brightness of this halo varies in the same way as that of the primary star, and we therefore obtain data in a region of 20~pixel radius around the mean position of Aldebaran, and discard saturated pixels.
+In this paper we proceed as in \citet{White2017}, in which the method was demonstrated on the seven bright Pleiades, with only minor changes.
 
 The flux $f_i$ at each cadence $i$ is constructed as a weighted sum of pixel values $p_{ij}$:
 
@@ -152,6 +155,7 @@ The flux $f_i$ at each cadence $i$ is constructed as a weighted sum of pixel val
 In an improvement since \citet{White2017}, we use the \textsc{Theano} library \citep{theano} to calculate analytic derivatives for this objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to tens of seconds. 
 
 As a final step to reduce residual uncorrected systematics, we apply the \textsc{k2sc} \citep{k2sc} Gaussian Process-based systematics correction code to the initial halo light curve, but the effect of this in the present case for Aldebaran is minimal.
+There is somewhat higher than usual residual noise at multiples of $4 c/d$ (the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
 
 \bibliography{aldebaran}
 
