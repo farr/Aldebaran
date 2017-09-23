@@ -1,0 +1,103 @@
+
+\section{Stellar Modelling}\label{sec:mod}
+\subsection{Stellar Models}\label{sec:stell_mod}
+We used our determination of \numax and several combinations of the asteroseismic and spectroscopic parameters, along with luminosity, to estimate the fundamental stellar parameters, via fitting to stellar models. We used \textsc{MESA} models \citep{2011Paxton,2013Paxton} in conjunction with the Bayesian code \textsc{PARAM} \citep{2006dasilva, 2017Rod}.  A summary of our selected ``benchmark'' options is as follows; 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}%GUY THIS BIT COULD PROBABLY BE DROPPED AND REFERENCED OUT TO \citep{2017Rod}
+\item Heavy element partitioning from \cite{1993Grevesse}.
+\item OPAL equation of state \citep{2002Rogers} along with OPAL opacities \citep{1996Iglesias}, with complementary values at low temperatures from \cite{2005Ferguson}.
+\item Nuclear reaction rates from NACRE \citep{1999Angulo}.
+\item The atmosphere model is taken according to \cite{1966Kris}.
+\item The mixing length theory was used to describe convection (a solar-calibrated parameter $\alpha_{\textrm{MLT}} =1.9657$ was adopted).
+\item Convective overshooting on the main sequence is set to $\alpha_{\textrm{ov}}=0.2H_{p}$, with $H_{p}$ the pressure scale height at the border of the convective core. Overshooting was applied according to the \cite{1975Maeder} step function
+scheme.
+\item No rotational mixing or diffusion is included.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Note that the precision on our estimate of \numax is orders of magnitude less that the point at which we would have needed to correct for the line-of-sight doppler shift \citep{2014MNRAS.445L..94D}.
+\subsection{Additional modelling inputs}\label{sec:addmod}
+In addition to the asteroseismic parameters, temperature and metallicity values are needed. There exist multiple literature values for Aldebaran. We chose to use a selection of sources as a separate modelling variation, to investigate what variation this would produce in final stellar properties. 
+
+To ensure the values are self-consistent, when a literature value was chosen for temperature, we took the stellar metallicity from the same source i.e. matched pairs of temperature and metallicity. The final constraint is the stellar luminosity, which may be estimated as follows (e.g. see \citealt{pijpers2003}):
+\begin{multline}
+\log_{10} \frac{L}{L_{\odot}} = 4.0+
+0.4 M_{{\textrm{bol}},\odot} -2.0 \log_{10} {\pi [{\textrm{mas}]}} \\-0.4(V-A_V + BC(V)).
+\label{eqn:lum}
+\end{multline}
+The solar bolometric magnitude $M_{\textrm{bol},\odot}=4.73$ is taken from \cite{Torres2010}, from which we also take the polynomial expression for the bolometric correction $BC(V)$. Extinction $A_V$ was assumed to be zero.
+
+The final constraint available for Aldebaran is the angular diameter of the star, measured by long baseline interferometry, combined with the parallax to produce a physical radius constraint of $R_{\textrm{int}}=44.2\pm0.9\textrm{R}_{\odot}$ \citep{2005Richichi}.
+
+% Example table
+\begin{table*}
+	\centering
+	\caption{Spectroscopic from each literature source, along with calculated luminosity. All temperature uncertainties assumed to be 50K, 0.2 dex in $\log{g}$, and 0.1 dex in [FeH]. For the two \protect{\cite{2012Sheffield}} results, the reason for discrepancy between the two sets of metallicity results is not discussed.}
+	\label{tab:spec}
+	\begin{tabular}{lllll} % 5 columns, alignment for each
+		\hline
+		Spectrosocpy Source & $T_{\textrm{eff}}$ (K) & $\log{g}$ (dex) & [FeH] (dex) & Luminosity (L$_{\odot}$)\\
+		\hline
+		\cite{2012Sheffield}$_{a}$	&	3900	&	1.3	&	0.17	&	480\\
+		\cite{2012Sheffield}$_{b}$	&	3900	&	1.3	&	0.05	&	480\\
+		\cite{2011Prugniel}	&	3870 & 1.66 & -0.04 & 507\\
+		\cite{2008Massarotti} & 3936 & 1 & -0.34 & 456\\
+		\cite{2009Frasca} & 3850 & 0.55 & -0.1 & 526\\
+		\hline
+	\end{tabular}
+\end{table*}
+
+As Table \ref{tab:spec} shows, the spectroscopic parameters of Aldebaran are somewhat unclear, particularly $\log{g}$ and [FeH], which may have an impact on the recovered stellar properties when fitting to models. To explore what impact each parameter is having on the final stellar properties, multiple \textsc{PARAM} runs were performed, using different constraints. Two constraints potentially in tension were $\nu_{\textrm{max}}$ and $\log{g}$. $\nu_{\textrm{max}}$ has been shown to scale with $\log{g}$ \citep{Kjeldsen95, 2011A&A...530A.142B},
+\begin{equation}
+\frac{\nu_{\textrm{max}}}{\nu_{\textrm{max},\odot}}=\frac{\log{g}}{\log{g},\odot}\left(\frac{T_{\textrm{eff}}}{T_{\textrm{eff},\odot}}\right)^{-1/2}.
+\label{eqn:numax}
+\end{equation}
+
+Using Eq \ref{eqn:numax} with the values in Table \ref{tab:spec} predicts $\nu_{\textrm{max}}$ in the range $0.5-6\mu$Hz. Reversing the equation to produce a predicted $\log{g}$ from the observed $\nu_{\textrm{max,obs}}=2.23\pm0.1\mu$Hz results in a predicted $\log{g}\sim1.2$ dex, using an assumed temperature of 3900K. The solar calibration values used here are $g_{\odot}=274$ms$^{-2}$, $\nu_{\textrm{max},\odot}=3150\mu$Hz and $T_{\textrm{eff},\odot}=5777$K. 
+
+Table \ref{tab:res_mass} shows the results, for all modelling variations, both different inputs and different constraints. It shows that results with the addition of $\nu_{\textrm{max}}$ as a constraint exhibit in general smaller uncertainties, with or without the addition of $\log{g}$ as a constraint. 
+
+Recovering the mass without the use of asteroseismic constraints produces considerable scatter on the results ($0.96-1.5\textrm{M}_{\odot}$), whilst the use of asteroseismology brings the mass estimates into closer agreement, with the exception of the very low metallicity solution of \cite{2008Massarotti}. Any systematic offset between asteroseismic masses and spectroscopic masses is sensitive to chosen reference mass, in agreement with \cite{2017North}.
+
+Within the results of Table \ref{tab:res_mass}, the parallax of Aldebaran is contained within the angular diameter and the luminosity of the star. To avoid this, \textsc{PARAM} was also ran without luminosity constraint, the average absolute mass offset between the two sets of results was $<0.04\textrm{M}_{\odot}$ for the runs without $\nu_{\textrm{max}}$ constraint, and $<0.02\textrm{M}_{\odot}$ for the runs with $\nu_{\textrm{max}}$.
+
+% Example table
+\begin{table*}
+	\centering
+	
+	\caption{Recovered stellar properties from \textsc{PARAM} using various constraints. Uncertainties quoted are the 68\% credible interval.}
+	\label{tab:res_mass}
+	\begin{tabular}{llll} % 5 columns, alignment for each
+		\hline
+		Spectroscopy Source & Mass ($\textrm{M}_{\odot}$) & Radius ($\textrm{R}_{\odot}$) & Age (Gyr)\\
+		\hline
+		\multicolumn{4}{c}{$\nu_{\textrm{max}}$, $\log{g}$, $T_{\textrm{eff}}$, $R_\textrm{int}$, L and [FeH].} \\
+		\hline
+		\cite{2012Sheffield}$_{a}$ &$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.47^{+1.39}_{-1.1}$\\
+		\cite{2012Sheffield}$_{b}$&$1.17^{+0.07}_{-0.07}$&$43.8^{+0.8}_{-0.9}$&$6.35^{+1.4}_{-1.11}$\\
+		\cite{2011Prugniel}&$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.23^{+1.4}_{-1.11}$\\
+		\cite{2008Massarotti}&$1.13^{+0.07}_{-0.07}$&$43.5^{+0.9}_{-0.9}$&$5.95^{+1.37}_{-1.07}$\\
+		\cite{2009Frasca}&$1.02^{+0.04}_{-0.04}$&$44.0^{+0.8}_{-0.8}$&$10.26^{+1.54}_{-1.45}$\\
+		\hline
+		\multicolumn{4}{c}{$\log{g}$, $T_{\textrm{eff}}$, $R_\textrm{int}$, L and [FeH].} \\
+		\hline
+\cite{2012Sheffield}$_{a}$&$1.43^{+0.26}_{-0.24}$&$43.8^{+0.9}_{-0.9}$&$3.53^{+2.72}_{-1.44}$\\
+\cite{2012Sheffield}$_{b}$&$1.27^{+0.24}_{-0.2}$&$43.8^{+0.9}_{-0.9}$&$4.86^{+3.56}_{-2.04}$\\
+\cite{2011Prugniel}&$1.25^{+0.22}_{-0.19}$&$43.8^{+0.9}_{-0.9}$&$5.02^{+3.47}_{-2.02}$\\
+\cite{2008Massarotti}&$0.95^{+0.11}_{-0.05}$&$43.8^{+0.9}_{-0.9}$&$10.24^{+2.36}_{-3.08}$\\
+\cite{2009Frasca}&$0.96^{+0.04}_{-0.04}$&$44.4^{+0.8}_{-0.8}$&$11.64^{+1.43}_{-1.8}$\\
+		\hline
+		\multicolumn{4}{c}{$\nu_{\textrm{max}}$, $T_{\textrm{eff}}$, $R_\textrm{int}$, L and [FeH].} \\
+		\hline
+\cite{2012Sheffield}$_{a}$&$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.51^{+1.41}_{-1.11}$\\
+\cite{2012Sheffield}$_{b}$&$1.16^{+0.07}_{-0.07}$&$43.8^{+0.8}_{-0.9}$&$6.38^{+1.42}_{-1.12}$\\
+\cite{2011Prugniel}&$1.16^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.43^{+1.48}_{-1.15}$\\
+\cite{2008Massarotti}&$1.13^{+0.07}_{-0.07}$&$43.5^{+0.9}_{-0.9}$&$5.86^{+1.35}_{-1.05}$\\
+\cite{2009Frasca}&$1.15^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.8}$&$6.47^{+1.51}_{-1.17}$\\
+		\hline
+	\end{tabular}
+	
+\end{table*}
+
+
+
+
