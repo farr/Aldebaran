@@ -140,18 +140,21 @@ Aldebaran is a red giant star with spectral type K5, one of the nearest such sta
 
 \subsection{K2 Observations}
 
-In order to verify the results of the novel analysis presented above, we sought to obtain an independent detection of the oscillations of Aldebaran and compare the frequencies determined with the two methods. 
-Aldebaran was therefore observed with \ktwo \citep{howell14}, a two-wheeled revival of the \kepler Mission \citep{2010sci...327..977b}, under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. Aldebaran and similar K giants are known to be photometrically variable from Hipparcos photometry \citep{bedding2000}, and we sought to obtain higher-precision, continuous light curves to compare to our CARMA results.
+%In order to verify the results of the novel analysis presented above, we sought to obtain an independent detection of the oscillations of Aldebaran and compare the frequencies determined with the two methods. 
+Aldebaran was observed with \ktwo \citep{howell14}, a two-wheeled revival of the \kepler Mission \citep{2010sci...327..977b}, under Guest Observer Program 130471 in Campaign~13, from 2017-03-08 to 2017-05-27. Aldebaran and similar high-luminosity K giants are well known to show photometric variability due to solar-like oscillations \citep{bedding2000}, and hence the continuous, high-precision K2 light curves allow an independent confirmation of our CARMA results.
 
 As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep[as originally implemented in][]{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}. 
+
+Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on a average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 timeseries we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
 
 Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this light curve, we search for transits across a wide range of periods, and find no evidence either of short-period planetary transits or an eclipsing stellar companion.
 
 \begin{figure}
 \centering
 % \includegraphics[width=0.75\textwidth]{Aldebaran_lc.png}
-\includegraphics[width=0.75\textwidth]{aldebaran_lc.eps}
-\caption{\ktwo lightcurve of Aldebaran.}
+%\includegraphics[width=0.75\textwidth]{aldebaran_lc.eps}
+\includegraphics[width=\textwidth]{k2obs.png}
+\caption{\ktwo lightcurve (left) and power spectrum (right) of Aldebaran. The red dashed line shows the background model, and the orange line is a heavily smoothed version of the power spectrum used to measure the frequency of maximum power. }
 \label{k2_lightcurve}
 \end{figure}
 
