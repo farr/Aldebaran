@@ -57,8 +57,8 @@ end
 function rv(t, K, P, e, omega, chi)
     fp, ip = modf(t/P - chi)
 
-    if fp < 0
-        fp = fp + 1.0
+    if fp < zero(fp)
+        fp = fp + one(fp)
     end
 
     m = 2*pi*fp

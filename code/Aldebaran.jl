@@ -3,7 +3,7 @@ module Aldebaran
 using Kepler
 using CARMAKepler
 
-function load_timeseries(before_song=true, song=true)
+function load_timeseries(;before_song=true, song=true)
     ts = []
     ys = []
     dys = []
