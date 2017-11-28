@@ -44,10 +44,13 @@ function MultiEpochPosterior(ts, ys, dys, per_min, per_max, ndrw, nosc, f_min, f
     alldys = vcat(dys...)
     
     allinds = sortperm(allts)
+
+    iallinds = invperm(allinds)
+    
     inds = []
     i = 1
     for t in ts
-        push!(inds, allinds[i:i+size(t,1)-1])
+        push!(inds, iallinds[i:i+size(t,1)-1])
         i = i+size(t,1)
     end
 
@@ -309,6 +312,9 @@ function produce_ys_dys(post::MultiEpochPosterior, p::MultiEpochParams)
 
     e = sqrt(p.ecosw*p.ecosw + p.esinw*p.esinw)
     omega = atan2(p.esinw, p.ecosw)
+    if omega < 0
+        omega = omega + 2*pi
+    end
     for i in eachindex(ys)
         ys[i] = ys[i] - Kepler.rv(post.allts[i], p.K, p.P, e, omega, p.chi)
     end
