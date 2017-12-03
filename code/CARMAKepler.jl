@@ -38,7 +38,7 @@ type MultiEpochPosterior
     Q_max::Float64
 end
 
-function MultiEpochPosterior(ts, ys, dys, per_min, per_max, ndrw, nosc, f_min, f_max)
+function MultiEpochPosterior(ts, ys, dys, per_min, per_max, ndrw, nosc, rate_min, rate_max, f_min, f_max, Q_max)
     allts = vcat(ts...)
     allys = vcat(ys...)
     alldys = vcat(dys...)
@@ -64,12 +64,7 @@ function MultiEpochPosterior(ts, ys, dys, per_min, per_max, ndrw, nosc, f_min, f
     T = allts[end]-allts[1]
     dtmin = minimum(diff(allts))
     
-    Q_max = 10.0*f_max*T
-
-    rate_min = 1.0/(10.0*T)
-    rate_max = 10.0/dtmin
-    
-    MultiEpochPosterior(ts, ys, dys, inds, allts, allys, alldys, per_min, per_max, rms_min/100.0, 10.0*rms_max, ndrw, nosc, rate_min, rate_max, f_min, f_max, rms_min/100.0, rms_max*10.0, 0.1, Q_max)
+    MultiEpochPosterior(ts, ys, dys, inds, allts, allys, alldys, per_min, per_max, rms_min/100.0, 10.0*rms_max, ndrw, nosc, rate_min, rate_max, f_min, f_max, rms_min/100.0, rms_max*10.0, 1.0, Q_max)
 end
 
 type MultiEpochParams
@@ -78,8 +73,8 @@ type MultiEpochParams
     
     K::Float64
     P::Float64
-    ecosw::Float64
-    esinw::Float64
+    e::Float64
+    omega::Float64
     chi::Float64
 
     drw_rms::Array{Float64,1}
@@ -107,6 +102,8 @@ function to_params(post::MultiEpochPosterior, x::Array{Float64, 1})
     K = Parameterizations.bounded_value(x[i], post.K_min, post.K_max)
     P = Parameterizations.bounded_value(x[i+1], post.P_min, post.P_max)
     ecosw, esinw = Parameterizations.unit_disk_value(x[i+2:i+3])
+    e = sqrt(ecosw*ecosw + esinw*esinw)
+    omega = atan2(esinw, ecosw)
     chi = Parameterizations.bounded_value(x[i+4], 0.0, 1.0)
     i = i + 5
 
@@ -133,7 +130,7 @@ function to_params(post::MultiEpochPosterior, x::Array{Float64, 1})
         freq_min = osc_freq[j]
     end
 
-    MultiEpochParams(mu, nu, K, P, ecosw, esinw, chi, drw_rms, drw_rate, osc_rms, osc_freq, osc_Q)
+    MultiEpochParams(mu, nu, K, P, e, omega, chi, drw_rms, drw_rate, osc_rms, osc_freq, osc_Q)
 end
 
 function to_array(post::MultiEpochPosterior, p::MultiEpochParams)
@@ -148,7 +145,7 @@ function to_array(post::MultiEpochPosterior, p::MultiEpochParams)
 
     x[i] = Parameterizations.bounded_param(p.K, post.K_min, post.K_max)
     x[i+1] = Parameterizations.bounded_param(p.P, post.P_min, post.P_max)
-    x[i+2:i+3] = Parameterizations.unit_disk_param([p.ecosw, p.esinw])
+    x[i+2:i+3] = Parameterizations.unit_disk_param([p.e*cos(p.omega), p.e*sin(p.omega)])
     x[i+4] = Parameterizations.bounded_param(p.chi, 0.0, 1.0)
     i = i + 5
 
@@ -200,7 +197,7 @@ function log_prior(post::MultiEpochPosterior, p::MultiEpochParams)
     logp += bounded_logjac_value(p.P, post.P_min, post.P_max)
 
     # Uniform prior on unit disk for (e*cos(omega), e*sin(omega))
-    z = [p.ecosw, p.esinw]
+    z = [p.e*cos(p.omega), p.e*sin(p.omega)]
     logp += Parameterizations.unit_disk_logjac(z, Parameterizations.unit_disk_param(z))
 
     # Uniform prior in chi
@@ -259,9 +256,15 @@ function draw_prior(post::MultiEpochPosterior)
     K = rand_flatlog(post.K_min, post.K_max)
     P = rand_flatlog(post.P_min, post.P_max)
 
-    e = rand()
+    x = 1.0
+    y = 1.0
+    while x*x + y*y > 1.0
+        x = rand()
+        y = rand()
+    end
 
-    omega = 2*pi*rand()
+    e = sqrt(x*x + y*y)
+    omega = atan2(y,x)
 
     chi = rand()
 
@@ -310,13 +313,8 @@ function produce_ys_dys(post::MultiEpochPosterior, p::MultiEpochParams)
         dys[post.inds[i]] = post.dys[i]*p.nu[i]
     end
 
-    e = sqrt(p.ecosw*p.ecosw + p.esinw*p.esinw)
-    omega = atan2(p.esinw, p.ecosw)
-    if omega < 0
-        omega = omega + 2*pi
-    end
     for i in eachindex(ys)
-        ys[i] = ys[i] - Kepler.rv(post.allts[i], p.K, p.P, e, omega, p.chi)
+        ys[i] = ys[i] - Kepler.rv(post.allts[i], p.K, p.P, p.e, p.omega, p.chi)
     end
 
     ys, dys
