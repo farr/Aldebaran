@@ -350,4 +350,27 @@ function psd(post::MultiEpochPosterior, p::MultiEpochParams, fs::Array{Float64, 
     Celerite.psd(filt, fs)
 end
 
+function posterior_predictive(post::MultiEpochPosterior, x::Array{Float64, 1})
+    posterior_predictive(post, to_params(post, x))
+end
+
+function posterior_predictive(post::MultiEpochPosterior, p::MultiEpochParams)
+    filt = Celerite.CeleriteKalmanFilter(0.0, p.drw_rms, p.drw_rate, p.osc_rms, p.osc_freq, p.osc_Q)
+
+    allnoise = Celerite.generate(filt, post.allts, zeros(size(post.allts, 1)))
+
+    allrvnoise = zeros(size(allnoise, 1))
+    for i in eachindex(allnoise)
+        allrvnoise[i] = allnoise[i] + Kepler.rv(post.allts[i], p.K, p.P, p.e, p.omega, p.chi)
+    end
+
+    obs_ys = Array{Float64, 1}[]
+    for i in eachindex(post.ts)
+        ys = allrvnoise[post.inds[i]]
+        push!(obs_ys, ys + p.nu[i]*randn(size(ys, 1)) + p.mu[i])
+    end
+
+    obs_ys
+end
+
 end
