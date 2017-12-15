@@ -350,6 +350,24 @@ function psd(post::MultiEpochPosterior, p::MultiEpochParams, fs::Array{Float64, 
     Celerite.psd(filt, fs)
 end
 
+function predict(post::MultiEpochPosterior, x::Array{Float64, 1}, ts::Array{Float64, 1})
+    predict(post, to_params(post, x), ts)
+end
+
+function predict(post::MultiEpochPosterior, p::MultiEpochParams, ts::Array{Float64, 1})
+    rvs = [Kepler.rv(t, p.K, p.P, p.e, p.omega, p.chi) for t in ts]
+
+    ys, dys = produce_ys_dys(post, p)
+
+    filt = Celerite.CeleriteKalmanFilter(0.0, p.drw_rms, p.drw_rate, p.osc_rms, p.osc_freq, p.osc_Q)
+
+    ysp, vysp = Celerite.predict(filt, post.allts, ys, dys, ts)
+
+    ysp = ysp .+ rvs
+
+    ysp, vysp
+end
+
 function posterior_predictive(post::MultiEpochPosterior, x::Array{Float64, 1})
     posterior_predictive(post, to_params(post, x))
 end
