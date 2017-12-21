@@ -1,0 +1,96 @@
+
+
+
+  % Content of this file:
+
+  % Text for the paper, section 4.1
+  % one Bibtex item 
+  % Author information and acknowledgements request.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+\section{SONG Observations}    % this goes into section 4.1
+
+In order to detect the oscillations of Aldebaran via the radial velocity 
+method we used the Hertzsprung SONG telescope \cite{grundahl2017}. All 
+observations were carried out in the highest resolution mode (R$\approx\,110.000$)
+with an integration time of 30s. The observations were carried out between 27 September 
+2016 and  12 January 2017, during this time we attempted to obtain at least one 
+visit per available night. A total of 254 spectra was obtained. The spectra were
+extracted using the SONG pipeline (see \cite{Grundahl2017}). SONG employs an iodine cell for
+precise wavelength calibration and the velocities were determined using the $\it iSONG$
+software following the same procedures as described in \cite{Grundahl2017}.   The typical
+velocity precision per visit is 2.5$m\,s^{-1}$ allowing us to easily detect the oscillations
+which displays a peak-to-peak amplitude of $\approx\,$170$m\,s^{-1]$. $\bf Figure XX$ show
+the radial velocities obtained -- oscillations are easily visible as well as a long-term
+trend. This is probably due to the a manifestation of the planetary companion reported by
+\cite{Hatzes2015}. 
+
+%% Suggestion(s):
+%% Show a plot of the RV-curve, similar to the K2 light-curve plot.
+%% In the Introduction: I suggest to add a reference to SONG (use the Grundahl et al. 2017
+%% given below.
+
+%% The last sentence in the Introduction:  I suggest to clarify that the ground-based datasets
+%% either existing or to-be-obtained will be for the radial-velocity method (I think that 
+%% ground-based photometry will not be sufficiently accurate). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+@ARTICLE{2017ApJ...836..142G,
+   author = {{Grundahl}, F. and {Fredslund Andersen}, M. and {Christensen-Dalsgaard}, J. and 
+	{Antoci}, V. and {Kjeldsen}, H. and {Handberg}, R. and {Houdek}, G. and 
+	{Bedding}, T.~R. and {Pall{\'e}}, P.~L. and {Jessen-Hansen}, J. and 
+	{Silva Aguirre}, V. and {White}, T.~R. and {Frandsen}, S. and 
+	{Albrecht}, S. and {Andersen}, M.~I. and {Arentoft}, T. and 
+	{Brogaard}, K. and {Chaplin}, W.~J. and {Harps{\o}e}, K. and 
+	{J{\o}rgensen}, U.~G. and {Karovicova}, I. and {Karoff}, C. and 
+	{Kj{\ae}rgaard Rasmussen}, P. and {Lund}, M.~N. and {Sloth Lundkvist}, M. and 
+	{Skottfelt}, J. and {Norup S{\o}rensen}, A. and {Tronsgaard}, R. and 
+	{Weiss}, E.},
+    title = "{First Results from the Hertzsprung SONG Telescope: Asteroseismology of the G5 Subgiant Star {$\mu$} Herculis}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1701.03365},
+ primaryClass = "astro-ph.SR",
+ keywords = {asteroseismology, instrumentation: spectrographs, methods: data analysis, methods: observational, stars: individual: HD 161797, stars: oscillations},
+     year = 2017,
+    month = feb,
+   volume = 836,
+      eid = {142},
+    pages = {142},
+      doi = {10.3847/1538-4357/836/1/142},
+   adsurl = {http://adsabs.harvard.edu/abs/2017ApJ...836..142G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ Co-authors: 
+
+ Victoria Antoci, Mads Fredslund Andersen, Frank Grundahl - Our affiliation: 
+ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark
+
+
+ In the acknowledgements please include something like this (please feel free to edit this
+ as well as where to put it): 
+
+ The Villum Foundation, The Danish Council for Independent Research | Natural Sciences and 
+ the Carlsberg Foundation are thanked for their support on building the SONG prototype on 
+ Tenerife. 
+ We thank Jens Jessen-Hansen, Rasmus Handberg and René Tronsgaard Rasmussen for their contribution
+ to the development of the SONG data reduction pipeline and archive system.  
+
+
+ We try to also include the following sentence (again, you decide where to place it):
+
+ 'Based on observations made with the Hertzsprung SONG telescope operated on the Spanish Observatorio
+  del Teide on the island of Tenerife by the Aarhus and Copenhagen Universities and by the Instituto de 
+  Astrof{i\'}sica de Canarias.'
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

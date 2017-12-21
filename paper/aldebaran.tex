@@ -92,6 +92,13 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 \affiliation{School of Physics and Astronomy, University of
   Birmingham, Birmingham, B15 2TT, United Kingdom}
 
+\author{Victoria Antoci}
+\affiliation{ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark}
+
+\author{Mads Fredslund Andersen} 
+\affiliation{ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark}
+\author{Frank Grundahl}
+\affiliation{ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark}
 
 \email{w.farr@bham.ac.uk, G.R.Davies@bham.ac.uk, b.pope@sydney.edu.au, txn016@student.bham.ac.uk, jimbarrett27@gmail.com}
 
@@ -105,7 +112,7 @@ Aldebaran, or $\alpha$~Tauri, is a well-known first-magnitude naked-eye red gian
 
 In this paper, we present a re-analysis of these original RV data in which we not only confirm this signal, but detect acoustic oscillations in Aldebaran for the first time. We validate this method and its result with new independent RV observations with the SONG~Telescope, and photometry from the \ktwo Mission. By measuring the frequency of maximum power, \numax, of these \emph{p}-mode oscillations we asteroseismically determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun. This measured stellar mass allows us to calculate that any moons of this giant planet, although they are now likely to be very hot, may have had equilibrium temperatures comparable to that of the Earth when Aldebaran was on the main sequence, raising the possibility that they may have once been habitable.
 
-Our new approach to asteroseismic data analysis, based on Continuous Auto-Regressive Moving Average (CARMA) models, can extract exoplanet signals together with measures of \numax from sparse and irregularly-sampled time series. An all-sky survey to find planetary companions and to precisely measure the masses of all nearby red giant stars is feasible with this new approach, and the required data either already exist in large exoplanet surveys, or are easy to obtain with ground-based telescopes.
+Our new approach to asteroseismic data analysis, based on Continuous Auto-Regressive Moving Average (CARMA) models, can extract exoplanet signals together with measures of \numax from sparse and irregularly-sampled time series. An all-sky survey to find planetary companions and to precisely measure the masses of all nearby red giant stars is feasible with this new approach, and the required data either already exist in large radial velocity exoplanet surveys, or are easy to obtain with ground-based telescopes.
 
 \section{Asteroseismology of Red Giants}
 Asteroseismology is a powerful tool for the charaterisation of red giant stars \citep[see][for a detailed review]{2013ARA&A..51..353C}.  Red giants are solar-type pulsators, they exhibit acoustic modes of oscillation that are both excited and damped by stellar convection.  In the frequency-power spectrum of either radial velocity of photometric observations, these modes of oscillation form an often intricate pattern of sharp peaks where the properties of the pattern can be mapped back to intrinsic stellar properties \citep[e.g.,][]{2016AN....337..774D}.  The easiest properties of the pattern to determine are the the frequency of maximum amplitude \numax and the so-called large separation \Dnu \citep{Kjeldsen95}.  The two observables are often referred to as the global average seismic parameters.
@@ -136,7 +143,23 @@ Reference \citet{Kelly2014}, compare to \citet{Foreman-Mackey2017}.
 \section{Aldebaran}
 Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}.
 
-\subsection{SONG Observations}
+\subsection{SONG Observations}    % this goes into section 4.1
+
+In order to detect the oscillations of Aldebaran via the radial velocity 
+method we used the Hertzsprung SONG telescope \cite{2017ApJ...836..142G}. All 
+observations were carried out in the highest resolution mode (R$\approx\,110.000$)
+with an integration time of 30s. The observations were carried out between 27 September 
+2016 and  12 January 2017, during this time we attempted to obtain at least one 
+visit per available night. A total of 254 spectra was obtained. The spectra were
+extracted using the SONG pipeline (see \cite{2017ApJ...836..142G}). SONG employs an iodine cell for
+precise wavelength calibration and the velocities were determined using the $\it iSONG$
+software following the same procedures as described in \cite{2017ApJ...836..142G}.   The typical
+velocity precision per visit is 2.5$m\,s^{-1}$ allowing us to easily detect the oscillations
+which displays a peak-to-peak amplitude of $\approx \, 170 \, \rm m \, s^{-1}$. $\bf Figure XX$ show
+the radial velocities obtained -- oscillations are easily visible as well as a long-term
+trend. This is probably due to the a manifestation of the planetary companion reported by
+\cite{Hatzes2015}. 
+
 
 \subsection{K2 Observations}
 
@@ -186,7 +209,21 @@ BP is grateful for funding from the Breakthrough Prize Foundation. This work was
 The authors would like to acknowledge the Gadigal people of the Eora nation on whose ancestral lands the University of Sydney is built. 
 
 Funding for the Stellar Astrophysics Centre is provided by The Danish National Research Foundation. TRW acknowledges the support of the Villum Foundation (research grant 10118).
-This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and NASA's Astrophysics Data System. The \kepler data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX13AC07G and by other grants and contracts. This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \citep{scipy};  \textsc{matplotlib}, a \textsc{Python} library for publication quality graphics \citep{Hunter:2007}; \textsc{Astropy}, a community-developed core \textsc{Python} package for astronomy \citep{2013A&A...558A..33A}; and \textsc{NumPy} \citep{van2011numpy}. Some of the acknowledgements were compiled using the Astronomy Acknowledgement Generator.
+This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and NASA's Astrophysics Data System. The \kepler data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX13AC07G and by other grants and contracts. 
+
+ The Villum Foundation, The Danish Council for Independent Research | Natural Sciences and 
+ the Carlsberg Foundation are thanked for their support on building the SONG prototype on 
+ Tenerife. 
+ We thank Jens Jessen-Hansen, Rasmus Handberg and René Tronsgaard Rasmussen for their contribution
+ to the development of the SONG data reduction pipeline and archive system.  
+ 
+ Based on observations made with the Hertzsprung SONG telescope operated on the Spanish Observatorio
+  del Teide on the island of Tenerife by the Aarhus and Copenhagen Universities and by the Instituto de 
+  Astrofisica de Canarias.
+
+This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \citep{scipy};  \textsc{matplotlib}, a \textsc{Python} library for publication quality graphics \citep{Hunter:2007}; \textsc{Astropy}, a community-developed core \textsc{Python} package for astronomy \citep{2013A&A...558A..33A}; and \textsc{NumPy} \citep{van2011numpy}. Some of the acknowledgements were compiled using the Astronomy Acknowledgement Generator.
+
+
 
 \appendix
 
