@@ -190,7 +190,17 @@ The stellar oscillations are best fit with a single CARMA component with $\numax
 
 With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.  %Using the scaling relations of \citep{eker2015}, we find that Aldebaran would have had a luminosity $L_* = 2.0 \pm 0.37~\lsun$ on the main sequence.  
 Using the Mesa Isochrones and Stellar Tracks \citep[MIST:][]{mist0,mist1} models via the \textsc{isochrones} package \citep{isochrones}, we compute the evolution of the luminosity $L$ of the star along the main sequence; $L$ evolves from $2.0 \pm 0.7$~\lsun at 0.5~Gyr to $3.5 \pm 2.3$~\lsun at 4.5~Gyr. 
-We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 0.03$~AU would have been subject to an insolation comparable to that of the Earth, evolving from 0.5~Gyr to 4.5~Gyr from $0.86\, \pm\, 0.27$ to $1.55 \,\pm\,1.0$ times that of the Earth today. Subject as well as this to the great uncertainties of the planet's orbital evolution and albedo, Aldebaran~b and any of its moons may well have hosted temperate environments for some of their history, now long-since destroyed by their star's evolution away from the main sequence. 
+We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 0.03$~AU would have been subject to an insolation comparable to that of the Earth, evolving from 0.5~Gyr to 4.5~Gyr from $0.86\, \pm\, 0.27$ to $1.55 \,\pm\,1.0$ times that of the Earth today (Figure~\ref{insolation}). Subject as well as this to the great uncertainties of the planet's orbital evolution and albedo, Aldebaran~b and any of its moons may well have hosted temperate environments for some of their history, now long-since destroyed by their star's evolution away from the main sequence. 
+
+
+\begin{figure}
+\centering
+% \includegraphics[width=0.75\textwidth]{Aldebaran_lc.png}
+%\includegraphics[width=0.75\textwidth]{aldebaran_lc.eps}
+\includegraphics[width=\textwidth]{insolation.png}
+\caption{Evolution of the insolation of Aldebaran~b relative to the incident sunlight on Earth, as a function of the age of Aldebaran on the main sequence. The solid line is the mean of simulations, and the shaded region extends from the 5th to the 95th percentile. It is likely that Aldebaran~b spent some time on the main sequence with an equilibrium temperature similar to Earth.}
+\label{insolation}
+\end{figure}
 
 \section{Conclusions}
 
