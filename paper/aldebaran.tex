@@ -143,14 +143,14 @@ Reference \citet{Kelly2014}, compare to \citet{Foreman-Mackey2017}.
 \section{Aldebaran}
 Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}.
 
+\subsection{Archival Observations}
+
 \subsection{SONG Observations}    % this goes into section 4.1
 
-In order to detect the oscillations of Aldebaran via the radial velocity 
-method we used the Hertzsprung SONG telescope \cite{2017ApJ...836..142G}. All 
-observations were carried out in the highest resolution mode (R$\approx\,110.000$)
-with an integration time of 30s. The observations were carried out between 27 September 
-2016 and  12 January 2017, during this time we attempted to obtain at least one 
-visit per available night. A total of 254 spectra was obtained. The spectra were
+In order to confirm the oscillations detected in the archival data, we used the Hertzsprung SONG telescope \cite{2017ApJ...836..142G} to conduct high time cadence follow-up observations. These were carried out in the highest resolution mode (R$\approx\,110.000$)
+with an integration time of 30s, between 27 September 
+2016 and  12 January 2017. During this time we attempted to obtain at least one 
+visit per available night, for a total of 254 epochs over the campaign. The spectra were
 extracted using the SONG pipeline (see \cite{2017ApJ...836..142G}). SONG employs an iodine cell for
 precise wavelength calibration and the velocities were determined using the $\it iSONG$
 software following the same procedures as described in \cite{2017ApJ...836..142G}.   The typical
@@ -188,7 +188,7 @@ By jointly fitting a Keplerian for the planet with a CARMA model for the stellar
 The stellar oscillations are best fit with a single CARMA component with $\numax = 2.238^{+ 0.086}_{- 0.080}$ \muHz, and including additional CARMA components does not resolve any further structure in the power spectrum. We have determined the stellar properties of Aldebaran with the additional constraint of \numax determined from this analysis.  The details of the stellar modelling are presented in detail in \ref{sec:mod}.  We have considered the impact of our additional \numax constraint and run our analysis for different sets of spectroscopic estimates.  For final values we adopt the \citet{2012Sheffield} spectroscopic solution as being `middle of the road' estimates.  For the analysis without constraint on \numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2} \, \mathrm{M_{\odot}}$ and age $4.86^{+3.56}_{-2.04} \, \rm Gyr$.  With the inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  It is clear that the addition of \numax provides substantially more precise estimates of mass and age. With this stellar mass, the radial velocity signal translates to an inclination-dependent planetary mass of $M\,\sin\,{i} = 5.81 \pm 0.72~M_J$ \citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$, making it a possible low-mass brown dwarf candidate.  % re sheffield - I have substituted the citation from the .bib but you said 'b'; afaik she only published one paper in 2012? - Ben
 
 
-With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.  %Using the scaling relations of \citep{eker2015}, we find that Aldebaran would have had a luminosity $L_* = 2.0 \pm 0.37~\lsun$ on the main sequence.  
+With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.  
 Using the Mesa Isochrones and Stellar Tracks \citep[MIST:][]{mist0,mist1} models via the \textsc{isochrones} package \citep{isochrones}, we compute the evolution of the luminosity $L$ of the star along the main sequence; $L$ evolves from $2.0 \pm 0.7$~\lsun at 0.5~Gyr to $3.5 \pm 2.3$~\lsun at 4.5~Gyr. 
 We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 0.03$~AU would have been subject to an insolation comparable to that of the Earth, evolving from 0.5~Gyr to 4.5~Gyr from $0.86\, \pm\, 0.27$ to $1.55 \,\pm\,1.0$ times that of the Earth today (Figure~\ref{insolation}). Subject as well as this to the great uncertainties of the planet's orbital evolution and albedo, Aldebaran~b and any of its moons (or its S-type planets if it is a brown dwarf) may well have hosted temperate environments for some of their history, now long-since destroyed by their star's evolution away from the main sequence. 
 
