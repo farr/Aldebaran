@@ -100,7 +100,14 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author{Mads Fredslund Andersen} 
 \affiliation{ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark}
+
 \author{Frank Grundahl}
+\affiliation{ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark}
+
+\author[0000-0001-8832-4488]{Daniel Huber}
+\affiliation{Institute for Astronomy, University of Hawai`i, 2680 Woodlawn Drive, Honolulu, HI 96822, USA}
+\affiliation{Sydney Institute for Astronomy (SIfA), School of Physics, University of Sydney, NSW 2006, Australia}
+\affiliation{SETI Institute, 189 Bernardo Avenue, Mountain View, CA 94043, USA}
 \affiliation{ Stellar Astrophysics Centre (SAC), Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000, Denmark}
 
 \email{w.farr@bham.ac.uk, G.R.Davies@bham.ac.uk, benjamin.pope@nyu.edu, txn016@student.bham.ac.uk, jimbarrett27@gmail.com}
@@ -118,9 +125,11 @@ In this paper, we present a re-analysis of these original RV data in which we no
 Our new approach to asteroseismic data analysis, based on Continuous Auto-Regressive Moving Average (CARMA) models, can extract exoplanet signals together with measures of \numax from sparse and irregularly-sampled time series. An all-sky survey to find planetary companions and to precisely measure the masses of all nearby red giant stars is feasible with this new approach, and the required data either already exist in large radial velocity exoplanet surveys, or are easy to obtain with ground-based telescopes.
 
 \section{Asteroseismology of Red Giants}
-Asteroseismology is a powerful tool for the charaterisation of red giant stars \citep[see][for a detailed review]{2013ARA&A..51..353C}.  Red giants are solar-type pulsators, they exhibit acoustic modes of oscillation that are both excited and damped by stellar convection.  In the frequency-power spectrum of either radial velocity of photometric observations, these modes of oscillation form an often intricate pattern of sharp peaks where the properties of the pattern can be mapped back to intrinsic stellar properties \citep[e.g.,][]{2016AN....337..774D}.  The easiest properties of the pattern to determine are the the frequency of maximum amplitude \numax and the so-called large separation \Dnu \citep{Kjeldsen95}.  The two observables are often referred to as the global average seismic parameters.
+Asteroseismology is a powerful tool for the charaterisation of red giant stars \citep[see][for detailed reviews]{2013ARA&A..51..353C, hekker17}.  Red giants exhibit oscillations that are excited and damped by stellar convection.  In the power spectrum of either radial velocity of photometric observations, these modes of oscillation form a characteristic pattern of peaks which can be used to infer intrinsic stellar properties \citep[e.g.,][]{2016AN....337..774D}.  The easiest properties of the pattern to determine are the the frequency of maximum amplitude \numax and the so-called large separation \Dnu \citep{Kjeldsen95}, which are often referred to as global asteroseismic parameters.
 
-Stellar properties can be determined with the average seismic measures and effective temperature \teff.  A set of scaling relations exist that illustrate the constraint the global asteroseismic measures provide.  These scaling relations are understood to be approximate but never the less are commonly used for radius $R$, mass $M$, and surface gravity $g$:
+%Stellar properties can be determined with the average seismic measures and effective temperature \teff.  A set of scaling relations exist that illustrate the constraint the global asteroseismic measures provide.  These scaling relations are understood to be approximate but never the less are commonly used for radius $R$, mass $M$, and surface gravity $g$:
+Global asteroseismic parameters can be used to estimate the radius $R$, mass $M$, and surface gravity $g$ of stars when combined with an estimate of the effective temperature \teff\ through so-called scaling relations:
+
 \begin{eqnarray}
 \left( \frac{R}{\mathrm{R_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \, 
 \left( \frac{\Delta \nu}{\Delta \nu_{\odot}} \right)^{-2} \, \left( \frac{T_{\rm eff}}{T_{\rm eff, \odot}} \right)^{0.5}, \\
@@ -129,11 +138,16 @@ Stellar properties can be determined with the average seismic measures and effec
 \left( \frac{g}{\mathrm{g_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \, 
  \left( \frac{T_{\rm eff}}{T_{\rm eff, \odot}} \right)^{0.5}. \\
 \end{eqnarray}
+
 While the accuracy of these scaling relations is still a matter of ongoing work \citep[e.g.,][]{2017ApJ...844..102H}, stellar parameters can be estimated by comparing observables to parameter from models of stellar evolution. 
 
-As can be seen from the scaling relations, asteroseismology can provide constraint on Mass, Radius, and surface gravity if \Dnu, \numax, and \teff can be measured.  In practise, for the higher luminosity red giants it is more straight forward to measure \numax than \Dnu.  Typical values for \numax might range from $0.1$ to $20 \rm\,\mu Hz$ for the luminous giants and $20$ to $50 \rm\,\mu Hz$ for red giants with luminosities similar to the red clump .  For the same sets of stars, \Dnu would take ranges from $0.02$ to $3 \rm\,\mu Hz$ and $3$ to $7 \rm\,\mu Hz$ depending on stellar mass and \teff (or metallicity which is considered more fundamental) \citep[e.g.,][]{2011A&A...525L...9M, 2013A&A...559A.137M}.  Hence, \numax requires less frequency resolution than \Dnu to establish a good measurement.
+%As can be seen from the scaling relations, asteroseismology can provide constraint on Mass, Radius, and surface gravity if \Dnu, \numax, and \teff can be measured.  
+The ability to measure \numax and \Dnu depends on the length and sampling rate of a data set.
+In practise, for the higher luminosity red giants it is more straight forward to measure \numax than \Dnu.  Typical values for \numax\ range from $0.1-20 \rm\,\mu Hz$ for luminous giants and $20-50 \rm\,\mu Hz$ for stars near the red clump.  For the evolutionary stages, \Dnu typically ranges from $0.02-3 \rm\,\mu Hz$ and $3-7 \rm\,\mu Hz$ depending on stellar mass and \teff 
+%(or metallicity which is considered more fundamental)
+\citep[e.g.,][]{2011A&A...525L...9M, 2013A&A...559A.137M}.  Hence, \numax requires less frequency resolution than \Dnu to establish a good measurement.
 
-The ability to measure \numax and \Dnu, therefore, depends on the length and sampling rate of a data set.  For regularly spaced data, typically analysed using an estimate of the frequency-power spectrum, the Nyquist limit (half the sampling rate) and frequency resolution ($\sim 1/$~duration) are trivial to estimate. %For the historic data sets proposed here the typical length is \guy{blah} and typical sampling is \guy{blah}.  This in principle gives us access to measures of \numax for \guy{these types of stars} and \Dnu $\,$ \guy{for those types of stars}. 
+%The ability to measure \numax and \Dnu, therefore, depends on the length and sampling rate of a data set.  For regularly spaced data, typically analysed using an estimate of the frequency-power spectrum, the Nyquist limit (half the sampling rate) and frequency resolution ($\sim 1/$~duration) are trivial to estimate. %For the historic data sets proposed here the typical length is \guy{blah} and typical sampling is \guy{blah}.  This in principle gives us access to measures of \numax for \guy{these types of stars} and \Dnu $\,$ \guy{for those types of stars}. 
 
 \section{Time-Domain Models}
 
@@ -264,7 +278,7 @@ We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 
 
 \section{Conclusions}
 
-With CARMA models we have confirmed the previously-suspected planet around Aldebaran using archival data, and additionally detected acoustic oscillations that permit a $\sim 6\%$ mass determination. We have confirmed both of these results with new ground-based observations, and space-based photometry with \ktwo. 
+With CARMA models we have confirmed the previously-suspected planet around Aldebaran using archival data, and additionally detected acoustic oscillations that permit a mass determination with a precision of $\sim 6\%$. We have confirmed both of these results with new ground-based observations, and space-based photometry with \ktwo. 
 
 From this pilot study with Aldebaran, have shown that with limited quantities of data of limited quality, we can nevertheless do asteroseismology from the ground and obtain very precise estimates of stellar parameters. Furthermore, improvements in the algorithm may also permit the detection of not only~\numax but also~\Dnu from similar measurements, permitting more sophisticated asteroseismic analysis. Sufficient radial velocity data either already exist, or are trivial to obtain, in order to do this for essentially all bright giants; while for solar-like stars, these new methods will allow significantly relaxed observing requirements. One rich archive is the series of observations with the Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and K~giants \citep[e.g. ][]{frink2001,hekker2006,ortiz2016}. The method may also be useful in detecting rotational or other periodic variability in the LCES HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624 FGKM dwarfs, although the time sampling is by design too coarse to detect $p$-mode oscillations in these stars. Furthermore, CARMA models and related methods will enhance deep, all-sky, sparse photometric surveys: an immediate future test of this will be from \hipparcos; while only~58 epochs of photometry are available for Aldebaran, at a sampling we find to be insufficient for our purposes, stars at higher latitudes may often have 150--200 epochs and more even sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted by \citet{bedding2000} are an ideal first test case. This can naturally be extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground \citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic determinations will be possible. 
 
@@ -288,6 +302,8 @@ The Villum Foundation, The Danish Council for Independent Research~|~Natural Sci
 Based on observations made with the Hertzsprung SONG telescope operated on the Spanish Observatorio
   del Teide on the island of Tenerife by the Aarhus and Copenhagen Universities and by the Instituto de 
   Astrofisica de Canarias.
+  
+D.H. acknowledges support by the Australian Research Council's Discovery Projects funding scheme (project number DE140101364) and support by the National Aeronautics and Space Administration under Grants NNX14AB92G and NNX16AH45G issued through the Kepler Participating Scientist Program and the K2 Guest Observer Program.
 
 This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \citep{scipy};  \textsc{matplotlib}, a \textsc{Python} library for publication quality graphics \citep{Hunter:2007}; \textsc{Astropy}, a community-developed core \textsc{Python} package for astronomy \citep{2013A&A...558A..33A}; and \textsc{NumPy} \citep{van2011numpy}. Some of the acknowledgements were compiled using the Astronomy Acknowledgement Generator.
 
