@@ -3,7 +3,11 @@ module CARMAKepler
 using CARMA
 using Distributions
 using Ensemble
+using HDF5
 using Kepler
+
+import Base:
+    write, read
 
 type MultiEpochPosterior
     ts::Array{Array{Float64, 1}, 1}
@@ -389,6 +393,55 @@ function posterior_predictive(post::MultiEpochPosterior, p::MultiEpochParams)
     end
 
     obs_ys
+end
+
+function write(f::Union{HDF5File, HDF5Group}, post::MultiEpochPosterior, ns::EnsembleNest.NestState)
+    ns_group = g_create(f, "nest_state")
+    write(ns_group, ns)
+
+    xs, lnlikes = EnsembleNest.postsample(ns)
+
+    ps = [to_params(post, xs[:,j]) for j in 1:size(xs,2)]
+    
+    f["lnlike", "compress", 3, "shuffle", ()] = lnlikes
+    f["mu", "compress", 3, "shuffle", ()] = hcat([p.mu for p in ps]...)
+    f["nu", "compress", 3, "shuffle", ()] = hcat([p.nu for p in ps]...)
+    f["K", "compress", 3, "shuffle", ()] = [p.K for p in ps]
+    f["P", "compress", 3, "shuffle", ()] = [p.P for p in ps]
+    f["e", "compress", 3, "shuffle", ()] = [p.e for p in ps]
+    f["omega", "compress", 3, "shuffle", ()] = [p.omega for p in ps]
+    f["chi", "compress", 3, "shuffle", ()] = [p.chi for p in ps]
+
+    f["drw_rms", "compress", 3, "shuffle", ()] = hcat([p.drw_rms for p in ps]...)
+    f["drw_rate", "compress", 3, "shuffle", ()] = hcat([p.drw_rate for p in ps]...)
+
+    f["osc_rms", "compress", 3, "shuffle", ()] = hcat([p.osc_rms for p in ps]...)
+    f["osc_freq", "compress", 3, "shuffle", ()] = hcat([p.osc_freq for p in ps]...)
+    f["osc_Q", "compress", 3, "shuffle", ()] = hcat([p.osc_Q for p in ps]...)
+end
+
+function read(f::Union{HDF5File, HDF5Group}, post::MultiEpochPosterior)
+    mus = read(f, "mu")
+    nus = read(f, "nu")
+    Ks = read(f, "K")
+    Ps = read(f, "P")
+    es = read(f, "e")
+    omegas = read(f, "omega")
+    chis = read(f, "chi")
+    drw_rmss = read(f, "drw_rms")
+    drw_rates = read(f, "drw_rate")
+    osc_rmss = read(f, "osc_rms")
+    osc_freqs = read(f, "osc_freq")
+    osc_Qs = read(f, "osc_Q")
+
+    ps = [MultiEpochParams(mus[:,i], nus[:,i], Ks[i], Ps[i], es[i], omegas[i], chis[i], drw_rmss[:,i], drw_rates[:,i], osc_rmss[:,i], osc_freqs[:,i], osc_Qs[:,i]) for i in eachindex(Ks)]
+
+    logl = x -> log_likelihood(post, x)
+    logp = x -> log_prior(post, x)
+
+    ns = EnsembleNest.NestState(f["nest_state"], logl=logl, logp=logp)
+
+    (ps, ns)
 end
 
 end
