@@ -10,7 +10,7 @@ function load_timeseries(;before_song=true, song=true)
 
     if before_song 
         for i in 3:9
-            data = readdlm("/Users/farr/Documents/Research/Aldebaran/data/$(i)/table$(i).dat")
+            data = readdlm("..//data/$(i)/table$(i).dat")
             push!(ts, data[:,1])
             push!(ys, data[:,2])
             push!(dys, data[:,3])
@@ -18,7 +18,7 @@ function load_timeseries(;before_song=true, song=true)
     end
 
     if song
-        data = readdlm("/Users/farr/Documents/Research/Aldebaran/data/song/tablesong.dat")
+        data = readdlm("../data/song/tablesong.dat")
         push!(ts, data[:,1])
         push!(ys, data[:,2])
         push!(dys, data[:,3])
