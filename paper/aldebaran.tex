@@ -45,7 +45,7 @@
 
 \title{Detection of Oscillations in Aldebaran with Ground-Based Observations}
 
-\author[0000-0003-1540-8562]{Will M. Farr} 
+\author[0000-0003-1540-8562]{Will M. Farr}
 
 \affiliation{Birmingham Institute for Gravitational Wave Astronomy,
   University of Birmingham, Birmingham, B15 2TT, United Kingdom}
@@ -57,7 +57,7 @@
 
 \affiliation{School of Physics and Astronomy, University of
   Birmingham, Birmingham, B15 2TT, United Kingdom}
-\affiliation{Stellar Astrophysics Centre, Department of Physics 
+\affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author[0000-0003-2595-9114]{Benjamin J. S. Pope}
@@ -67,11 +67,11 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author{Thomas North}
 \affiliation{School of Physics and Astronomy, University of Birmingham, Birmingham, B15 2TT, United Kingdom}
-\affiliation{Stellar Astrophysics Centre, Department of Physics 
+\affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author[0000-0002-6980-3392]{Timothy R. White}
-\affiliation{Stellar Astrophysics Centre, Department of Physics 
+\affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author{James Barrett}
@@ -85,12 +85,12 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \affiliation{School of Physics and Astronomy, University of
   Birmingham, Birmingham, B15 2TT, United Kingdom}
-\affiliation{Stellar Astrophysics Centre, Department of Physics 
+\affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author{Mikkel N. Lund}
 
-\affiliation{Stellar Astrophysics Centre, Department of Physics 
+\affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 \affiliation{School of Physics and Astronomy, University of
   Birmingham, Birmingham, B15 2TT, United Kingdom}
@@ -98,7 +98,7 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 \author{Victoria Antoci}
 \affiliation{Stellar Astrophysics Centre, Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
-\author{Mads Fredslund Andersen} 
+\author{Mads Fredslund Andersen}
 \affiliation{Stellar Astrophysics Centre, Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \author{Frank Grundahl}
@@ -113,12 +113,12 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 \email{w.farr@bham.ac.uk, G.R.Davies@bham.ac.uk, benjamin.pope@nyu.edu, txn016@student.bham.ac.uk, jimbarrett27@gmail.com}
 
 \begin{abstract}
-The nearby red giant Aldebaran is suspected to host a gas giant planetary companion from decades of ground-based spectroscopic measurements of its Doppler shift. Using Gaussian Process-based Continuous Auto-Regressive Moving Average (CARMA) models, we confirm this suspected planet and show that these historic data also contain evidence of acoustic oscillations in the star itself, and verify this result with further dedicated ground-based spectroscopy and space-based photometry with the \kepler Space Telescope. From the frequency of these oscillations we determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun, and note that this implies its planet will have been subject to insolation comparable to the Earth for some of the star's main sequence lifetime. Our approach to sparse, irregularly sampled time series astronomical observations has the potential to unlock similar measurements for hundreds of stars in archival data, and permits more flexible observing schedules in future. 
+The nearby red giant Aldebaran is suspected to host a gas giant planetary companion from decades of ground-based spectroscopic measurements of its Doppler shift. Using Gaussian Process-based Continuous Auto-Regressive Moving Average (CARMA) models, we confirm this suspected planet and show that these historic data also contain evidence of acoustic oscillations in the star itself, and verify this result with further dedicated ground-based spectroscopy and space-based photometry with the \kepler Space Telescope. From the frequency of these oscillations we determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun, and note that this implies its planet will have been subject to insolation comparable to the Earth for some of the star's main sequence lifetime. Our approach to sparse, irregularly sampled time series astronomical observations has the potential to unlock similar measurements for hundreds of stars in archival data, and permits more flexible observing schedules in future.
 \end{abstract}
 
 \section{Introduction}
 
-Aldebaran, or $\alpha$~Tauri, is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $628.96 \pm 0.90$~d. 
+Aldebaran, or $\alpha$~Tauri, is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $628.96 \pm 0.90$~d.
 
 In this paper, we present a re-analysis of these original RV data in which we not only confirm this signal, but detect acoustic oscillations in Aldebaran for the first time. We validate this method and its result with new independent RV observations with the SONG~Telescope, and photometry from the \ktwo Mission. By measuring the frequency of maximum power, \numax, of these \emph{p}-mode oscillations we asteroseismically determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun. This measured stellar mass allows us to calculate that any satellites of Aldebaran~b, although they are now likely to be very hot, may have had equilibrium temperatures comparable to that of the Earth when Aldebaran was on the main sequence, raising the possibility that they may have once been habitable.
 
@@ -131,29 +131,29 @@ Asteroseismology is a powerful tool for the charaterisation of red giant stars \
 Global asteroseismic parameters can be used to estimate the radius $R$, mass $M$, and surface gravity $g$ of stars when combined with an estimate of the effective temperature \teff\ through so-called scaling relations:
 
 \begin{eqnarray}
-\left( \frac{R}{\mathrm{R_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \, 
+\left( \frac{R}{\mathrm{R_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \,
 \left( \frac{\Delta \nu}{\Delta \nu_{\odot}} \right)^{-2} \, \left( \frac{T_{\rm eff}}{T_{\rm eff, \odot}} \right)^{0.5}, \\
-\left( \frac{M}{\mathrm{M_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right)^{3} \, 
+\left( \frac{M}{\mathrm{M_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right)^{3} \,
 \left( \frac{\Delta \nu}{\Delta \nu_{\odot}} \right)^{-4} \, \left( \frac{T_{\rm eff}}{T_{\rm eff, \odot}} \right)^{1.5}, \\
-\left( \frac{g}{\mathrm{g_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \, 
+\left( \frac{g}{\mathrm{g_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \,
  \left( \frac{T_{\rm eff}}{T_{\rm eff, \odot}} \right)^{0.5}.
 \end{eqnarray}
 
-While the accuracy of these scaling relations is still a matter of ongoing work \citep[e.g.,][]{2017ApJ...844..102H}, stellar parameters can be estimated by comparing observables to parameter from models of stellar evolution. 
+While the accuracy of these scaling relations is still a matter of ongoing work \citep[e.g.,][]{2017ApJ...844..102H}, stellar parameters can be estimated by comparing observables to parameter from models of stellar evolution.
 
-%As can be seen from the scaling relations, asteroseismology can provide constraint on Mass, Radius, and surface gravity if \Dnu, \numax, and \teff can be measured.  
+%As can be seen from the scaling relations, asteroseismology can provide constraint on Mass, Radius, and surface gravity if \Dnu, \numax, and \teff can be measured.
 The ability to measure \numax and \Dnu depends on the length and sampling rate of a data set.
-In practise, for the higher luminosity red giants it is more straight forward to measure \numax than \Dnu.  Typical values for \numax\ range from $0.1-20 \rm\,\mu Hz$ for luminous giants and $20-50 \rm\,\mu Hz$ for stars near the red clump.  For the evolutionary stages, \Dnu typically ranges from $0.02-3 \rm\,\mu Hz$ and $3-7 \rm\,\mu Hz$ depending on stellar mass and \teff 
+In practise, for the higher luminosity red giants it is more straight forward to measure \numax than \Dnu.  Typical values for \numax\ range from $0.1-20 \rm\,\mu Hz$ for luminous giants and $20-50 \rm\,\mu Hz$ for stars near the red clump.  For the evolutionary stages, \Dnu typically ranges from $0.02-3 \rm\,\mu Hz$ and $3-7 \rm\,\mu Hz$ depending on stellar mass and \teff
 %(or metallicity which is considered more fundamental)
 \citep[e.g.,][]{2011A&A...525L...9M, 2013A&A...559A.137M}.  Hence, \numax requires less frequency resolution than \Dnu to establish a good measurement.
 
-%The ability to measure \numax and \Dnu, therefore, depends on the length and sampling rate of a data set.  For regularly spaced data, typically analysed using an estimate of the frequency-power spectrum, the Nyquist limit (half the sampling rate) and frequency resolution ($\sim 1/$~duration) are trivial to estimate. %For the historic data sets proposed here the typical length is \guy{blah} and typical sampling is \guy{blah}.  This in principle gives us access to measures of \numax for \guy{these types of stars} and \Dnu $\,$ \guy{for those types of stars}. 
+%The ability to measure \numax and \Dnu, therefore, depends on the length and sampling rate of a data set.  For regularly spaced data, typically analysed using an estimate of the frequency-power spectrum, the Nyquist limit (half the sampling rate) and frequency resolution ($\sim 1/$~duration) are trivial to estimate. %For the historic data sets proposed here the typical length is \guy{blah} and typical sampling is \guy{blah}.  This in principle gives us access to measures of \numax for \guy{these types of stars} and \Dnu $\,$ \guy{for those types of stars}.
 
 \section{Time-Domain Models}
 
-It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly-sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series of only a few points and which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days. 
+It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly-sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series of only a few points and which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days.
 
-If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process can be used to retrieve very accurate power spectral density distributions. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian process likelihood function scales as $\mathcal{O}(n^3)$. 
+If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process can be used to retrieve very accurate power spectral density distributions. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian process likelihood function scales as $\mathcal{O}(n^3)$.
 
 A Gaussian process such as that used by \citet{brewer2009} also
 corresponds to the solution, $y(t)$, of the stochastic ODE
@@ -183,7 +183,7 @@ The power spectrum is a rational function of frequency with poles at
 $2\pi i f = r_i$ and zeros at $2\pi i f = b_i$; because of the
 invertable constraints, these poles and zeros all occur when
 $\Im f \neq 0$.  The autocorrelation function corresponding to the
-power spectrum in Eq.\ \eqref{eq:CARMA-PSD} is 
+power spectrum in Eq.\ \eqref{eq:CARMA-PSD} is
 \begin{equation}
   \label{eq:CARMA-ACF}
   \rho_y (\tau) = \left\langle y\left( t \right) y \left( t + \tau \right) \right\rangle = \sum_{i=1}^p A_i^2 e^{r_i \tau},
@@ -213,19 +213,35 @@ used to reduce the standard Gaussian process covariance matrix for the
 process with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
 observations at times $t_k$ to a banded form that can then be
 Cholesky-decomposed in the standard Gaussian process likelihood
-function in $\mathcal{O}\left( n \right)$ time.  
+function in $\mathcal{O}\left( n \right)$ time.
 
+Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl} package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman filters that can compute the likelihood for a set of observations parameterised by either the roots $r_i$ and $b_j$ or the RMS amplitudes $A_i$ and roots $r_i$.  Because we have a set of observations taken with different instruments at different sites (see Section \ref{sec:archival-obs}), we include RV offset (i.e.\ mean value) parameters that are site-dependent and also a site-dependent scaling parameter.  Thus, the $i$th RV measured at site $j$ is assumed to be
+\begin{equation}
+\label{eq:RV-model}
+y_{ij} = v_r\left(t_i\right) + \mu_j + y\left( t_i \right) + \nu_j \epsilon_{ij},
+\end{equation}
+$t_i$ is the time of the measurement, $v_r$ is a planetary RV signal \citep{Hatzes2015}, $\mu_j$ is the site-dependent mean RV offset, $y(t)$ is the CARMA process representing stellar activity, $\nu_j$ is the site-dependent uncertainty scaling parameter, and $\epsilon_{ij}$ is an independent Gaussian random variable with mean zero and standard deviation equal to the quoted uncertainty of the observation.  We impose broad priors (see Table \ref{tab:parameters}) on the parameters of the planetary RV signal, the CARMA process, the $\mu_j$ offsets, and the $\nu_j$ scale factors.
 
+\begin{deluxetable}{lll}
+\tablecolumns{3}
+\tablecaption{\label{tab:parameters} The parameters in our model (see Eq.\ \eqref{eq:RV-model}).}
+\tablehead{\colhead{Parameter} & \colhead{Prior} & \colhead{Description}}
+\startdata
+$\mu_j$ & Normal\tablenotemark{a} & The per-site RV offset. \\
+\enddata
+\tablenotetext{a}{The prior for $\mu_j$ is centered on the mean of the data from site $j$ and has standard deviation 10 times the standard deviation of the data.}
+\end{deluxetable}
 
 \section{Aldebaran}
 Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}.
 
 \subsection{Archival Observations}
+\label{sec:archival-obs}
 
 \subsection{SONG Observations}    % this goes into section 4.1
 
 In order to confirm the oscillations detected in the archival data, we used the Hertzsprung SONG telescope \citep{2017ApJ...836..142G} to conduct high time cadence follow-up observations. These were carried out in the highest resolution mode ($R\approx110000$)
-with an integration time of 30\,s, between 2016 September 27 and 2017 January 12. During this time we attempted to obtain at least one 
+with an integration time of 30\,s, between 2016 September 27 and 2017 January 12. During this time we attempted to obtain at least one
 visit per available night, for a total of 254 epochs over the campaign. The spectra were
 extracted using the SONG pipeline \citep[see][]{2017ApJ...836..142G}. SONG employs an iodine cell for
 precise wavelength calibration and the velocities were determined using the \textit{iSONG}
@@ -233,15 +249,15 @@ software following the same procedures as described in \cite{2017ApJ...836..142G
 velocity precision per visit is 2.5$\,\rm m\,s^{-1}$ allowing us to easily detect the oscillations
 which displays a peak-to-peak amplitude of $\approx \, 170 \, \rm m \, s^{-1}$. $\bf Figure XX$ show
 the radial velocities obtained -- oscillations are easily visible as well as a long-term
-trend, probably due to the planetary companion. 
+trend, probably due to the planetary companion.
 
 
 \subsection{K2 Observations}
 
-In order to verify the results of the novel analysis presented above, we sought to obtain an independent detection of the oscillations of Aldebaran and compare the frequencies determined with the two methods. 
+In order to verify the results of the novel analysis presented above, we sought to obtain an independent detection of the oscillations of Aldebaran and compare the frequencies determined with the two methods.
 Aldebaran was observed with \ktwo \citep{howell14}, a two-wheeled revival of the \kepler Mission \citep{2010sci...327..977b}, under Guest Observer Program 130471 in Campaign~13, from 2017 March 8 to 2017 May 27. Aldebaran and similar high-luminosity K giants are well known to show photometric variability due to solar-like oscillations \citep{bedding2000}, and hence the continuous, high-precision K2 light curves allow an independent confirmation of our CARMA results.
 
-As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}. 
+As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}.
 
 Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on a average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 timeseries we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
 
@@ -258,14 +274,14 @@ Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this
 
 \subsection{Planetary and Stellar Parameters}
 
-By jointly fitting a Keplerian for the planet with a CARMA model for the stellar oscillations, we obtain a precise estimate of both \numax and the planetary orbital parameters. The planetary orbital parameters we obtain are similar to \citet{Hatzes2015}: period $P = 629.0^{+ 1.7}_{-2.1}$~d, eccentricity $e = 0.168^{+ 0.069}_{- 0.071}$; and radial velocity semi-amplitude $K = 127^{+ 15}_{- 14}$~m/s. 
+By jointly fitting a Keplerian for the planet with a CARMA model for the stellar oscillations, we obtain a precise estimate of both \numax and the planetary orbital parameters. The planetary orbital parameters we obtain are similar to \citet{Hatzes2015}: period $P = 629.0^{+ 1.7}_{-2.1}$~d, eccentricity $e = 0.168^{+ 0.069}_{- 0.071}$; and radial velocity semi-amplitude $K = 127^{+ 15}_{- 14}$~m/s.
 
 The stellar oscillations are best fit with a single CARMA component with $\numax = 2.238^{+ 0.086}_{- 0.080}$ \muHz, and including additional CARMA components does not resolve any further structure in the power spectrum. We have determined the stellar properties of Aldebaran with the additional constraint of \numax determined from this analysis.  The details of the stellar modelling are presented in detail in Appendix \ref{sec:mod}.  We have considered the impact of our additional \numax constraint and run our analysis for different sets of spectroscopic estimates.  For final values we adopt the \citet{2012Sheffield} spectroscopic solution as being `middle of the road' estimates.  For the analysis without constraint on \numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2} \, \mathrm{M_{\odot}}$ and age $4.86^{+3.56}_{-2.04} \, \rm Gyr$.  With the inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  It is clear that the addition of \numax provides substantially more precise estimates of mass and age. With this stellar mass, the radial velocity signal translates to an inclination-dependent planetary mass of $M\,\sin\,{i} = 5.81 \pm 0.72~M_J$ \citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$, making it a possible low-mass brown dwarf candidate.  % re sheffield - I have substituted the citation from the .bib but you said 'b'; afaik she only published one paper in 2012? - Ben
 
 
-With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.  
-Using the Mesa Isochrones and Stellar Tracks \citep[MIST:][]{mist0,mist1} models via the \textsc{isochrones} package \citep{isochrones}, we compute the evolution of the luminosity $L$ of the star along the main sequence; $L$ evolves from $2.0 \pm 0.7$~\lsun at 0.5~Gyr to $3.5 \pm 2.3$~\lsun at 4.5~Gyr. 
-We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 0.03$~AU would have been subject to an insolation comparable to that of the Earth, evolving from 0.5~Gyr to 4.5~Gyr from $0.86\, \pm\, 0.27$ to $1.55 \,\pm\,1.0$ times that of the Earth today (Figure~\ref{insolation}). Subject as well as this to the great uncertainties of the planet's orbital evolution and albedo, Aldebaran~b and any of its moons (or its S-type planets if it is a brown dwarf) may well have hosted temperate environments for some of their history, now long-since destroyed by their star's evolution away from the main sequence. 
+With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.
+Using the Mesa Isochrones and Stellar Tracks \citep[MIST:][]{mist0,mist1} models via the \textsc{isochrones} package \citep{isochrones}, we compute the evolution of the luminosity $L$ of the star along the main sequence; $L$ evolves from $2.0 \pm 0.7$~\lsun at 0.5~Gyr to $3.5 \pm 2.3$~\lsun at 4.5~Gyr.
+We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 0.03$~AU would have been subject to an insolation comparable to that of the Earth, evolving from 0.5~Gyr to 4.5~Gyr from $0.86\, \pm\, 0.27$ to $1.55 \,\pm\,1.0$ times that of the Earth today (Figure~\ref{insolation}). Subject as well as this to the great uncertainties of the planet's orbital evolution and albedo, Aldebaran~b and any of its moons (or its S-type planets if it is a brown dwarf) may well have hosted temperate environments for some of their history, now long-since destroyed by their star's evolution away from the main sequence.
 
 
 \begin{figure}
@@ -277,9 +293,9 @@ We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 
 
 \section{Conclusions}
 
-With CARMA models we have confirmed the previously-suspected planet around Aldebaran using archival data, and additionally detected acoustic oscillations that permit a mass determination with a precision of $\sim 6\%$. We have confirmed both of these results with new ground-based observations, and space-based photometry with \ktwo. 
+With CARMA models we have confirmed the previously-suspected planet around Aldebaran using archival data, and additionally detected acoustic oscillations that permit a mass determination with a precision of $\sim 6\%$. We have confirmed both of these results with new ground-based observations, and space-based photometry with \ktwo.
 
-From this pilot study with Aldebaran, have shown that with limited quantities of data of limited quality, we can nevertheless do asteroseismology from the ground and obtain very precise estimates of stellar parameters. Furthermore, improvements in the algorithm may also permit the detection of not only~\numax but also~\Dnu from similar measurements, permitting more sophisticated asteroseismic analysis. Sufficient radial velocity data either already exist, or are trivial to obtain, in order to do this for essentially all bright giants; while for solar-like stars, these new methods will allow significantly relaxed observing requirements. One rich archive is the series of observations with the Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and K~giants \citep[e.g. ][]{frink2001,hekker2006,ortiz2016}. The method may also be useful in detecting rotational or other periodic variability in the LCES HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624 FGKM dwarfs, although the time sampling is by design too coarse to detect $p$-mode oscillations in these stars. Furthermore, CARMA models and related methods will enhance deep, all-sky, sparse photometric surveys: an immediate future test of this will be from \hipparcos; while only~58 epochs of photometry are available for Aldebaran, at a sampling we find to be insufficient for our purposes, stars at higher latitudes may often have 150--200 epochs and more even sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted by \citet{bedding2000} are an ideal first test case. This can naturally be extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground \citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic determinations will be possible. 
+From this pilot study with Aldebaran, have shown that with limited quantities of data of limited quality, we can nevertheless do asteroseismology from the ground and obtain very precise estimates of stellar parameters. Furthermore, improvements in the algorithm may also permit the detection of not only~\numax but also~\Dnu from similar measurements, permitting more sophisticated asteroseismic analysis. Sufficient radial velocity data either already exist, or are trivial to obtain, in order to do this for essentially all bright giants; while for solar-like stars, these new methods will allow significantly relaxed observing requirements. One rich archive is the series of observations with the Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and K~giants \citep[e.g. ][]{frink2001,hekker2006,ortiz2016}. The method may also be useful in detecting rotational or other periodic variability in the LCES HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624 FGKM dwarfs, although the time sampling is by design too coarse to detect $p$-mode oscillations in these stars. Furthermore, CARMA models and related methods will enhance deep, all-sky, sparse photometric surveys: an immediate future test of this will be from \hipparcos; while only~58 epochs of photometry are available for Aldebaran, at a sampling we find to be insufficient for our purposes, stars at higher latitudes may often have 150--200 epochs and more even sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted by \citet{bedding2000} are an ideal first test case. This can naturally be extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground \citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic determinations will be possible.
 
 \acknowledgments
 
@@ -287,21 +303,21 @@ We would like to thank Tim Bedding, David Hogg and Dan Foreman-Mackey for their 
 
 BP is grateful for funding from the Breakthrough Prize Foundation. This work was performed in part under contract with the Jet Propulsion Laboratory (JPL) funded by NASA through the Sagan Fellowship Program executed by the NASA Exoplanet Science Institute.
 
-The authors would like to acknowledge the Gadigal people of the Eora nation on whose ancestral lands the University of Sydney is built. 
+The authors would like to acknowledge the Gadigal people of the Eora nation on whose ancestral lands the University of Sydney is built.
 
 Funding for the Stellar Astrophysics Centre is provided by The Danish National Research Foundation. TRW acknowledges the support of the Villum Foundation (research grant 10118).
-This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and NASA's Astrophysics Data System. The \kepler data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX13AC07G and by other grants and contracts. 
+This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and NASA's Astrophysics Data System. The \kepler data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX13AC07G and by other grants and contracts.
 
-The Villum Foundation, The Danish Council for Independent Research~|~Natural Sciences and 
- the Carlsberg Foundation are thanked for their support on building the SONG prototype on 
- Tenerife. 
+The Villum Foundation, The Danish Council for Independent Research~|~Natural Sciences and
+ the Carlsberg Foundation are thanked for their support on building the SONG prototype on
+ Tenerife.
  We thank Jens Jessen-Hansen, Rasmus Handberg and René Tronsgaard Rasmussen for their contribution
- to the development of the SONG data reduction pipeline and archive system.  
- 
+ to the development of the SONG data reduction pipeline and archive system.
+
 Based on observations made with the Hertzsprung SONG telescope operated on the Spanish Observatorio
-  del Teide on the island of Tenerife by the Aarhus and Copenhagen Universities and by the Instituto de 
+  del Teide on the island of Tenerife by the Aarhus and Copenhagen Universities and by the Instituto de
   Astrofisica de Canarias.
-  
+
 D.H. acknowledges support by the Australian Research Council's Discovery Projects funding scheme (project number DE140101364) and support by the National Aeronautics and Space Administration under Grants NNX14AB92G and NNX16AH45G issued through the Kepler Participating Scientist Program and the K2 Guest Observer Program.
 
 This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \citep{scipy};  \textsc{matplotlib}, a \textsc{Python} library for publication quality graphics \citep{Hunter:2007}; \textsc{Astropy}, a community-developed core \textsc{Python} package for astronomy \citep{2013A&A...558A..33A}; and \textsc{NumPy} \citep{van2011numpy}. Some of the acknowledgements were compiled using the Astronomy Acknowledgement Generator.
@@ -313,10 +329,10 @@ This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \
 \section{Halo Photometry}
 \label{halo}
 
-The \kepler Space Telescope \citep{2010sci...327..977b}  
-suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo \citep{howell14}, balanced by orienting perpendicular to the Sun. This requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns. 
+The \kepler Space Telescope \citep{2010sci...327..977b}
+suffered a critical reaction wheel failure in May 2013, which made it impossible to maintain a stable pointing and therefore continue its nominal mission. It was revived as \ktwo \citep{howell14}, balanced by orienting perpendicular to the Sun. This requires that \ktwo observes fields in the Ecliptic in $\sim~80$~d Campaigns.
 
-The \kepler detector saturates for stars brighter than the $\sim~11^\text{th}$ magnitude. Nevertheless, the excess flux deposited in a saturated pixel spills conservatively up and down the pixel column, such that it is possible to sum this `bleed column' for bright stars and still obtain precise photometry, such as was done for the brightest star in the nominal \kepler mission, $\theta$~Cyg \citep[$V = 4.48$;][]{guzik2011,thetacygwhite,guzik2016}. There are two main reasons why this is not possible for all bright stars in general. First, because the on-board data storage and downlink bandwidth from \kepler are limited, it is often not desirable to download the large number of pixels that are required for such bright stars. Second, if the bleed column for a sufficiently bright star reaches the edge of the chip, flux spills over and is not conserved, imposing a hard brightness limit that depends on the distance to the detector edge. 
+The \kepler detector saturates for stars brighter than the $\sim~11^\text{th}$ magnitude. Nevertheless, the excess flux deposited in a saturated pixel spills conservatively up and down the pixel column, such that it is possible to sum this `bleed column' for bright stars and still obtain precise photometry, such as was done for the brightest star in the nominal \kepler mission, $\theta$~Cyg \citep[$V = 4.48$;][]{guzik2011,thetacygwhite,guzik2016}. There are two main reasons why this is not possible for all bright stars in general. First, because the on-board data storage and downlink bandwidth from \kepler are limited, it is often not desirable to download the large number of pixels that are required for such bright stars. Second, if the bleed column for a sufficiently bright star reaches the edge of the chip, flux spills over and is not conserved, imposing a hard brightness limit that depends on the distance to the detector edge.
 Collateral `smear' data, which are collected to help calibrate the photometric bias from stars sharing the same column as a target, can be used to reconstruct light curves for un-downloaded bright stars and thereby avoid bandwidth constraints \citep{k2smear}, but these data are still rendered unusable if the bleed column falls off the edge of the chip and contaminates the smear rows.
 
 Bright stars have a wide, complicated, position-dependent point spread function (PSF) arising from diffraction and scattering from secondary and higher-order reflections inside the instrument, with the result that they may contaminate thousands of nearby pixels with significant flux. We can therefore use this `halo' of unsaturated pixels for photometry. The brightness of this halo varies in the same way as that of the primary star, and we therefore obtain data in a region of 20~pixel radius around the mean position of Aldebaran, and discard saturated pixels.
@@ -336,7 +352,7 @@ The flux $f_i$ at each cadence $i$ is constructed as a weighted sum of pixel val
 
 \noindent and likewise second-order TV the equivalent expression in second-order finite differences. The efficacy of this method was recently confirmed by \citet{kallinger2017}, comparing BRITE-constellation observations of Atlas to \ktwo halo photometry and finding excellent agreement in frequency and amplitude of the reported oscillations.
 
-In an improvement since \citet{White2017}, we use the \textsc{Theano} library \citep{theano} to calculate analytic derivatives for this objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to tens of seconds. 
+In an improvement since \citet{White2017}, we use the \textsc{Theano} library \citep{theano} to calculate analytic derivatives for this objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to tens of seconds.
 
 As a final step to reduce residual uncorrected systematics, we apply the \textsc{k2sc} \citep{k2sc} Gaussian Process-based systematics correction code to the initial halo light curve, but the effect of this in the present case for Aldebaran is minimal.
 There is somewhat higher than usual residual noise at multiples of $4 c/d$ (the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
@@ -344,7 +360,7 @@ There is somewhat higher than usual residual noise at multiples of $4 c/d$ (the 
 
 \section{Stellar Modelling}\label{sec:mod}
 \subsection{Stellar Models}\label{sec:stell_mod}
-We used our determination of \numax and several combinations of the asteroseismic and spectroscopic parameters, along with luminosity, to estimate the fundamental stellar parameters, via fitting to stellar models. We used \textsc{MESA} models \citep{2011Paxton,2013Paxton} in conjunction with the Bayesian code \textsc{PARAM} \citep{2006dasilva, 2017Rod}.  A summary of our selected ``benchmark'' options is as follows; 
+We used our determination of \numax and several combinations of the asteroseismic and spectroscopic parameters, along with luminosity, to estimate the fundamental stellar parameters, via fitting to stellar models. We used \textsc{MESA} models \citep{2011Paxton,2013Paxton} in conjunction with the Bayesian code \textsc{PARAM} \citep{2006dasilva, 2017Rod}.  A summary of our selected ``benchmark'' options is as follows;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}%GUY THIS BIT COULD PROBABLY BE DROPPED AND REFERENCED OUT TO \citep{2017Rod}
 \item Heavy element partitioning from \cite{1993Grevesse}.
@@ -359,7 +375,7 @@ scheme.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Note that the precision on our estimate of \numax is orders of magnitude less that the point at which we would have needed to correct for the line-of-sight doppler shift \citep{2014MNRAS.445L..94D}.
 \subsection{Additional modelling inputs}\label{sec:addmod}
-In addition to the asteroseismic parameters, temperature and metallicity values are needed. There exist multiple literature values for Aldebaran. We chose to use a selection of sources as a separate modelling variation, to investigate what variation this would produce in final stellar properties. 
+In addition to the asteroseismic parameters, temperature and metallicity values are needed. There exist multiple literature values for Aldebaran. We chose to use a selection of sources as a separate modelling variation, to investigate what variation this would produce in final stellar properties.
 
 To ensure the values are self-consistent, when a literature value was chosen for temperature, we took the stellar metallicity from the same source i.e. matched pairs of temperature and metallicity. The final constraint is the stellar luminosity, which may be estimated as follows (e.g. see \citealt{pijpers2003}):
 \begin{multline}
@@ -395,9 +411,9 @@ As Table \ref{tab:spec} shows, the spectroscopic parameters of Aldebaran are som
 \label{eqn:numax}
 \end{equation}
 
-Using Eq \ref{eqn:numax} with the values in Table \ref{tab:spec} predicts $\nu_{\textrm{max}}$ in the range $0.5-6\mu$Hz. Reversing the equation to produce a predicted $\log{g}$ from the observed $\nu_{\textrm{max,obs}}=2.23\pm0.1\mu$Hz results in a predicted $\log{g}\sim1.2$ dex, using an assumed temperature of 3900K. The solar calibration values used here are $g_{\odot}=274$ms$^{-2}$, $\nu_{\textrm{max},\odot}=3150\mu$Hz and $T_{\textrm{eff},\odot}=5777$K. 
+Using Eq \ref{eqn:numax} with the values in Table \ref{tab:spec} predicts $\nu_{\textrm{max}}$ in the range $0.5-6\mu$Hz. Reversing the equation to produce a predicted $\log{g}$ from the observed $\nu_{\textrm{max,obs}}=2.23\pm0.1\mu$Hz results in a predicted $\log{g}\sim1.2$ dex, using an assumed temperature of 3900K. The solar calibration values used here are $g_{\odot}=274$ms$^{-2}$, $\nu_{\textrm{max},\odot}=3150\mu$Hz and $T_{\textrm{eff},\odot}=5777$K.
 
-Table \ref{tab:res_mass} shows the results, for all modelling variations, both different inputs and different constraints. It shows that results with the addition of $\nu_{\textrm{max}}$ as a constraint exhibit in general smaller uncertainties, with or without the addition of $\log{g}$ as a constraint. 
+Table \ref{tab:res_mass} shows the results, for all modelling variations, both different inputs and different constraints. It shows that results with the addition of $\nu_{\textrm{max}}$ as a constraint exhibit in general smaller uncertainties, with or without the addition of $\log{g}$ as a constraint.
 
 Recovering the mass without the use of asteroseismic constraints produces considerable scatter on the results ($0.96-1.5\textrm{M}_{\odot}$), whilst the use of asteroseismology brings the mass estimates into closer agreement, with the exception of the very low metallicity solution of \cite{2008Massarotti}. Any systematic offset between asteroseismic masses and spectroscopic masses is sensitive to chosen reference mass, in agreement with \cite{2017North}.
 
@@ -406,7 +422,7 @@ Within the results of Table \ref{tab:res_mass}, the parallax of Aldebaran is con
 % Example table
 \begin{table*}
 	\centering
-	
+
 	\caption{Recovered stellar properties from \textsc{PARAM} using various constraints. Uncertainties quoted are the 68\% credible interval.}
 	\label{tab:res_mass}
 	\begin{tabular}{llll} % 5 columns, alignment for each
@@ -438,7 +454,7 @@ Within the results of Table \ref{tab:res_mass}, the parallax of Aldebaran is con
 \cite{2009Frasca}&$1.15^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.8}$&$6.47^{+1.51}_{-1.17}$\\
 		\hline
 	\end{tabular}
-	
+
 \end{table*}
 
 
