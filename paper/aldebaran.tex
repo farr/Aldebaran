@@ -151,11 +151,11 @@ In practise, for the higher luminosity red giants it is more straight forward to
 
 \section{Time-Domain Models}
 
-It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly-sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series of only a few points and which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days.
+It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days.
 
-If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process can be used to retrieve very accurate power spectral density distributions. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian process likelihood function scales as $\mathcal{O}(n^3)$.
+If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process encode features of the power spectral density distributions and are insensitive to the window function. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian Process likelihood function scales as $\mathcal{O}(n^3)$.
 
-A Gaussian process such as that used by \citet{brewer2009} also
+A Gaussian Process such as that used by \citet{brewer2009} also
 corresponds to the solution, $y(t)$, of the stochastic ODE
 \begin{equation}
   \label{eq:GP-definition}
@@ -165,7 +165,7 @@ where $p, q \in \mathbb{Z}$, $p > q \geq 0$ define the order of the
 process; $r_i \in \mathbb{C}$, $\Re r_i < 0$ are the roots of the
 characteristic equation of the ODE; $b_j \in \mathbb{C}$,
 $\Re b_j < 0$ are corresponding roots of the inverse process; and
-$\eta(t)$ is a white-noise Gaussian process with
+$\eta(t)$ is a white-noise Gaussian Process with
 $\left\langle \eta(t) \right\rangle = 0$ and
 $\left\langle \eta(t) \eta(t') \right\rangle = \sigma^2 \delta\left(t
   - t' \right)$.  Such a solution is called a CARMA (Continuous
@@ -209,10 +209,10 @@ a Kalman filter to produce a likelihood function
 $p\left( y_k \mid \sigma, r_i, b_j \right)$ in
 $\mathcal{O}\left( n \right)$ computational time.  Additionally,
 \citet{Foreman-Mackey2017} show how a dimensional expansion can be
-used to reduce the standard Gaussian process covariance matrix for the
+used to reduce the standard Gaussian Process covariance matrix for the
 process with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
 observations at times $t_k$ to a banded form that can then be
-Cholesky-decomposed in the standard Gaussian process likelihood
+Cholesky-decomposed in the standard Gaussian Process likelihood
 function in $\mathcal{O}\left( n \right)$ time.
 
 Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl} package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman filters that can compute the likelihood for a set of observations parameterised by either the roots $r_i$ and $b_j$ or the RMS amplitudes $A_i$ and roots $r_i$.  Because we have a set of observations taken with different instruments at different sites (see Section \ref{sec:archival-obs}), we include RV offset (i.e.\ mean value) parameters that are site-dependent and also a site-dependent scaling parameter.  Thus, the $i$th RV measured at site $j$ is assumed to be
@@ -233,7 +233,7 @@ $\mu_j$ & Normal\tablenotemark{a} & The per-site RV offset. \\
 \end{deluxetable}
 
 \section{Aldebaran}
-Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}.
+Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}. These tight constraints are valuable in breaking degeneracies in stellar modelling and make this an ideal star for asteroseismic characterization (Appendix~/ref{sec:mod}).
 
 \subsection{Archival Observations}
 \label{sec:archival-obs}
