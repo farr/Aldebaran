@@ -385,7 +385,7 @@ To ensure the values are self-consistent, when a literature value was chosen for
 0.4 M_{{\textrm{bol}},\odot} -2.0 \log_{10} {\pi [{\textrm{mas}]}} \\-0.4(V-A_V + BC(V)).
 \label{eqn:lum}
 \end{multline}
-The solar bolometric magnitude $M_{\textrm{bol},\odot}=4.73$ is taken from \cite{Torres2010}, from which we also take the polynomial expression for the bolometric correction $BC(V)$. Extinction $A_V$ was assumed to be zero.
+The solar bolometric magnitude $M_{\textrm{bol},\odot}=4.73$ is taken from \cite{Torres2010}, from which we also take the polynomial expression for the bolometric correction $BC(V)$. We assume extinction $A_V$ to be zero.
 
 The final constraint available for Aldebaran is the angular diameter of the star as measured by long baseline interferometry and lunar occultations \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}, combined with the \hipparcos parallax of $19.96 \pm 0.38$~pc to produce a physical radius constraint of $R_{\textrm{int}}=44.2\pm0.9\textrm{R}_{\odot}$.
 
@@ -407,7 +407,7 @@ The final constraint available for Aldebaran is the angular diameter of the star
 	\end{tabular}
 \end{table*}
 
-As Table \ref{tab:spec} shows, the spectroscopic parameters of Aldebaran are somewhat unclear, particularly $\log{g}$ and [FeH], which may have an impact on the recovered stellar properties when fitting to models. To explore what impact each parameter is having on the final stellar properties, multiple \textsc{PARAM} runs were performed, using different constraints. Two constraints potentially in tension were $\nu_{\textrm{max}}$ and $\log{g}$. $\nu_{\textrm{max}}$ has been shown to scale with $\log{g}$ \citep{Kjeldsen95, 2011A&A...530A.142B},
+As Table \ref{tab:spec} shows, the spectroscopic parameters of Aldebaran are somewhat unclear, particularly $\log{g}$ and [FeH], which may have an impact on the recovered stellar properties when fitting to models. To explore what impact each parameter is having on the final stellar properties, multiple \textsc{PARAM} runs were performed, using different constraints. Two constraints potentially in tension were $\nu_{\textrm{max}}$ and the spectroscopically-determined $\log{g}$. $\nu_{\textrm{max}}$ has been shown to scale with the stellar $\log{g}$ \citep{Kjeldsen95, 2011A&A...530A.142B},
 \begin{equation}
 \frac{\nu_{\textrm{max}}}{\nu_{\textrm{max},\odot}}=\frac{\log{g}}{\log{g},\odot}\left(\frac{T_{\textrm{eff}}}{T_{\textrm{eff},\odot}}\right)^{-1/2}.
 \label{eqn:numax}
@@ -417,9 +417,9 @@ Using Eq \ref{eqn:numax} with the values in Table \ref{tab:spec} predicts $\nu_{
 
 Table \ref{tab:res_mass} shows the results, for all modelling variations, both different inputs and different constraints. It shows that results with the addition of $\nu_{\textrm{max}}$ as a constraint exhibit in general smaller uncertainties, with or without the addition of $\log{g}$ as a constraint.
 
-Recovering the mass without the use of asteroseismic constraints produces considerable scatter on the results ($0.96-1.5\textrm{M}_{\odot}$), whilst the use of asteroseismology brings the mass estimates into closer agreement, with the exception of the very low metallicity solution of \cite{2008Massarotti}. Any systematic offset between asteroseismic masses and spectroscopic masses is sensitive to chosen reference mass, in agreement with \cite{2017North}.
+Recovering the mass without the use of asteroseismic constraints produces considerable scatter on the results ($0.96-1.5\textrm{M}_{\odot}$), whilst the use of asteroseismology brings the mass estimates into closer agreement with one another, with the exception of the very low metallicity solution of \cite{2008Massarotti}. Any systematic offset between asteroseismic masses and spectroscopic masses is sensitive to chosen reference mass, in agreement with \cite{2017North}.
 
-Within the results of Table \ref{tab:res_mass}, the parallax of Aldebaran is contained within the angular diameter and the luminosity of the star. To avoid this, \textsc{PARAM} was also ran without luminosity constraint, the average absolute mass offset between the two sets of results was $<0.04\textrm{M}_{\odot}$ for the runs without $\nu_{\textrm{max}}$ constraint, and $<0.02\textrm{M}_{\odot}$ for the runs with $\nu_{\textrm{max}}$.
+We have also investigated running \textsc{PARAM} and relaxing one or more constraints: without the luminosity constraint, the average absolute mass offset between the two sets of results was $<0.04\textrm{M}_{\odot}$ for the runs without $\nu_{\textrm{max}}$ constraint, and $<0.02\textrm{M}_{\odot}$ for the runs with $\nu_{\textrm{max}}$.
 
 % Example table
 \begin{table*}
