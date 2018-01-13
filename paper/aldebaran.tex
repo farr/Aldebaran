@@ -215,21 +215,30 @@ observations at times $t_k$ to a banded form that can then be
 Cholesky-decomposed in the standard Gaussian Process likelihood
 function in $\mathcal{O}\left( n \right)$ time.
 
-Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl} package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman filters that can compute the likelihood for a set of observations parameterised by either the roots $r_i$ and $b_j$ or the RMS amplitudes $A_i$ and roots $r_i$.  Because we have a set of observations taken with different instruments at different sites (see Section \ref{sec:archival-obs}), we include RV offset (i.e.\ mean value) parameters that are site-dependent and also a site-dependent scaling parameter.  Thus, the $i$th RV measured at site $j$ is assumed to be
+Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl} package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman filters that can compute the likelihood for a set of observations parameterised by either the roots $r_i$ and $b_j$ or the RMS amplitudes $A_i$ and roots $r_i$.  Because we have a set of observations taken with different instruments at different sites (see Section \ref{sec:archival-obs}), we include RV offset (i.e.\ mean value) parameters that are site-dependent and also a site-dependent scaling parameter.  Thus, the $i$th RV measured at site $j$, $y_{ij}$, is assumed to be
 \begin{equation}
 \label{eq:RV-model}
 y_{ij} = v_r\left(t_i\right) + \mu_j + y\left( t_i \right) + \nu_j \epsilon_{ij},
 \end{equation}
-$t_i$ is the time of the measurement, $v_r$ is a planetary RV signal \citep{Hatzes2015}, $\mu_j$ is the site-dependent mean RV offset, $y(t)$ is the CARMA process representing stellar activity, $\nu_j$ is the site-dependent uncertainty scaling parameter, and $\epsilon_{ij}$ is an independent Gaussian random variable with mean zero and standard deviation equal to the quoted uncertainty of the observation.  We impose broad priors (see Table \ref{tab:parameters}) on the parameters of the planetary RV signal, the CARMA process, the $\mu_j$ offsets, and the $\nu_j$ scale factors.
+$t_i$ is the time of the measurement, $v_r$ is a planetary RV signal \citep{Hatzes2015,Gregory2005}, $\mu_j$ is the site-dependent mean RV offset, $y(t)$ is the CARMA process representing stellar activity, $\nu_j$ is the site-dependent uncertainty scaling parameter, and $\epsilon_{ij}$ is an independent Gaussian random variable with mean zero and standard deviation equal to the quoted uncertainty of the observation.  We impose broad priors (see Table \ref{tab:parameters}) on the parameters of the planetary RV signal, the CARMA process, the $\mu_j$ offsets, and the $\nu_j$ scale factors.
 
 \begin{deluxetable}{lll}
 \tablecolumns{3}
 \tablecaption{\label{tab:parameters} The parameters in our model (see Eq.\ \eqref{eq:RV-model}).}
 \tablehead{\colhead{Parameter} & \colhead{Prior} & \colhead{Description}}
 \startdata
-$\mu_j$ & Normal\tablenotemark{a} & The per-site RV offset. \\
+\cutinhead{Per-Site RV Offset and Uncertainty Scaling}
+$\mu_j$ & $N\left[ \left\langle y_{j} \right\rangle, 10 \sigma_{y_{j}} \right] \left( \mu _j \right)\tablenotemark{a}$ & The per-site RV offset. \\
+$\nu_j$ & $1/\nu_j, \quad \nu_j \in [1/2, 2]$ & The per-site uncertainty scale factor. \\
+\cutinhead{Keplerian Parameters}
+$K$ & $1/K, \quad K \in \left[ \min_j \sigma_{y_j}/100, \max_j 10 \sigma_{y_j} \right]$ & RV semi-amplitude. \\
+$P$ & $1/P, \quad P \in [600, 700] \, \mathrm{d}$ & Keplerian period \\
+$e$ & $2e$\tablenotemark{b} & Keplerian eccentricity \\
+$\omega$ & $\mathrm{const}$ & Longitude of pericentre \\
+$\chi$ & $\mathrm{const}$ & Pericentre passage is at $t = \chi P$\\
 \enddata
-\tablenotetext{a}{The prior for $\mu_j$ is centered on the mean of the data from site $j$ and has standard deviation 10 times the standard deviation of the data.}
+\tablenotetext{a}{$\left\langle y_j \right\rangle$ and $\sigma_{y_j}$ are the mean and standard deviation of the RV timeseries from site $j$.}
+\tablenotetext{b}{We actually sample in and impose a (flat) prior on $x \equiv e \cos \omega$ and $y \equiv e \sin \omega$.}
 \end{deluxetable}
 
 \section{Aldebaran}
@@ -307,7 +316,7 @@ BP is grateful for funding from the Breakthrough Prize Foundation. This work was
 TRW acknowledges the support of the Villum Foundation (research grant 10118).
 D.H. acknowledges support by the Australian Research Council's Discovery Projects funding scheme (project number DE140101364) and support by the National Aeronautics and Space Administration under Grants NNX14AB92G and NNX16AH45G issued through the Kepler Participating Scientist Program and the K2 Guest Observer Program.
 
-Funding for the Stellar Astrophysics Centre is provided by the Danish National Research Foundation. 
+Funding for the Stellar Astrophysics Centre is provided by the Danish National Research Foundation.
 This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and NASA's Astrophysics Data System. The \kepler data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX13AC07G and by other grants and contracts.
 
 This work has made use of observations made with the Hertzsprung SONG telescope operated on the Spanish Observatorio
