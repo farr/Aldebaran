@@ -233,9 +233,9 @@ $\nu_j$ & $1/\nu_j, \quad \nu_j \in [1/2, 2]$ & The per-site uncertainty scale f
 \cutinhead{Keplerian Parameters}
 $K$ & $1/K, \quad K \in \left[ \min_j \sigma_{y_j}/100, \max_j 10 \sigma_{y_j} \right]$ & RV semi-amplitude. \\
 $P$ & $1/P, \quad P \in [600, 700] \, \mathrm{d}$ & Keplerian period \\
-$e$ & $2e$\tablenotemark{b} & Keplerian eccentricity \\
-$\omega$ & $\mathrm{const}$ & Longitude of pericentre \\
-$\chi$ & $\mathrm{const}$ & Pericentre passage is at $t = \chi P$\\
+$e$ & $2e,\quad 0 \leq e < 1$\tablenotemark{b} & Keplerian eccentricity \\
+$\omega$ & $\mathrm{const}, \quad 0 \leq \omega < 2\pi$ & Longitude of pericentre \\
+$\chi$ & $\mathrm{const}, \quad 0 \leq \chi < 1$ & Pericentre passage is at $t = \chi P$\\
 \enddata
 \tablenotetext{a}{$\left\langle y_j \right\rangle$ and $\sigma_{y_j}$ are the mean and standard deviation of the RV timeseries from site $j$.}
 \tablenotetext{b}{We actually sample in and impose a (flat) prior on $x \equiv e \cos \omega$ and $y \equiv e \sin \omega$.}
