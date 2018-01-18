@@ -153,45 +153,10 @@ In practise, for the higher luminosity red giants it is more straight forward to
 
 It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days.
 
-If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process encode features of the power spectral density distributions and are insensitive to the window function. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian Process likelihood function scales as $\mathcal{O}(n^3)$.
+If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process encode features of the power spectral density distributions and are insensitive to the window function. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian Process likelihood function scales as $\mathcal{O}(n^3)$. 
 
-A Gaussian Process such as that used by \citet{brewer2009} also corresponds to
-the solution, $y(t)$, of the stochastic ODE \begin{equation}
-\label{eq:GP-definition} \prod_{i=1}^{p} \left[ \diff{}{t} - r_i \right] y(t) =
-\prod_{j = 1}^{q} \left[ \diff{}{t} - b_i \right] \eta(t), \end{equation} where
-$p, q \in \mathbb{Z}$, $p > q \geq 0$ define the order of the process; $r_i \in
-\mathbb{C}$, $\Re r_i < 0$ are the roots of the characteristic equation of the
-ODE; $b_j \in \mathbb{C}$, $\Re b_j < 0$ are corresponding roots of the inverse
-process; and $\eta(t)$ is a white-noise Gaussian Process with $\left\langle
-\eta(t) \right\rangle = 0$ and $\left\langle \eta(t) \eta(t') \right\rangle =
-\sigma^2 \delta\left(t - t' \right)$.  Such a solution is called a CARMA
-(Continuous AutoRegressive Moving Average) process.  The constraint that $\Re
-r_i < 0$ and $\Re b_j < 0$ ensures that the linear operator defining the process
-and its inverse are invertable.  Under the assumption that the solution, $y(t)$,
-is real, roots $r_i$ and $b_j$ must either be real or occur in complex conjugate
-pairs.  The power spectrum of the process is \begin{equation}
-\label{eq:CARMA-PSD} P_y(f) = \sigma^2 \left| \frac{\prod_{j=1}^q \left[ 2 \pi i
-f - b_j \right]}{\prod_{i=1}^p \left[ 2 \pi i f - r_i \right]} \right|^2.
-\end{equation} The power spectrum is a rational function of frequency with poles
-at $2\pi i f = r_i$ and zeros at $2\pi i f = b_i$; because of the invertable
-constraints, these poles and zeros all occur when $\Im f \neq 0$.  The
-autocorrelation function corresponding to the power spectrum in Eq.\
-\eqref{eq:CARMA-PSD} is \begin{equation} \label{eq:CARMA-ACF} \rho_y (\tau) =
-\left\langle y\left( t \right) y \left( t + \tau \right) \right\rangle =
-\sum_{i=1}^p A_i^2 e^{r_i \tau}, \end{equation} where the RMS amplitudes of the
-$p$ different modes, $A_i$, are functions of $\sigma$ and the values of the
-roots $r_i$ and $b_j$.  If $q = p-1$, then the $A_i$ are independent, while if
-$q < p-1$ then there are interdependencies among the $A_i$.  From either the
-power spectrum in Eq.\ \eqref{eq:CARMA-PSD} or the autocorrelation function in
-Eq.\ \eqref{eq:CARMA-ACF}, it is apparent that a real root $r_i$ represents an
-exponentially-decaying mode with $r_i$ the rate constant, while a complex
-conjugate pair of $r_i$ represent an oscillatory mode with decay rate $\Re r_i$
-and angular frequency $\left|\Im r_i\right|$.  Oscillatory modes can also be
-described by their frequency $f$ and quality factor $Q$ via $r = f/(2Q) \pm 2\pi
-i f$.  Decaying modes generate a damped random walk, also known as a
-Ornstein-Uhlenbeck process.  \citet{Kelly2014} gives more details on CARMA
-processes in an astronomical context, including formulae for $A_i$ as a function
-of $\sigma$, $r_i$, and $b_j$, and shows how a state-space model of the solution
+Fortunately, this GP can be written as the solution of a class of stochastic ordinary differential equations, the Continuous Auto-Regressive Moving Average (CARMA) models, whose likelihoods can be evaluated in linear time. For problems such as the damped driven harmonic oscillator, we therefore have access to these powerful computational tools for inferring their power spectral densities. \citet{Kelly2014} gives more details on CARMA
+processes in an astronomical context, and shows how a state-space model of the solution
 $y(t)$ can be tracked through a time-series of uncertain observations $y_k =
 y\left( t_k \right) + \epsilon_k$, with Gaussian noise $\epsilon_k$ of zero mean
 and known (heteroskedastic) variance, using a Kalman filter to produce a
@@ -360,6 +325,46 @@ The Villum Foundation, the Danish Council for Independent Research~|~Natural Sci
 
 \appendix
 
+\section{CARMA Models}
+\label{carmatheory}
+
+
+A Gaussian Process such as that used by \citet{brewer2009} also corresponds to
+the solution, $y(t)$, of the stochastic ODE \begin{equation}
+\label{eq:GP-definition} \prod_{i=1}^{p} \left[ \diff{}{t} - r_i \right] y(t) =
+\prod_{j = 1}^{q} \left[ \diff{}{t} - b_i \right] \eta(t), \end{equation} where
+$p, q \in \mathbb{Z}$, $p > q \geq 0$ define the order of the process; $r_i \in
+\mathbb{C}$, $\Re r_i < 0$ are the roots of the characteristic equation of the
+ODE; $b_j \in \mathbb{C}$, $\Re b_j < 0$ are corresponding roots of the inverse
+process; and $\eta(t)$ is a white-noise Gaussian Process with $\left\langle
+\eta(t) \right\rangle = 0$ and $\left\langle \eta(t) \eta(t') \right\rangle =
+\sigma^2 \delta\left(t - t' \right)$.  Such a solution is called a CARMA
+(Continuous AutoRegressive Moving Average) process.  The constraint that $\Re
+r_i < 0$ and $\Re b_j < 0$ ensures that the linear operator defining the process
+and its inverse are invertable.  Under the assumption that the solution, $y(t)$,
+is real, roots $r_i$ and $b_j$ must either be real or occur in complex conjugate
+pairs.  The power spectrum of the process is \begin{equation}
+\label{eq:CARMA-PSD} P_y(f) = \sigma^2 \left| \frac{\prod_{j=1}^q \left[ 2 \pi i
+f - b_j \right]}{\prod_{i=1}^p \left[ 2 \pi i f - r_i \right]} \right|^2.
+\end{equation} The power spectrum is a rational function of frequency with poles
+at $2\pi i f = r_i$ and zeros at $2\pi i f = b_i$; because of the invertable
+constraints, these poles and zeros all occur when $\Im f \neq 0$.  The
+autocorrelation function corresponding to the power spectrum in Eq.\
+\eqref{eq:CARMA-PSD} is \begin{equation} \label{eq:CARMA-ACF} \rho_y (\tau) =
+\left\langle y\left( t \right) y \left( t + \tau \right) \right\rangle =
+\sum_{i=1}^p A_i^2 e^{r_i \tau}, \end{equation} where the RMS amplitudes of the
+$p$ different modes, $A_i$, are functions of $\sigma$ and the values of the
+roots $r_i$ and $b_j$.  If $q = p-1$, then the $A_i$ are independent, while if
+$q < p-1$ then there are interdependencies among the $A_i$.  From either the
+power spectrum in Eq.\ \eqref{eq:CARMA-PSD} or the autocorrelation function in
+Eq.\ \eqref{eq:CARMA-ACF}, it is apparent that a real root $r_i$ represents an
+exponentially-decaying mode with $r_i$ the rate constant, while a complex
+conjugate pair of $r_i$ represent an oscillatory mode with decay rate $\Re r_i$
+and angular frequency $\left|\Im r_i\right|$.  Oscillatory modes can also be
+described by their frequency $f$ and quality factor $Q$ via $r = f/(2Q) \pm 2\pi
+i f$.  Decaying modes generate a damped random walk, also known as a
+Ornstein-Uhlenbeck process. 
+
 \section{Halo Photometry}
 \label{halo}
 
@@ -390,7 +395,6 @@ In an improvement since \citet{White2017}, we use the \textsc{Theano} library \c
 
 As a final step to reduce residual uncorrected systematics, we apply the \textsc{k2sc} \citep{k2sc} Gaussian Process-based systematics correction code to the initial halo light curve, but the effect of this in the present case for Aldebaran is minimal.
 There is somewhat higher than usual residual noise at multiples of $4 c/d$ (the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
-
 
 \section{Stellar Modelling}\label{sec:mod}
 \subsection{Stellar Models}\label{sec:stell_mod}
