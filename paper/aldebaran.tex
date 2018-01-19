@@ -153,7 +153,7 @@ In practise, for the higher luminosity red giants it is more straight forward to
 
 It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days.
 
-If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process encode features of the power spectral density distributions and are insensitive to the window function. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian Process likelihood function scales as $\mathcal{O}(n^3)$. 
+If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process encode features of the power spectral density distributions and are insensitive to the window function. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian Process likelihood function scales as $\mathcal{O}(n^3)$.
 
 Fortunately, this GP can be written as the solution of a class of stochastic ordinary differential equations, the Continuous Auto-Regressive Moving Average (CARMA) models, whose likelihoods can be evaluated in linear time. For problems such as the damped driven harmonic oscillator, we therefore have access to these powerful computational tools for inferring their power spectral densities. \citet{Kelly2014} gives more details on CARMA
 processes in an astronomical context, and shows how a state-space model of the solution
@@ -317,7 +317,7 @@ The Villum Foundation, the Danish Council for Independent Research~|~Natural Sci
  We thank Jens Jessen-Hansen, Rasmus Handberg and René Tronsgaard Rasmussen for their contribution
  to the development of the SONG data reduction pipeline and archive system.
 
-\software{\textsc{IPython} \citep{PER-GRA:2007}, SciPy \citep{scipy}, \textsc{matplotlib} \citep{Hunter:2007}, \textsc{Astropy} \citep{2013A&A...558A..33A}, \textsc{NumPy} \citep{van2011numpy}, \textsc{isochrones} \citep{isochrones}.}
+\software{\textsc{IPython} \citep{PER-GRA:2007}, SciPy \citep{scipy}, \textsc{matplotlib} \citep{Hunter:2007}, \textsc{Astropy} \citep{2013A&A...558A..33A}, \textsc{NumPy} \citep{van2011numpy}, \textsc{isochrones} \citep{isochrones}, \textsc{Julia} \citep{Bezanson2017}.}
 
 % This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \citep{scipy};  \textsc{matplotlib}, a \textsc{Python} library for publication quality graphics \citep{Hunter:2007}; \textsc{Astropy}, a community-developed core \textsc{Python} package for astronomy \citep{2013A&A...558A..33A}; and \textsc{NumPy} \citep{van2011numpy}. Some of the acknowledgements were compiled using the Astronomy Acknowledgement Generator.
 
@@ -363,7 +363,7 @@ conjugate pair of $r_i$ represent an oscillatory mode with decay rate $\Re r_i$
 and angular frequency $\left|\Im r_i\right|$.  Oscillatory modes can also be
 described by their frequency $f$ and quality factor $Q$ via $r = f/(2Q) \pm 2\pi
 i f$.  Decaying modes generate a damped random walk, also known as a
-Ornstein-Uhlenbeck process. 
+Ornstein-Uhlenbeck process.
 
 \section{Halo Photometry}
 \label{halo}
