@@ -36,6 +36,28 @@
 \newcommand{\kms}{\,km\,s$^{-1}$} % kilometres per second
 \newcommand{\bibtex}{\textsc{Bib}\!\TeX} % bibtex. Not quite the correct typesetting, but close enough
 
+% Numbers in the document
+\newcommand{\twosidedrange}[3]{\ensuremath{#1^{+#2}_{-#3}}}
+
+%% Q
+\newcommand{\HatzesQRange}{\twosidedrange{2.12}{0.69}{0.56}}
+\newcommand{\SONGQRange}{\twosidedrange{3.06}{1.20}{0.81}}
+\newcommand{\CombinedQRange}{\twosidedrange{2.83}{0.60}{0.51}}
+
+%% NuMax
+\newcommand{\HatzesNuMaxRange}{\twosidedrange{2.21}{0.13}{0.12}}
+\newcommand{\SONGNuMaxRange}{\twosidedrange{2.33}{0.13}{0.14}}
+\newcommand{\combinedNuMaxRange}{\twosidedrange{2.238}{0.086}{0.080}}
+
+%% P
+\newcommand{\PeriodRange}{\twosidedrange{629.0}{1.7}{2.1}}
+
+%% e
+\newcommand{\EccentricityRange}{\twosidedrange{0.168}{0.069}{0.071}}
+
+%% K
+\newcommand{\PlanetRVAmpRange}{\twosidedrange{127}{15}{14}}
+
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\diff}[2]{\frac{\dd #1}{\dd #2}}
 
@@ -153,52 +175,73 @@ In practise, for the higher luminosity red giants it is more straight forward to
 
 It is easy to observe Aldebaran and similarly-bright stars with ground-based spectroscopic instruments, typically only requiring short exposures that can be obtained even under adverse observing conditions. There is indeed a considerable archive of such observations already, as a legacy of radial velocity (RV) surveys conducted to find exoplanets. In most cases, however, these have not so far been useful for asteroseismology, because these RV data are sparsely and irregularly sampled. Because we have to pause observations during the day, during poor weather conditions, or simply when targets of higher priority are being observed, we get time series which may have significant and uneven gaps. This introduces a window-function effect: the power spectrum as constructed for example by a Fourier transform, or a Lomb-Scargle Periodogram \citep{lomb,scargle}, is convolved with the Fourier transform of the window function, introducing strong sidelobes adjacent to real frequency peaks and causing crosstalk between adjacent frequency channels. This imposes significant limitations both on the signal-to-noise and frequency resolution of power spectra derived from linear methods such as the Lomb-Scargle periodogram, and in practice makes asteroseismology with these conventional approaches difficult or impossible from the ground for stars with oscillation periods ranging from $\sim 12$~h to $\sim$~a few days.
 
-If we apply nonlinear statistical inference methods this situation can be improved. \citet{brewer2009} show that a system of driven, damped harmonic oscillators such as we encounter in asteroseismology can be statistically modelled as a Gaussian Process, with a covariance kernel consisting of a sum of damped sinusoids. The hyperparameters of this process encode features of the power spectral density distributions and are insensitive to the window function. Unfortunately, this is impractical for long time series, as the computational cost of evaluating the standard Gaussian Process likelihood function scales as $\mathcal{O}(n^3)$.
+If we apply nonlinear statistical inference methods this situation can be
+improved. \citet{brewer2009} show that a system of driven, damped harmonic
+oscillators such as we encounter in asteroseismology can be statistically
+modelled as a Gaussian Process, with a covariance kernel consisting of a sum of
+damped sinusoids. The hyperparameters of this process encode features of the
+power spectral density distributions and are insensitive to the window function.
+Unfortunately, this is impractical for long time series, as the computational
+cost of evaluating the standard Gaussian Process likelihood function scales as
+$\mathcal{O}(n^3)$.
 
-Fortunately, this GP can be written as the solution of a class of stochastic ordinary differential equations, the Continuous Auto-Regressive Moving Average (CARMA) models, whose likelihoods can be evaluated in linear time. For problems such as the damped driven harmonic oscillator, we therefore have access to these powerful computational tools for inferring their power spectral densities. \citet{Kelly2014} gives more details on CARMA
-processes in an astronomical context, and shows how a state-space model of the solution
-$y(t)$ can be tracked through a time-series of uncertain observations $y_k =
-y\left( t_k \right) + \epsilon_k$, with Gaussian noise $\epsilon_k$ of zero mean
-and known (heteroskedastic) variance, using a Kalman filter to produce a
-likelihood function $p\left( y_k \mid \sigma, r_i, b_j \right)$ in
-$\mathcal{O}\left( n \right)$ computational time.  Additionally,
-\citet{Foreman-Mackey2017} show how a dimensional expansion can be used to
-reduce the standard Gaussian Process covariance matrix for the process with
-autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under observations at times
-$t_k$ to a banded form that can then be Cholesky-decomposed in the standard
-Gaussian Process likelihood function in $\mathcal{O}\left( n \right)$ time.
+Fortunately, this GP can be written as the solution of a class of stochastic
+ordinary differential equations, the Continuous Auto-Regressive Moving Average
+(CARMA) models, whose likelihoods can be evaluated in linear time. For problems
+such as the damped driven harmonic oscillator, we therefore have access to these
+powerful computational tools for inferring their power spectral densities.
+\citet{Kelly2014} gives more details on CARMA processes in an astronomical
+context, and shows how a state-space model of the solution $y(t)$ can be tracked
+through a time-series of uncertain observations $y_k = y\left( t_k \right) +
+\epsilon_k$, with Gaussian noise $\epsilon_k$ of zero mean and known
+(heteroskedastic) variance, using a Kalman filter to produce a likelihood
+function $p\left( y_k \mid \sigma, r_i, b_j \right)$ depending on the amplitude
+of the stochastic forcing, $\sigma$, the (possibly complex) eigenfrequencies of
+the ODE, $r_i$, and parameters describing the power spectrum of the stochastic
+forcing, $b_j$ in $\mathcal{O}\left( n \right)$ computational time.
+Additionally, \citet{Foreman-Mackey2017} show how a dimensional expansion can be
+used to reduce the standard Gaussian Process covariance matrix for this same
+process,  with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
+observations at times $t_k$, to a banded form that can then be
+Cholesky-decomposed in the standard Gaussian Process likelihood function in
+$\mathcal{O}\left( n \right)$ time.
 
-Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl} package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman filters that can compute the likelihood for a set of observations parameterised by either the roots $r_i$ and $b_j$ or the RMS amplitudes $A_i$ and roots $r_i$.  We also include a Keplerian RV signal from a planetary companion to Aldebaran \citep{Hatzes2015,Gregory2005}.  Because we have a set of observations taken with different instruments at different sites (see Section \ref{sec:archival-obs}), we include RV offset (i.e.\ mean value) parameters that are instrument- and site-dependent and also an instrument- and site-dependent scaling parameter.  Thus, the $i$th RV measured at site and intstrument combination $j$, $y_{ij}$, is assumed to be
+Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl}
+package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman
+filters that can compute the likelihood for a set of observations parameterised
+by either the $r_i$ and $b_j$ or the RMS amplitudes $A_i$ of each eigenmode of
+the ODE and the corresponding roots $r_i$.  We also include a Keplerian RV
+signal from a planetary companion to Aldebaran \citep{Hatzes2015,Gregory2005}.
+Because we have a set of observations taken with different instruments at
+different sites (see Section \ref{sec:archival-obs}), we include RV offset
+(i.e.\ mean value) parameters that are instrument- and site-dependent and also
+an instrument- and site-dependent scaling parameter.  Thus, the $i$th RV
+measured at site and intstrument combination $j$, $y_{ij}$, is assumed to be
+%
 \begin{equation}
   \label{eq:RV-model}
-  y_{ij} = v_r\left(t_i\right) + \mu_j + y\left( t_i \right) + \nu_j \epsilon_{ij},
+  y_{ij} = v_r\left(t_i\right) + \mu_j + y\left( t_i \right) + \nu_j
+\epsilon_{ij},
 \end{equation}
-$t_i$ is the time of the measurement, $v_r$ is the planetary RV signal, $\mu_j$ is the mean RV offset for site and instrument combination $j$, $y(t)$ is the CARMA process representing stellar activity, $\nu_j$ is the uncertainty scaling parameter for site and instrument combination $j$, and $\epsilon_{ij}$ is an independent Gaussian random variable with mean zero and standard deviation equal to the quoted uncertainty of the observation.  We impose broad priors (see Table \ref{tab:parameters}) on the parameters of the planetary RV signal, the CARMA process, the $\mu_j$ offsets, and the $\nu_j$ scale factors.  We treat the frequency of maximum asteroseismic power,  $\nu_\mathrm{max}$, as the frequency of an appropriate oscillatory mode in the CARMA process representing the stellar activity; this is equivalent to fitting a Lorentzian profile to a set of unresolved asteroseismic modes.  We used the nested sampling algorithm of the \texttt{Ensemble.jl} package\footnote{\url{https://github.com/farr/Ensemble.jl}; this package implements several stochastic sampling algorithms based on the ``stretch move'' proposal used in \texttt{emcee} \citep{Foreman-Mackey2013} and introduced in \citet{Goodman2010}} to calculate the marginal likelihood (evidences) and draw samples from the posterior distribution over the parameters of our various models.
-
-\begin{deluxetable}{lll}
-\tablecolumns{3}
-\tablecaption{\label{tab:parameters} The parameters in our model Eq.\ \eqref{eq:RV-model} and their priors.  Site and instrument combinations are indexed by $j$.  Modes in the stochastic process are indexed by $k \in [1,p]$ and are either real (parameterised by a rate parameter $r_k$) or complex (parameterised by a frequency $f_k$ and quality factor $Q_k$).}
-\tablehead{\colhead{Parameter} & \colhead{Prior} & \colhead{Description}}
-\startdata
-\cutinhead{Site/Instrument RV Offset and Uncertainty Scaling}
-$\mu_j$ & $N\left[ \left\langle y_{j} \right\rangle, 10 \sigma_{y_{j}} \right] \left( \mu _j \right)\tablenotemark{a}$ & The site/instrument RV offset. \\
-$\nu_j$ & $1/\nu_j, \quad \nu_j \in [1/2, 2]$ & The site/instrument uncertainty scale factor. \\
-\cutinhead{Keplerian Parameters}
-$K$ & $1/K, \quad K \in \left[ \min_j \sigma_{y_j}/100, \max_j 10 \sigma_{y_j} \right]$ & RV semi-amplitude. \\
-$P$ & $1/P, \quad P \in [600, 700] \, \mathrm{d}$ & Keplerian period \\
-$e$ & $2e,\quad 0 \leq e < 1$\tablenotemark{b} & Keplerian eccentricity \\
-$\omega$ & $\mathrm{const}, \quad 0 \leq \omega < 2\pi$ & Longitude of pericentre \\
-$\chi$ & $\mathrm{const}, \quad 0 \leq \chi < 1$ & Pericentre passage is at $t = \chi P$\\
-\cutinhead{CARMA Parameters}
-$A_k$ & $1/A_k, \quad A_k \in \left[\min_j \sigma_{y_j}/100, \max_j 10 \sigma_{y_j} \right]$ & RMS amplitude of stochastic mode \\
-$r_k$ & $1/r_k, \quad \Re r_k \in \left[ 1/ (2T), 0.05 \, \mu\mathrm{Hz}\right], \Im r_k = 0$\tablenotemark{c} & The damping rates for real modes \\
-$f_k$ & $1/f_k, \quad f_k \in \left[ 0.1, 10 \right] \mu \mathrm{Hz}$ & The frequency of oscillatory modes \\
-$Q_k$ & $1/Q_k, \quad Q_k \in \left[ 1, 1000 \right]$ & The quality factor of oscillatory modes \\
-\enddata
-\tablenotetext{a}{$\left\langle y_j \right\rangle$ and $\sigma_{y_j}$ are the mean and standard deviation of the RV timeseries from site and instrument combination $j$.}
-\tablenotetext{b}{We actually sample in and impose a (flat) prior on $x \equiv e \cos \omega$ and $y \equiv e \sin \omega$.}
-\tablenotetext{c}{Here $T$ is the time span of the measurements over all sites.}
-\end{deluxetable}
+%
+where $t_i$ is the time of the measurement, $v_r$ is the planetary RV signal,
+$\mu_j$ is the mean RV offset for site and instrument combination $j$, $y(t)$ is
+the CARMA process representing stellar activity, $\nu_j$ is the uncertainty
+scaling parameter for site and instrument combination $j$, and $\epsilon_{ij}$
+is an independent Gaussian random variable with mean zero and standard deviation
+equal to the quoted uncertainty of the observation.  We impose broad priors (see
+Table \ref{tab:parameters}) on the parameters of the planetary RV signal, the
+CARMA process, the $\mu_j$ offsets, and the $\nu_j$ scale factors.  We treat the
+frequency of maximum asteroseismic power, $\nu_\mathrm{max}$, as the frequency
+of an appropriate eigenmode in the CARMA process representing the stellar
+activity; this is equivalent to fitting a Lorentzian profile to a set of
+unresolved asteroseismic modes.  We used the nested sampling algorithm of the
+\texttt{Ensemble.jl} package\footnote{\url{https://github.com/farr/Ensemble.jl};
+this package implements several stochastic sampling algorithms based on the
+``stretch move'' proposal used in \texttt{emcee} \citep{Foreman-Mackey2013} and
+introduced in \citet{Goodman2010}} to calculate the marginal likelihood
+(evidences) and draw samples from the posterior distribution over the parameters
+of our various models.  The priors we impose on the parameters of our model are given in Table \ref{tab:parameters}.
 
 \section{Aldebaran}
 Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc as determined by \hipparcos \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}. These tight constraints are valuable in breaking degeneracies in stellar modelling and make this an ideal star for asteroseismic characterization (Appendix~\ref{sec:mod}).
@@ -207,10 +250,18 @@ Aldebaran is a red giant star with spectral type K5, one of the nearest such sta
 \label{sec:archival-obs}
 
 \citet{Hatzes2015} reported on RV observations of Aldebaran from the coud\'{e}
-\'{e}chelle spectrograph of the Th\"{u}ringer Landessternwarte Tautenburg (TLS), the
-Tull Spectrograph of the McDonald 2.7 m telescope, and the Bohyunsan Observatory
-\'{E}chelle Spectrograph (BOES) spectrograph of the Bohyunsan Optical Astronomy
-Observatory (BOAO) spanning the period from 2000.01 to 2013.92.  Combined with earlier observations \citep{hatzes1993}, we construct a full time series spanning more than two decades (Figure~\ref{alldata}) and attempt to fit this with a Keplerian model and a CARMA noise process.
+\'{e}chelle spectrograph of the Th\"{u}ringer Landessternwarte Tautenburg (TLS),
+the Tull Spectrograph of the McDonald 2.7 m telescope, and the Bohyunsan
+Observatory \'{E}chelle Spectrograph (BOES) spectrograph of the Bohyunsan
+Optical Astronomy Observatory (BOAO) spanning the period from 2000.01 to
+2013.92.  Combined with earlier observations \citep{hatzes1993}, we construct a
+full time series spanning more than two decades from 1980.80 to 2013.71
+(Figure~\ref{alldata}) and fit this with a Keplerian model and a CARMA process.
+We find evidence for a low-quality ($Q = \HatzesQRange{}$) oscillatory mode with
+$\nu_\mathrm{max} = \HatzesNuMaxRange{} \, \mu\mathrm{Hz}$.  This is consistent
+with the presence of a number of un-resolved asteroseismic modes in the RV data.
+Our posterior for \numax{} from this data set is shown in Figure
+\ref{fig:numax-datasets}.
 
 \begin{figure}
 \centering
@@ -219,18 +270,32 @@ Observatory (BOAO) spanning the period from 2000.01 to 2013.92.  Combined with e
 \label{alldata}
 \end{figure}
 
-\subsection{SONG Observations}    % this goes into section 4.1
+\begin{figure}
+  \includegraphics[width=\columnwidth]{../plots/numax}
+  \caption{Posterior for \numax{} from the complete, combined RV data set described in this paper (blue), the archival data from \citet{Hatzes2015} (green), and the SONG data described in Section \ref{sec:SONG-observations} (red).  The inference on the archival data is consistent with the independent inference on the SONG data set alone.}
+  \label{fig:numax-datasets}
+\end{figure}
 
-In order to confirm the oscillations detected in the archival data, we used the Hertzsprung SONG telescope \citep{2017ApJ...836..142G} to conduct high time cadence follow-up observations. These were carried out in the highest resolution mode ($R\approx110000$)
-with an integration time of 30\,s, between 2016 September 27 and 2017 January 12. During this time we attempted to obtain at least one
-visit per available night, for a total of 254 epochs over the campaign. The spectra were
-extracted using the SONG pipeline \citep[see][]{2017ApJ...836..142G}. SONG employs an iodine cell for
-precise wavelength calibration and the velocities were determined using the \textit{iSONG}
-software following the same procedures as described in \cite{2017ApJ...836..142G}. The typical
-velocity precision per visit is 2.5$\,\rm m\,s^{-1}$ allowing us to easily detect the oscillations
-which displays a peak-to-peak amplitude of $\approx \, 170 \, \rm m \, s^{-1}$. Figure~\ref{songdata} displays
-the radial velocities obtained -- oscillations are easily visible as well as a long-term
-trend, probably due to the planetary companion.
+\subsection{SONG Observations}    % this goes into section 4.1
+\label{sec:SONG-observations} In order to confirm the oscillations detected in
+the archival data, we used the Hertzsprung SONG telescope
+\citep{2017ApJ...836..142G} to conduct high time cadence follow-up observations.
+These were carried out in the highest resolution mode ($R\approx110000$) with an
+integration time of 30\,s, between 2016 September 27 and 2017 January 12. During
+this time we attempted to obtain at least one visit per available night, for a
+total of 254 epochs over the campaign. The spectra were extracted using the SONG
+pipeline \citep[see][]{2017ApJ...836..142G}. SONG employs an iodine cell for
+precise wavelength calibration and the velocities were determined using the
+\textit{iSONG} software following the same procedures as described in
+\cite{2017ApJ...836..142G}. The typical velocity precision per visit is
+2.5$\,\rm m\,s^{-1}$ allowing us to easily detect the oscillations which
+displays a peak-to-peak amplitude of $\approx \, 170 \, \rm m \, s^{-1}$.
+Figure~\ref{songdata} displays the radial velocities obtained -- oscillations
+are easily visible as well as a long-term trend, probably due to the planetary
+companion.  From this data set alone we also find evidence for a low-quality ($Q
+= \SONGQRange{}$) oscillatory mode with $\nu_\mathrm{max} = \SONGNuMaxRange{} \,
+\mu\mathrm{Hz}$ which is consistent with the inference from the archival data.
+This posterior is shown in Figure \ref{fig:numax-datasets}.
 
 
 \begin{figure}
@@ -271,10 +336,38 @@ Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this
 
 \subsection{Planetary and Stellar Parameters}
 
-By jointly fitting a Keplerian for the planet with a CARMA model for the stellar oscillations, we obtain a precise estimate of both \numax and the planetary orbital parameters. The planetary orbital parameters we obtain are similar to \citet{Hatzes2015}: period $P = 629.0^{+ 1.7}_{-2.1}$~d, eccentricity $e = 0.168^{+ 0.069}_{- 0.071}$; and radial velocity semi-amplitude $K = 127^{+ 15}_{- 14}$~m/s.
+By jointly fitting a Keplerian for the planet with a CARMA model for the stellar
+oscillations to the combined archival and SONG data sets (Figure \ref{alldata}),
+we obtain a precise estimate of both \numax and the planetary orbital
+parameters. The planetary orbital parameters we obtain are similar to
+\citet{Hatzes2015}, but with larger uncertainty that is likely due to our
+more-flexible and correlated model for the stellar component of the RV signal:
+period $P = \PeriodRange \, \mathrm{d}$, eccentricity $e =
+\EccentricityRange{}$; and radial velocity semi-amplitude $K =
+\PlanetRVAmpRange{} \, \mathrm{m} \, \mathrm{s}^{-1}$.
 
-The stellar oscillations are best fit with a single CARMA component with $\numax = 2.238^{+ 0.086}_{- 0.080}$ \muHz, and including additional CARMA components does not resolve any further structure in the power spectrum. We have determined the stellar properties of Aldebaran with the additional constraint of \numax determined from this analysis.  The details of the stellar modelling are presented in detail in Appendix \ref{sec:mod}.  We have considered the impact of our additional \numax constraint and run our analysis for different sets of spectroscopic estimates.  For final values we adopt the \citet{2012Sheffield} spectroscopic solution as being `middle of the road' estimates.  For the analysis without constraint on \numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2} \, \mathrm{M_{\odot}}$ and age $4.86^{+3.56}_{-2.04} \, \rm Gyr$.  With the inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  It is clear that the addition of \numax provides substantially more precise estimates of mass and age. With this stellar mass, the radial velocity signal translates to an inclination-dependent planetary mass of $M\,\sin\,{i} = 5.81 \pm 0.72~M_J$ \citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$, making it a possible low-mass brown dwarf candidate.  % re sheffield - I have substituted the citation from the .bib but you said 'b'; afaik she only published one paper in 2012? - Ben
-
+The stellar oscillations are best fit with a single, low-quality ($Q =
+\CombinedQRange{}$) oscillatory mode with $\numax = 2.238^{+ 0.086}_{- 0.080}$
+\muHz.  We find no improvement in the marginal likelihood (evidence) or other
+model-selection information criteria \citep{Gelman2013} from models with
+additional oscillatory modes, so we conclude that the large spacing $\Delta\nu$
+is not observable in this data set.  We have determined the stellar properties
+of Aldebaran with the additional constraint of \numax determined from this
+analysis.  The details of the stellar modelling are presented in Appendix
+\ref{sec:mod}.  We have considered the impact of our additional \numax
+constraint and run our analysis for different sets of spectroscopic estimates.
+For final values we adopt the \citet{2012Sheffield} spectroscopic solution as
+being `middle of the road' estimates.  For the analysis without constraint on
+\numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2}
+\, \mathrm{M_{\odot}}$ and age $4.86^{+3.56}_{-2.04} \, \rm Gyr$.  With the
+inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and
+age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  It is clear that the addition of \numax
+provides substantially more precise estimates of mass and age. With this stellar
+mass, the radial velocity signal translates to an inclination-dependent
+planetary mass of $M\,\sin\,{i} = 5.81 \pm 0.72~M_J$
+\citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high
+inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$,
+making it a possible low-mass brown dwarf candidate.
 
 With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.
 Using the Mesa Isochrones and Stellar Tracks \citep[MIST:][]{mist0,mist1} models, we compute the evolution of the luminosity $L$ of the star along the main sequence; $L$ evolves from $2.0 \pm 0.7$~\lsun at 0.5~Gyr to $3.5 \pm 2.3$~\lsun at 4.5~Gyr.
@@ -319,6 +412,9 @@ The Villum Foundation, the Danish Council for Independent Research~|~Natural Sci
 
 \software{\textsc{IPython} \citep{PER-GRA:2007}, SciPy \citep{scipy}, \textsc{matplotlib} \citep{Hunter:2007}, \textsc{Astropy} \citep{2013A&A...558A..33A}, \textsc{NumPy} \citep{van2011numpy}, \textsc{isochrones} \citep{isochrones}, \textsc{Julia} \citep{Bezanson2017}.}
 
+The data, code, and \LaTeX{} source used to produce this document can be found
+at \url{https://github.com/farr/Aldebaran} under an open-source ``MIT'' license.
+
 % This work made use of the \textsc{IPython} package \citep{PER-GRA:2007}; SciPy \citep{scipy};  \textsc{matplotlib}, a \textsc{Python} library for publication quality graphics \citep{Hunter:2007}; \textsc{Astropy}, a community-developed core \textsc{Python} package for astronomy \citep{2013A&A...558A..33A}; and \textsc{NumPy} \citep{van2011numpy}. Some of the acknowledgements were compiled using the Astronomy Acknowledgement Generator.
 
 
@@ -328,42 +424,79 @@ The Villum Foundation, the Danish Council for Independent Research~|~Natural Sci
 \section{CARMA Models}
 \label{carmatheory}
 
-
-A Gaussian Process such as that used by \citet{brewer2009} also corresponds to
-the solution, $y(t)$, of the stochastic ODE \begin{equation}
-\label{eq:GP-definition} \prod_{i=1}^{p} \left[ \diff{}{t} - r_i \right] y(t) =
-\prod_{j = 1}^{q} \left[ \diff{}{t} - b_i \right] \eta(t), \end{equation} where
-$p, q \in \mathbb{Z}$, $p > q \geq 0$ define the order of the process; $r_i \in
-\mathbb{C}$, $\Re r_i < 0$ are the roots of the characteristic equation of the
-ODE; $b_j \in \mathbb{C}$, $\Re b_j < 0$ are corresponding roots of the inverse
-process; and $\eta(t)$ is a white-noise Gaussian Process with $\left\langle
-\eta(t) \right\rangle = 0$ and $\left\langle \eta(t) \eta(t') \right\rangle =
-\sigma^2 \delta\left(t - t' \right)$.  Such a solution is called a CARMA
-(Continuous AutoRegressive Moving Average) process.  The constraint that $\Re
+A CARMA process corresponds to the solution, $y(t)$, of the stochastic ODE
+%
+\begin{equation}
+  \label{eq:GP-definition}
+  \prod_{i=1}^{p} \left[ \diff{}{t} - r_i \right] y(t) =
+  \prod_{j = 1}^{q} \left[ \diff{}{t} - b_i \right] \eta(t),
+\end{equation}
+%
+where $p, q \in \mathbb{Z}$, $p > q \geq 0$ define the order of the process;
+$r_i \in \mathbb{C}$, $\Re r_i < 0$ are the roots of the characteristic equation
+of the ODE; $b_j \in \mathbb{C}$, $\Re b_j < 0$ are corresponding roots of the
+inverse process; and $\eta(t)$ is a white-noise Gaussian Process with
+$\left\langle \eta(t) \right\rangle = 0$ and $\left\langle \eta(t) \eta(t')
+\right\rangle = \sigma^2 \delta\left(t - t' \right)$.  The constraint that $\Re
 r_i < 0$ and $\Re b_j < 0$ ensures that the linear operator defining the process
 and its inverse are invertable.  Under the assumption that the solution, $y(t)$,
 is real, roots $r_i$ and $b_j$ must either be real or occur in complex conjugate
-pairs.  The power spectrum of the process is \begin{equation}
-\label{eq:CARMA-PSD} P_y(f) = \sigma^2 \left| \frac{\prod_{j=1}^q \left[ 2 \pi i
-f - b_j \right]}{\prod_{i=1}^p \left[ 2 \pi i f - r_i \right]} \right|^2.
-\end{equation} The power spectrum is a rational function of frequency with poles
-at $2\pi i f = r_i$ and zeros at $2\pi i f = b_i$; because of the invertable
-constraints, these poles and zeros all occur when $\Im f \neq 0$.  The
-autocorrelation function corresponding to the power spectrum in Eq.\
-\eqref{eq:CARMA-PSD} is \begin{equation} \label{eq:CARMA-ACF} \rho_y (\tau) =
-\left\langle y\left( t \right) y \left( t + \tau \right) \right\rangle =
-\sum_{i=1}^p A_i^2 e^{r_i \tau}, \end{equation} where the RMS amplitudes of the
-$p$ different modes, $A_i$, are functions of $\sigma$ and the values of the
-roots $r_i$ and $b_j$.  If $q = p-1$, then the $A_i$ are independent, while if
-$q < p-1$ then there are interdependencies among the $A_i$.  From either the
-power spectrum in Eq.\ \eqref{eq:CARMA-PSD} or the autocorrelation function in
-Eq.\ \eqref{eq:CARMA-ACF}, it is apparent that a real root $r_i$ represents an
-exponentially-decaying mode with $r_i$ the rate constant, while a complex
-conjugate pair of $r_i$ represent an oscillatory mode with decay rate $\Re r_i$
-and angular frequency $\left|\Im r_i\right|$.  Oscillatory modes can also be
-described by their frequency $f$ and quality factor $Q$ via $r = f/(2Q) \pm 2\pi
-i f$.  Decaying modes generate a damped random walk, also known as a
-Ornstein-Uhlenbeck process.
+pairs.  The power spectrum of the process is
+%
+\begin{equation}
+  \label{eq:CARMA-PSD}
+  P_y(f) = \sigma^2 \left| \frac{\prod_{j=1}^q \left[ 2 \pi i f - b_j \right]}{\prod_{i=1}^p \left[ 2 \pi i f - r_i \right]} \right|^2.
+\end{equation}
+%
+The power spectrum is a rational function of frequency with poles at $2\pi i f =
+r_i$ and zeros at $2\pi i f = b_i$; because of the invertable constraints, these
+poles and zeros all occur when $\Im f \neq 0$.  The autocorrelation function
+corresponding to the power spectrum in Eq.\ \eqref{eq:CARMA-PSD} is
+%
+\begin{equation}
+  \label{eq:CARMA-ACF}
+  \rho_y (\tau) = \left\langle y\left( t \right) y \left( t + \tau \right) \right\rangle = \sum_{i=1}^p A_i^2 e^{r_i \tau},
+\end{equation}
+%
+where the RMS amplitudes of the $p$ different modes, $A_i$, are functions of
+$\sigma$ and the values of the roots $r_i$ and $b_j$.  If $q = p-1$, then the
+$A_i$ are independent, while if $q < p-1$ then there are interdependencies among
+the $A_i$.  From either the power spectrum in Eq.\ \eqref{eq:CARMA-PSD} or the
+autocorrelation function in Eq.\ \eqref{eq:CARMA-ACF}, it is apparent that a
+real root $r_i$ represents an exponentially-decaying mode with $r_i$ the rate
+constant, while a complex conjugate pair of $r_i$ represent an oscillatory mode
+with decay rate $\Re r_i$ and angular frequency $\left|\Im r_i\right|$.
+Oscillatory modes can also be described by their frequency $f$ and quality
+factor $Q$ via $r = f/(2Q) \pm 2\pi i f$.  Decaying modes generate a damped
+random walk, also known as a Ornstein-Uhlenbeck process.  More discussion of CARMA processes, including formulae for $A_i$ in terms of $\sigma$, $r_i$, and $b_j$, can be found in \citet{Kelly2014} and references therein.
+
+The priors we impose on the parameters of the CARMA model, planetary RV signal,
+and instrumental and site effects are given in Table \ref{tab:parameters}.
+
+\begin{deluxetable}{lll}
+\tablecolumns{3}
+\tablecaption{\label{tab:parameters} The parameters in our model Eq.\ \eqref{eq:RV-model} and their priors.  Site and instrument combinations are indexed by $j$.  Modes in the stochastic process are indexed by $k \in [1,p]$ and are either real (parameterised by a rate parameter $r_k$) or complex (parameterised by a frequency $f_k$ and quality factor $Q_k$).}
+\tablehead{\colhead{Parameter} & \colhead{Prior} & \colhead{Description}}
+\startdata
+\cutinhead{Site/Instrument RV Offset and Uncertainty Scaling}
+$\mu_j$ & $N\left[ \left\langle y_{j} \right\rangle, 10 \sigma_{y_{j}} \right] \left( \mu _j \right)\tablenotemark{a}$ & The site/instrument RV offset. \\
+$\nu_j$ & $1/\nu_j, \quad \nu_j \in [1/2, 2]$ & The site/instrument uncertainty scale factor. \\
+\cutinhead{Keplerian Parameters}
+$K$ & $1/K, \quad K \in \left[ \min_j \sigma_{y_j}/100, \max_j 10 \sigma_{y_j} \right]$ & RV semi-amplitude. \\
+$P$ & $1/P, \quad P \in [600, 700] \, \mathrm{d}$ & Keplerian period \\
+$e$ & $2e,\quad 0 \leq e < 1$\tablenotemark{b} & Keplerian eccentricity \\
+$\omega$ & $\mathrm{const}, \quad 0 \leq \omega < 2\pi$ & Longitude of pericentre \\
+$\chi$ & $\mathrm{const}, \quad 0 \leq \chi < 1$ & Pericentre passage is at $t = \chi P$\\
+\cutinhead{CARMA Parameters}
+$A_k$ & $1/A_k, \quad A_k \in \left[\min_j \sigma_{y_j}/100, \max_j 10 \sigma_{y_j} \right]$ & RMS amplitude of stochastic mode \\
+$r_k$ & $1/r_k, \quad \Re r_k \in \left[ 1/ (2T), 0.05 \, \mu\mathrm{Hz}\right], \Im r_k = 0$\tablenotemark{c} & The damping rates for real modes \\
+$f_k$ & $1/f_k, \quad f_k \in \left[ 0.1, 10 \right] \mu \mathrm{Hz}$ & The frequency of oscillatory modes \\
+$Q_k$ & $1/Q_k, \quad Q_k \in \left[ 1, 1000 \right]$ & The quality factor of oscillatory modes \\
+\enddata
+\tablenotetext{a}{$\left\langle y_j \right\rangle$ and $\sigma_{y_j}$ are the mean and standard deviation of the RV timeseries from site and instrument combination $j$.}
+\tablenotetext{b}{We actually sample in and impose a (flat) prior on $x \equiv e \cos \omega$ and $y \equiv e \sin \omega$.}
+\tablenotetext{c}{Here $T$ is the time span of the measurements over all sites.}
+\end{deluxetable}
 
 \section{Halo Photometry}
 \label{halo}
