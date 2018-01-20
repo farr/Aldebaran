@@ -1,14 +1,13 @@
 module Aldebaran
 
-using Kepler
-using CARMAKepler
+using CARMA
 
 function load_timeseries(;before_song=true, song=true)
     ts = []
     ys = []
     dys = []
 
-    if before_song 
+    if before_song
         for i in 3:9
             data = readdlm("..//data/$(i)/table$(i).dat")
             push!(ts, data[:,1])
