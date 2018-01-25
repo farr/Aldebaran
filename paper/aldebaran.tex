@@ -185,10 +185,9 @@ Unfortunately, this is impractical for long time series, as the computational
 cost of evaluating the standard Gaussian Process likelihood function scales as
 $\mathcal{O}(n^3)$. 
 
-Fortunately, this GP can be written as the solution of a class of stochastic
-ordinary differential equations, the Continuous Auto-Regressive Moving Average
+Fortunately, the damped and driven harmonic oscillator GP can be written as the solution of a class of stochastic ordinary differential equations, the Continuous Auto-Regressive Moving Average
 (CARMA) models, whose likelihoods can be evaluated in linear time. For problems
-such as the damped driven harmonic oscillator, we therefore have access to these
+such as this, we therefore have access to these
 powerful computational tools for inferring their power spectral densities.
 \citet{Kelly2014} gives more details on CARMA processes in an astronomical
 context, and shows how a state-space model of the solution $y(t)$ can be tracked
