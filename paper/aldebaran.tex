@@ -140,7 +140,7 @@ The nearby red giant Aldebaran is known to host a gas giant planetary companion 
 
 \section{Introduction}
 
-Aldebaran ($\alpha$~Tauri) is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $628.96 \pm 0.90$~d. 
+Aldebaran ($\alpha$~Tauri) is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $628.96 \pm 0.90$~d.
 
 In this paper, we present a re-analysis of these original RV data in which we not only confirm this signal, but detect acoustic oscillations in Aldebaran for the first time. We validate this method and its result with new independent RV observations with the Hertzsprung SONG~Telescope, and photometry from the \ktwo Mission. By measuring the frequency of maximum power of these \emph{p}-mode oscillations, \numax, we asteroseismically determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun. This precise stellar mass allows us to calculate that Aldebaran~b and any satellites it may have, although they are now likely to be very hot, would have had equilibrium temperatures comparable to that of the Earth when Aldebaran was on the main sequence. It is possible that they may have once been habitable, billions of years ago.
 
@@ -181,26 +181,28 @@ oscillators such as we encounter in asteroseismology can be statistically
 modelled as a Gaussian Process, with a covariance kernel consisting of a sum of
 damped sinusoids. The hyperparameters of this process encode features of the
 power spectral density distributions and are insensitive to the window function. Gaussian processes with quasi-periodic kernels have previously been used to re-analyse RV data for main sequence stars \citep{2014MNRAS.443.2517H,2015MNRAS.452.2269R}, where the noise is from stellar activity, but have not previously been applied to red giant asteroseismology.
-Unfortunately, this is impractical for long time series, as the computational
+Unfortunately, these methods are impractical for long time series, as the computational
 cost of evaluating the standard Gaussian Process likelihood function scales as
-$\mathcal{O}(n^3)$. 
+$\mathcal{O}(n^3)$.
 
-Fortunately, the damped and driven harmonic oscillator GP can be written as the solution of a class of stochastic ordinary differential equations, the Continuous Auto-Regressive Moving Average
-(CARMA) models, whose likelihoods can be evaluated in linear time. For problems
-such as this, we therefore have access to these
-powerful computational tools for inferring their power spectral densities.
-\citet{Kelly2014} gives more details on CARMA processes in an astronomical
-context, and shows how a state-space model of the solution $y(t)$ can be tracked
-through a time-series of uncertain observations $y_k = y\left( t_k \right) +
-\epsilon_k$, with Gaussian noise $\epsilon_k$ of zero mean and known
-(heteroskedastic) variance, using a Kalman filter to produce a likelihood
-function $p\left( y_k \mid \sigma, r_i, b_j \right)$ depending on the amplitude
-of the stochastic forcing, $\sigma$, the (possibly complex) eigenfrequencies of
-the ODE, $r_i$, and parameters describing the power spectrum of the stochastic
-forcing, $b_j$ in $\mathcal{O}\left( n \right)$ computational time.
-Additionally, \citet{Foreman-Mackey2017} show how a dimensional expansion can be
-used to reduce the standard Gaussian Process covariance matrix for this same
-process,  with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
+Fortunately, the damped and driven harmonic oscillator GP can be written as the
+solution of a class of stochastic ordinary differential equations, the
+Continuous Auto-Regressive Moving Average (CARMA) models, whose likelihoods can
+be evaluated in linear time. For problems such as this, we therefore have access
+to these powerful computational tools for inferring their power spectral
+densities.  Our treatment of CARMA models is described more fully in Appendix
+\ref{carmatheory}.   \citet{Kelly2014} also gives more details on CARMA
+processes in an astronomical context, and shows how a state-space model of the
+process $y(t)$ can be tracked through a time-series of uncertain observations
+$y_k = y\left( t_k \right) + \epsilon_k$, with Gaussian noise $\epsilon_k$ of
+zero mean and known (heteroskedastic) variance, using a Kalman filter to produce
+a likelihood function $p\left( y_k \mid \sigma, r_i, b_j \right)$ depending on
+the amplitude of the stochastic forcing, $\sigma$, the (possibly complex)
+eigenfrequencies of the ODE, $r_i$, and parameters describing the power spectrum
+of the stochastic forcing, $b_j$ in $\mathcal{O}\left( n \right)$ computational
+time.  Additionally, \citet{Foreman-Mackey2017} show how a dimensional expansion
+can be used to reduce the standard Gaussian Process covariance matrix for this
+same process,  with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
 observations at times $t_k$, to a banded form that can then be
 Cholesky-decomposed in the standard Gaussian Process likelihood function in
 $\mathcal{O}\left( n \right)$ time.
@@ -240,7 +242,7 @@ this package implements several stochastic sampling algorithms based on the
 ``stretch move'' proposal used in \texttt{emcee} \citep{Foreman-Mackey2013} and
 introduced in \citet{Goodman2010}} to calculate the marginal likelihood
 (evidences) and draw samples from the posterior distribution over the parameters
-of our various models.  The priors we impose on the parameters of our model are given in Table \ref{tab:parameters}.
+of our various models.
 
 \section{Aldebaran}
 Aldebaran is a red giant star with spectral type K5, one of the nearest such stars at a distance of only $19.96 \pm 0.38$~pc as determined by \hipparcos \citep{hipparcos}. Its position near the Ecliptic permits the determination of its angular diameter by lunar occultations and by interferometry \citep[$20.58 \pm 0.03$ mas;][]{richichi2005,1979ApJ...228L.111B,brown1979,panek1980}. These tight constraints are valuable in breaking degeneracies in stellar modelling and make this an ideal star for asteroseismic characterization (Appendix~\ref{sec:mod}).
@@ -334,6 +336,7 @@ Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this
 \end{figure}
 
 \subsection{Planetary and Stellar Parameters}
+\label{sec:planet-star-parameters}
 
 By jointly fitting a Keplerian for the planet with a CARMA model for the stellar
 oscillations to the combined archival and SONG data sets (Figure \ref{alldata}),
@@ -472,7 +475,12 @@ Oscillatory modes can also be described by their frequency $f$ and quality
 factor $Q$ via $r = f/(2Q) \pm 2\pi i f$.  Decaying modes generate a damped
 random walk, also known as a Ornstein-Uhlenbeck process.  More discussion of CARMA processes, including formulae for $A_i$ in terms of $\sigma$, $r_i$, and $b_j$, can be found in \citet{Kelly2014} and references therein.
 
-The priors we impose on the parameters of the CARMA model, planetary RV signal,
+Our preferred model for the data uses one decaying mode and one oscillatory mode
+in the CARMA process to capture the un-resolved superposition of many
+asteroseismic modes (see Section \ref{sec:planet-star-parameters}); we have fit
+models with more than one mode of each type, but find no improvement in
+model-selection criteria from the expanded parameter space.  The priors we
+impose in all cases on the parameters of the CARMA model, planetary RV signal,
 and instrumental and site effects are given in Table \ref{tab:parameters}.
 
 \begin{deluxetable}{lll}
@@ -637,7 +645,7 @@ $\gamma$~Draconis (also known as Eltanin, or $\gamma$~Dra) is a second-magnitude
 
 For several reasons we are not convinced that this poses an issue for Aldebaran or for K~giant RV planets more generally. \citet{2018arXiv180105239H} suggest that the new type of stellar variability may be oscillatory convective modes, but both Aldebaran and Eltanin have much lower luminosities and longer periods than would seem to be allowed by the period-luminosity relation for these otherwise unobserved modes \citep[Figure~9]{2015MNRAS.452.3863S,2018arXiv180105239H}. If these are identified with the long secondary periods (LSPs) observed in some bright red giants ($L \approx 1000 \lsun$), then Aldebaran and Eltanin are both too faint, and lack the mid-IR excess typical of LSP stars \citep{2009ApJ...707..573W}. It would also be surprising if the shape of the RV curve could reproduce the harmonic structure of an eccentric Keplerian such as in Aldebaran~b ($e = \EccentricityRange{}$), let alone the much higher eccentricities observed in other giants \citep[e.g. $\iota$~Dra~b, $e=0.7$:][]{2002ApJ...576..478F}.
 
-It would be a cruel conspiracy of nature if red giants support a type of oscillation which is common and closely resembles a planetary signal. We believe this cannot be the case: the populations of planets around subgiants and giants evolved from intermediate mass stars are similar \citep{2014A&A...566A.113J}, as expected if subgiants evolve into giants and retain their planetary systems in a similar configuration, and with very different stellar structures subgiants and giants are unlikely to share similar modes of long-period pulsation. The similarity of distributions of systems hosted by subgiant and giants could not be reproduced if a large fraction of the giants' planets were false positives. Moreover giant planets are expected to be common around intermediate-mass stars \citep{2008ApJ...673..502K}, and some are definitely known to be bona fide planets because they transit their star \citep[e.g.][]{2014A&A...562A.109L,2015A&A...573L...6O,2016AJ....152..185G,2017AJ....154..254G}. 
+It would be a cruel conspiracy of nature if red giants support a type of oscillation which is common and closely resembles a planetary signal. We believe this cannot be the case: the populations of planets around subgiants and giants evolved from intermediate mass stars are similar \citep{2014A&A...566A.113J}, as expected if subgiants evolve into giants and retain their planetary systems in a similar configuration, and with very different stellar structures subgiants and giants are unlikely to share similar modes of long-period pulsation. The similarity of distributions of systems hosted by subgiant and giants could not be reproduced if a large fraction of the giants' planets were false positives. Moreover giant planets are expected to be common around intermediate-mass stars \citep{2008ApJ...673..502K}, and some are definitely known to be bona fide planets because they transit their star \citep[e.g.][]{2014A&A...562A.109L,2015A&A...573L...6O,2016AJ....152..185G,2017AJ....154..254G}.
 
 We therefore believe that either Eltanin~b is not a false positive, or if it is, that it is not a common type of false positive, and is unlikely to affect our certainty that Aldebaran~b is real. \citet{2018arXiv180105239H} offer an alternative to the pulsation hypothesis, that one `mode' is the stellar rotation and the other is the planetary signal; this does not seem implausible.
 
