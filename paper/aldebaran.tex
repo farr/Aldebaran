@@ -135,7 +135,7 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 \affiliation{Stellar Astrophysics Centre, Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \begin{abstract}
-The nearby red giant Aldebaran is known to host a gas giant planetary companion from decades of ground-based spectroscopic measurements of its Doppler shift. Using Gaussian Process-based Continuous Auto-Regressive Moving Average (CARMA) models, we show that these historic data also contain evidence of acoustic oscillations in the star itself, and verify this result with further dedicated ground-based spectroscopy and space-based photometry with the \kepler Space Telescope. From the frequency of these oscillations we determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun, and note that this implies its planet will have been subject to insolation comparable to the Earth for some of the star's main sequence lifetime. Our approach to sparse, irregularly sampled time series astronomical observations has the potential to unlock asteroseismic measurements for hundreds of stars in archival data, and push to lower-mass planets around red giant stars.
+The nearby red giant Aldebaran is known to host a gas giant planetary companion from decades of ground-based spectroscopic measurements of its Doppler shift. Using Gaussian Process-based Continuous Auto-Regressive Moving Average (CARMA) models, we show that these historic data also contain evidence of acoustic oscillations in the star itself, and verify this result with further dedicated ground-based spectroscopy and space-based photometry with the \kepler Space Telescope. From the frequency of these oscillations we determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun, and note that this implies its planet will have been subject to insolation comparable to the Earth for some of the star's main sequence lifetime. Our approach to sparse, irregularly sampled time series astronomical observations has the potential to unlock asteroseismic measurements for thousands of stars in archival data, and push to lower-mass planets around red giant stars.
 \end{abstract}
 
 \section{Introduction}
@@ -150,7 +150,7 @@ Our new approach to asteroseismic data analysis, based on Continuous Auto-Regres
 Asteroseismology is a powerful tool for the charaterisation of red giant stars \citep[see][for detailed reviews]{2013ARA&A..51..353C, hekker17}.  Red giants exhibit oscillations that are excited and damped by stellar convection.  In the power spectrum of either radial velocity of photometric observations, these modes of oscillation form a characteristic pattern of peaks which can be used to infer intrinsic stellar properties \citep[e.g.,][]{2016AN....337..774D}.  The easiest properties of the pattern to determine are the frequency of maximum amplitude \numax and the so-called large separation \Dnu \citep{Kjeldsen95}, which are often referred to as global asteroseismic parameters.
 
 %Stellar properties can be determined with the average seismic measures and effective temperature \teff.  A set of scaling relations exist that illustrate the constraint the global asteroseismic measures provide.  These scaling relations are understood to be approximate but never the less are commonly used for radius $R$, mass $M$, and surface gravity $g$:
-These parameters can be used to estimate the radius $R$, mass $M$, and surface gravity $g$ of stars when combined with an estimate of the effective temperature \teff\ through so-called scaling relations:
+These parameters can be used to estimate the radius $R$, mass $M$, and surface gravity $g$ of stars when combined with an estimate of the effective temperature \teff\ through scaling relations:
 
 \begin{eqnarray}
 \left( \frac{R}{\mathrm{R_{\odot}}} \right) \simeq & \left( \frac{\nu_{\rm max}}{\nu_{\rm max, \odot}} \right) \,
@@ -161,7 +161,7 @@ These parameters can be used to estimate the radius $R$, mass $M$, and surface g
  \left( \frac{T_{\rm eff}}{T_{\rm eff, \odot}} \right)^{0.5}.
 \end{eqnarray}
 
-While the accuracy of these scaling relations is still a matter of ongoing work \citep[e.g.,][]{2017ApJ...844..102H}, stellar parameters can be estimated by comparing observables to parameter from models of stellar evolution.
+While the accuracy of these scaling relations is still a matter of ongoing work \citep[e.g.,][]{2017ApJ...844..102H}, stellar parameters can be estimated by comparing observables to parameters from models of stellar evolution.
 
 %As can be seen from the scaling relations, asteroseismology can provide constraint on Mass, Radius, and surface gravity if \Dnu, \numax, and \teff can be measured.
 The ability to measure \numax and \Dnu depends on the length and sampling rate of a data set.
@@ -290,7 +290,7 @@ precise wavelength calibration and the velocities were determined using the
 \textit{iSONG} software following the same procedures as described in
 \cite{2017ApJ...836..142G}. The typical velocity precision per visit is
 2.5$\,\rm m\,s^{-1}$ allowing us to easily detect the oscillations which
-displays a peak-to-peak amplitude of $\approx \, 170 \, \rm m \, s^{-1}$.
+display a peak-to-peak amplitude of $\approx \, 170 \, \rm m \, s^{-1}$.
 Figure~\ref{songdata} displays the radial velocities obtained -- oscillations
 are easily visible as well as a long-term trend, probably due to the planetary
 companion.  From this data set alone we also find evidence for a low-quality ($Q
@@ -322,7 +322,7 @@ Aldebaran was observed with \ktwo \citep{howell14}, a two-wheeled revival of the
 
 As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}.
 
-Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on a average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 timeseries we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
+Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on an average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 timeseries we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
 
 Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this light curve, we search for transits across a wide range of periods, and find no evidence either of short-period planetary transits or an eclipsing stellar companion.
 
@@ -353,7 +353,9 @@ The stellar oscillations are best fit with a single, low-quality ($Q =
 \muHz.  We find no improvement in the marginal likelihood (evidence) or other
 model-selection information criteria \citep{Gelman2013} from models with
 additional oscillatory modes, so we conclude that the large spacing $\Delta\nu$
-is not observable in this data set.  We have determined the stellar properties
+is not observable in this data set.  
+
+We have determined the stellar properties
 of Aldebaran with the additional constraint of \numax determined from this
 analysis.  The details of the stellar modelling are presented in Appendix
 \ref{sec:mod}.  We have considered the impact of our additional \numax
@@ -551,6 +553,7 @@ We used our determination of \numax and several combinations of the asteroseismi
 \item The mixing length theory to describe convection (we adopt a solar-calibrated parameter $\alpha_{\textrm{MLT}} =1.9657$).
 \item Convective overshooting on the main sequence is set to $\alpha_{\textrm{ov}}=0.2H_{p}$, with $H_{p}$ the pressure scale height at the border of the convective core. Overshooting was applied according to the \cite{1975Maeder} step function
 scheme.
+\item We consider only the red giant branch phase to avoid the treatment of poorly understood mass loss at the tip of the red giant branch.
 \item No rotational mixing or diffusion is included.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
