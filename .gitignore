@@ -3,3 +3,7 @@
 .ipynb_checkpoints
 *.dvi
 *.log
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+data_phot
