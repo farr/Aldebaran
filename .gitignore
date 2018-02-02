@@ -6,4 +6,6 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.aux
+*.out
 data_phot
