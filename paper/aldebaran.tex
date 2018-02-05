@@ -206,8 +206,8 @@ Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl}
 package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman
 filters that can compute the likelihood for a set of observations parameterised
 by either the $r_i$ and $b_j$ or the RMS amplitudes $A_i$ of each eigenmode of
-the ODE and the corresponding roots $r_i$.  We also include a Keplerian RV
-signal from a planetary companion to Aldebaran \citep{Hatzes2015,Gregory2005}.
+the ODE and the corresponding roots $r_i$. This likelihood is computed for the 
+residuals of a deterministic Keplerian RV mean model for the planetary companion.
 Because we have a set of observations taken with different instruments at
 different sites (see Section \ref{sec:archival-obs}), we include RV offset
 (i.e.\ mean value) parameters that are instrument- and site-dependent and also
