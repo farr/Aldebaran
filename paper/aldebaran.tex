@@ -200,12 +200,7 @@ a likelihood function $p\left( y_k \mid \sigma, r_i, b_j \right)$ depending on
 the amplitude of the stochastic forcing, $\sigma$, the (possibly complex)
 eigenfrequencies of the ODE, $r_i$, and parameters describing the power spectrum
 of the stochastic forcing, $b_j$ in $\mathcal{O}\left( n \right)$ computational
-time.  Additionally, \citet{Foreman-Mackey2017} show how a dimensional expansion
-can be used to reduce the standard GP covariance matrix for this
-same process,  with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
-observations at times $t_k$, to a banded form that can then be
-Cholesky-decomposed in the standard GP likelihood function in
-$\mathcal{O}\left( n \right)$ time.
+time.  
 
 Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl}
 package\footnote{\url{https://github.com/farr/CARMA.jl}} implements Kalman
@@ -484,6 +479,14 @@ models with more than one mode of each type, but find no improvement in
 model-selection criteria from the expanded parameter space.  The priors we
 impose in all cases on the parameters of the CARMA model, planetary RV signal,
 and instrumental and site effects are given in Table \ref{tab:parameters}.
+
+The Kalman filter implementation of the CARMA likelihood is not unique. 
+\citet{Foreman-Mackey2017} show how a dimensional expansion
+can be used to reduce the standard GP covariance matrix for this
+same process,  with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
+observations at times $t_k$, to a banded form that can then be
+Cholesky-decomposed in the standard GP likelihood function in
+$\mathcal{O}\left( n \right)$ time. These `\emph{celerite}' models are formally equivalent to the Kalman CARMA model and differ only in their computational implementation.
 
 \begin{deluxetable}{lll}
 \tablecolumns{3}
