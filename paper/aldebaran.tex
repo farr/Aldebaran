@@ -363,13 +363,19 @@ being `middle of the road' estimates.  For the analysis without constraint on
 \numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2}
 \, \mathrm{M_{\odot}}$ and age $4.86^{+3.56}_{-2.04} \, \rm Gyr$.  With the
 inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and
-age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  It is clear that the addition of \numax
-provides substantially more precise estimates of mass and age. With this stellar
-mass, the radial velocity signal translates to an inclination-dependent
-planetary mass of $M\,\sin\,{i} = 5.81 \pm 0.72~M_J$
-\citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high
-inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$,
-making it a possible low-mass brown dwarf candidate. A recent study by \citet{2018arXiv180105239H} has cast doubt on the validity of the detection of the massive planet $\gamma$~Draconis~b, and by extension similar planets around similar K~giants such as Aldebaran. We remain convinced that the $\gamma$~Draconis problem is not an issue in this case, and Aldebaran~b is a bona fide planet, for reasons outlined in Appendix~\ref{gamma_dra}.
+age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  Our measurement of \numax provides
+substantially more precise estimates of mass and age, and the uncertainties are
+now dominated by the uncertainty in our measurement. With this stellar mass, the
+radial velocity signal translates to an inclination-dependent planetary mass of
+$M\,\sin\,{i} = 5.81 \pm 0.72~M_J$ \citep[Equation~1]{Torres2008}, a massive
+giant planet; for sufficiently high inclinations ($\gtrsim 45^\circ$), the mass
+of Aldebaran~b may exceed $13~M_J$, making it a possible low-mass brown dwarf
+candidate. A recent study by \citet{2018arXiv180105239H} has cast doubt on the
+validity of the detection of the massive planet $\gamma$~Draconis~b, and by
+extension similar planets around similar K~giants such as Aldebaran. We remain
+convinced that the $\gamma$~Draconis problem is not an issue in this case, and
+Aldebaran~b is a bona fide planet, for reasons outlined in
+Appendix~\ref{gamma_dra}.
 
 With the determination of the stellar mass it is possible to infer the parameters Aldebaran had while it was on the main sequence. We conduct a Monte Carlo simulation, drawing masses randomly from a Gaussian distribution $M \sim \mathcal{N}(1.16,0.07)$ and metallicities $[\text{Fe}/\text{H}] \sim \mathcal{N}(-0.15,0.2)$ \citep{decin2003} to predict the luminosity of the main-sequence progenitor, and the semi-major axis of the planet's orbit.
 Using the Mesa Isochrones and Stellar Tracks \citep[MIST:][]{mist0,mist1} models, we compute the evolution of the luminosity $L$ of the star along the main sequence; $L$ evolves from $2.0 \pm 0.7$~\lsun at 0.5~Gyr to $3.5 \pm 2.3$~\lsun at 4.5~Gyr.
@@ -387,7 +393,34 @@ We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 
 
 With CARMA models we have confirmed the previously-suspected planet around Aldebaran using archival data, and additionally detected acoustic oscillations that permit a mass determination with a precision of $\sim 6\%$. We have confirmed both of these results with new ground-based observations, and space-based photometry with \ktwo.
 
-From this pilot study with Aldebaran, have shown that with limited quantities of data of limited quality, we can nevertheless do asteroseismology from the ground and obtain very precise estimates of stellar parameters. Furthermore, improvements in the algorithm may also permit the detection of not only~\numax but also~\Dnu from similar measurements, permitting more sophisticated asteroseismic analysis. Sufficient radial velocity data either already exist, or are trivial to obtain, in order to do this for essentially all bright giants; while for solar-like stars, these new methods will allow significantly relaxed observing requirements. One rich archive is the series of observations with the Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and K~giants \citep[e.g.][]{frink2001,hekker2006,ortiz2016}. The method may also be useful in detecting rotational or other periodic variability in the LCES HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624 FGKM dwarfs, although the time sampling is by design too coarse to detect $p$-mode oscillations in these stars. Furthermore, CARMA models and related methods will enhance deep, all-sky, sparse photometric surveys: an immediate future test of this will be from \hipparcos; while only~58 epochs of photometry are available for Aldebaran, at a sampling we find to be insufficient for our purposes, stars at higher latitudes may often have 150--200 epochs and more even sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted by \citet{bedding2000} are an ideal first test case. This can naturally be extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground \citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic determinations will be possible. In future RV surveys, it may even be possible to beat the \citet{2005PASJ...57...97S} $\sim 30$~m/s RV precision limit for red giants by taking many closely spaced observations and modelling-out the effects of stellar oscillations: this will allow us to dig deeper into this intrinsic stellar noise to detect less-massive planets around these stars.
+From this pilot study with Aldebaran, have shown that with limited quantities of
+data of limited quality, we can nevertheless do asteroseismology from the ground
+and obtain very precise estimates of stellar parameters. Furthermore,
+improvements in the algorithm may also permit the detection of not only~\numax
+but also~\Dnu from similar measurements, permitting more sophisticated
+asteroseismic analysis. Sufficient radial velocity data either already exist, or
+are trivial to obtain, in order to do this for essentially all bright giants;
+while for solar-like stars, these new methods will allow significantly relaxed
+observing requirements. One rich archive is the series of observations with the
+Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and
+K~giants \citep[e.g.][]{frink2001,hekker2006,ortiz2016}. The method may also be
+useful in detecting rotational or other periodic variability in the LCES
+HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624
+FGKM dwarfs, although the time sampling is by design too coarse to detect
+$p$-mode oscillations in these stars. Furthermore, CARMA models and related
+methods will enhance deep, all-sky, sparse photometric surveys: an immediate
+future test of this will be from \hipparcos; while only~58 epochs of photometry
+are available for Aldebaran, at a sampling we find to be insufficient for our
+purposes, stars at higher latitudes may often have 150--200 epochs and more even
+sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted
+by \citet{bedding2000} are an ideal first test case. This can naturally be
+extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground
+\citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic
+determinations will be possible. In future RV surveys, it may even be possible
+to beat the \citet{2005PASJ...57...97S} $\sim 30$~m/s RV precision limit for red
+giants by taking many closely spaced observations and modelling the effects of
+stellar oscillations: this will allow us to dig deeper into this intrinsic
+stellar noise to detect less-massive planets around these stars.
 
 \acknowledgments
 
@@ -407,7 +440,7 @@ This research has made use of the SIMBAD database, operated at CDS, Strasbourg, 
 
 This work has made use of observations made with the Hertzsprung SONG telescope operated on the Spanish Observatorio
   del Teide on the island of Tenerife by Aarhus and Copenhagen Universities and by the Instituto de
-  Astrofisica de Canarias.
+  Astrof\`{i}sica de Canarias.
 
 The Villum Foundation, the Danish Council for Independent Research~|~Natural Sciences and
  the Carlsberg Foundation are thanked for their support on building the SONG prototype on
