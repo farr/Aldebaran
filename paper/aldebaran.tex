@@ -40,20 +40,20 @@
 \newcommand{\twosidedrange}[3]{\ensuremath{#1^{+#2}_{-#3}}}
 
 %% Q
-\newcommand{\HatzesQRange}{\twosidedrange{2.12}{0.69}{0.56}}
-\newcommand{\SONGQRange}{\twosidedrange{3.06}{1.20}{0.81}}
-\newcommand{\CombinedQRange}{\twosidedrange{2.83}{0.60}{0.51}}
+\newcommand{\HatzesQRange}{\twosidedrange{2.1}{0.7}{0.6}}
+\newcommand{\SONGQRange}{\twosidedrange{3.1}{1.2}{0.8}}
+\newcommand{\CombinedQRange}{\twosidedrange{2.8}{0.6}{0.5}}
 
 %% NuMax
 \newcommand{\HatzesNuMaxRange}{\twosidedrange{2.21}{0.13}{0.12}}
 \newcommand{\SONGNuMaxRange}{\twosidedrange{2.33}{0.13}{0.14}}
-\newcommand{\combinedNuMaxRange}{\twosidedrange{2.238}{0.086}{0.080}}
+\newcommand{\combinedNuMaxRange}{\twosidedrange{2.24}{0.09}{0.08}}
 
 %% P
 \newcommand{\PeriodRange}{\twosidedrange{629.0}{1.7}{2.1}}
 
 %% e
-\newcommand{\EccentricityRange}{\twosidedrange{0.168}{0.069}{0.071}}
+\newcommand{\EccentricityRange}{0.17$\pm$0.07} %\twosidedrange{0.168}{0.069}{0.071}}
 
 %% K
 \newcommand{\PlanetRVAmpRange}{\twosidedrange{127}{15}{14}}
@@ -140,7 +140,7 @@ The nearby red giant Aldebaran is known to host a gas giant planetary companion 
 
 \section{Introduction}
 
-Aldebaran ($\alpha$~Tauri) is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $628.96 \pm 0.90$~d.
+Aldebaran ($\alpha$~Tauri) is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $629.96 \pm 0.90$~d.
 
 In this paper, we present a re-analysis of these original RV data in which we not only confirm the planetary signal, but detect acoustic oscillations in Aldebaran for the first time. \citet{hatzes1993} noted night-to-night RV variability: this is the noise floor limiting the sensitivity to sub-$M_J$ planets around giants in RV surveys \citep{2005PASJ...57...97S,2014A&A...566A.113J}. We pull out the asteroseismic signal in this planet hunting noise. We validate this method and its result with new independent RV observations with the Hertzsprung SONG~Telescope, and photometry from the \ktwo Mission. By measuring the frequency of maximum power of these \emph{p}-mode oscillations, \numax, we asteroseismically determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun. This precise stellar mass allows us to calculate that Aldebaran~b and any satellites it may have, although they are now likely to be very hot, would have had equilibrium temperatures comparable to that of the Earth when Aldebaran was on the main sequence. It is possible that they may have once been habitable, billions of years ago.
 
@@ -349,7 +349,7 @@ period $P = \PeriodRange \, \mathrm{d}$, eccentricity $e =
 \PlanetRVAmpRange{} \, \mathrm{m} \, \mathrm{s}^{-1}$.
 
 The stellar oscillations are best fit with a single, low-quality ($Q =
-\CombinedQRange{}$) oscillatory mode with $\numax = 2.238^{+ 0.086}_{- 0.080}$
+\CombinedQRange{}$) oscillatory mode with $\numax = 2.24^{+ 0.09}_{- 0.08}$
 \muHz.  We find no improvement in the marginal likelihood (evidence) or other
 model-selection information criteria \citep{Gelman2013} from models with
 additional oscillatory modes, so we conclude that the large spacing $\Delta\nu$
@@ -363,12 +363,12 @@ constraint and run our analysis for different sets of spectroscopic estimates.
 For final values we adopt the \citet{2012Sheffield} spectroscopic solution as
 being `middle of the road' estimates.  For the analysis without constraint on
 \numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2}
-\, \mathrm{M_{\odot}}$ and age $4.86^{+3.56}_{-2.04} \, \rm Gyr$.  With the
+\, \mathrm{M_{\odot}}$ and age $4.9^{+3.6}_{-2.0} \, \rm Gyr$.  With the
 inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and
-age $6.38^{+1.42}_{-1.12} \, \rm Gyr$.  It is clear that the addition of \numax
+age $6.4^{+1.4}_{-1.1} \, \rm Gyr$.  It is clear that the addition of \numax
 provides substantially more precise estimates of mass and age. With this stellar
 mass, the radial velocity signal translates to an inclination-dependent
-planetary mass of $M\,\sin\,{i} = 5.81 \pm 0.72~M_J$
+planetary mass of $M\,\sin\,{i} = 5.8 \pm 0.7~M_J$
 \citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high
 inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$,
 making it a possible low-mass brown dwarf candidate. A recent study by \citet{2018arXiv180105239H} has cast doubt on the validity of the detection of the massive planet $\gamma$~Draconis~b, and by extension similar planets around similar K~giants such as Aldebaran. We remain convinced that the $\gamma$~Draconis problem is not an issue in this case, and Aldebaran~b is a bona fide planet, for reasons outlined in Appendix~\ref{gamma_dra}.
@@ -615,27 +615,27 @@ We have also investigated running \textsc{PARAM} and relaxing one or more constr
 		\hline
 		\multicolumn{4}{c}{$\nu_{\textrm{max}}$, $\log{g}$, $T_{\textrm{eff}}$, $R_\textrm{int}$, L and [FeH].} \\
 		\hline
-		\cite{2012Sheffield}$_{a}$ &$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.47^{+1.39}_{-1.1}$\\
-		\cite{2012Sheffield}$_{b}$&$1.17^{+0.07}_{-0.07}$&$43.8^{+0.8}_{-0.9}$&$6.35^{+1.4}_{-1.11}$\\
-		\cite{2011Prugniel}&$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.23^{+1.4}_{-1.11}$\\
-		\cite{2008Massarotti}&$1.13^{+0.07}_{-0.07}$&$43.5^{+0.9}_{-0.9}$&$5.95^{+1.37}_{-1.07}$\\
-		\cite{2009Frasca}&$1.02^{+0.04}_{-0.04}$&$44.0^{+0.8}_{-0.8}$&$10.26^{+1.54}_{-1.45}$\\
+		\cite{2012Sheffield}$_{a}$ &$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.5^{+1.4}_{-1.1}$\\
+		\cite{2012Sheffield}$_{b}$&$1.17^{+0.07}_{-0.07}$&$43.8^{+0.8}_{-0.9}$&$6.4^{+1.4}_{-1.1}$\\
+		\cite{2011Prugniel}&$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.2^{+1.4}_{-1.1}$\\
+		\cite{2008Massarotti}&$1.13^{+0.07}_{-0.07}$&$43.5^{+0.9}_{-0.9}$&$6.0^{+1.4}_{-1.1}$\\
+		\cite{2009Frasca}&$1.02^{+0.04}_{-0.04}$&$44.0^{+0.8}_{-0.8}$&$10.3^{+1.5}_{-1.4}$\\
 		\hline
 		\multicolumn{4}{c}{$\log{g}$, $T_{\textrm{eff}}$, $R_\textrm{int}$, L and [FeH].} \\
 		\hline
-\cite{2012Sheffield}$_{a}$&$1.43^{+0.26}_{-0.24}$&$43.8^{+0.9}_{-0.9}$&$3.53^{+2.72}_{-1.44}$\\
-\cite{2012Sheffield}$_{b}$&$1.27^{+0.24}_{-0.2}$&$43.8^{+0.9}_{-0.9}$&$4.86^{+3.56}_{-2.04}$\\
-\cite{2011Prugniel}&$1.25^{+0.22}_{-0.19}$&$43.8^{+0.9}_{-0.9}$&$5.02^{+3.47}_{-2.02}$\\
-\cite{2008Massarotti}&$0.95^{+0.11}_{-0.05}$&$43.8^{+0.9}_{-0.9}$&$10.24^{+2.36}_{-3.08}$\\
-\cite{2009Frasca}&$0.96^{+0.04}_{-0.04}$&$44.4^{+0.8}_{-0.8}$&$11.64^{+1.43}_{-1.8}$\\
+\cite{2012Sheffield}$_{a}$&$1.43^{+0.26}_{-0.24}$&$43.8^{+0.9}_{-0.9}$&$3.5^{+2.7}_{-1.4}$\\
+\cite{2012Sheffield}$_{b}$&$1.27^{+0.24}_{-0.2}$&$43.8^{+0.9}_{-0.9}$&$4.9^{+3.6}_{-2.0}$\\
+\cite{2011Prugniel}&$1.25^{+0.22}_{-0.19}$&$43.8^{+0.9}_{-0.9}$&$5.0^{+3.5}_{-2.0}$\\
+\cite{2008Massarotti}&$0.95^{+0.11}_{-0.05}$&$43.8^{+0.9}_{-0.9}$&$10.2^{+2.4}_{-3.1}$\\
+\cite{2009Frasca}&$0.96^{+0.04}_{-0.04}$&$44.4^{+0.8}_{-0.8}$&$11.6^{+1.4}_{-1.8}$\\
 		\hline
 		\multicolumn{4}{c}{$\nu_{\textrm{max}}$, $T_{\textrm{eff}}$, $R_\textrm{int}$, L and [FeH].} \\
 		\hline
-\cite{2012Sheffield}$_{a}$&$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.51^{+1.41}_{-1.11}$\\
-\cite{2012Sheffield}$_{b}$&$1.16^{+0.07}_{-0.07}$&$43.8^{+0.8}_{-0.9}$&$6.38^{+1.42}_{-1.12}$\\
-\cite{2011Prugniel}&$1.16^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.43^{+1.48}_{-1.15}$\\
-\cite{2008Massarotti}&$1.13^{+0.07}_{-0.07}$&$43.5^{+0.9}_{-0.9}$&$5.86^{+1.35}_{-1.05}$\\
-\cite{2009Frasca}&$1.15^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.8}$&$6.47^{+1.51}_{-1.17}$\\
+\cite{2012Sheffield}$_{a}$&$1.17^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.5^{+1.4}_{-1.1}$\\
+\cite{2012Sheffield}$_{b}$&$1.16^{+0.07}_{-0.07}$&$43.8^{+0.8}_{-0.9}$&$6.4^{+1.4}_{-1.1}$\\
+\cite{2011Prugniel}&$1.16^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.9}$&$6.4^{+1.5}_{-1.2}$\\
+\cite{2008Massarotti}&$1.13^{+0.07}_{-0.07}$&$43.5^{+0.9}_{-0.9}$&$5.9^{+1.4}_{-1.0}$\\
+\cite{2009Frasca}&$1.15^{+0.07}_{-0.07}$&$43.9^{+0.9}_{-0.8}$&$6.5^{+1.5}_{-1.2}$\\
 		\hline
 	\end{tabular}
 
