@@ -135,12 +135,12 @@ and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 \affiliation{Stellar Astrophysics Centre, Department of Physics and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
 \begin{abstract}
-The nearby red giant Aldebaran is known to host a gas giant planetary companion from decades of ground-based spectroscopic measurements of its Doppler shift. Using Gaussian Process-based Continuous Auto-Regressive Moving Average (CARMA) models, we show that these historic data also contain evidence of acoustic oscillations in the star itself, and verify this result with further dedicated ground-based spectroscopy and space-based photometry with the \kepler Space Telescope. From the frequency of these oscillations we determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun, and note that this implies its planet will have been subject to insolation comparable to the Earth for some of the star's main sequence lifetime. Our approach to sparse, irregularly sampled time series astronomical observations has the potential to unlock asteroseismic measurements for thousands of stars in archival data, and push to lower-mass planets around red giant stars.
+The nearby red giant Aldebaran is known to host a gas giant planetary companion from decades of ground-based spectroscopic radial velocity measurements. Using Gaussian Process-based Continuous Auto-Regressive Moving Average (CARMA) models, we show that these historic data also contain evidence of acoustic oscillations in the star itself, and verify this result with further dedicated ground-based spectroscopy and space-based photometry with the \kepler Space Telescope. From the frequency of these oscillations we determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun, and note that this implies its planet will have been subject to insolation comparable to the Earth for some of the star's main sequence lifetime. Our approach to sparse, irregularly sampled time series astronomical observations has the potential to unlock asteroseismic measurements for thousands of stars in archival data, and push to lower-mass planets around red giant stars.
 \end{abstract}
 
 \section{Introduction}
 
-Aldebaran ($\alpha$~Tauri) is a well-known first-magnitude naked-eye red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $629.96 \pm 0.90$~d.
+Aldebaran ($\alpha$~Tauri) is a well-known first-magnitude red giant star, and has long been the subject of astronomical investigations. It was one of the first stars around which an extrasolar planet candidate was identified, by looking for Doppler shifts from the star's reflex motion around the common centre of mass with its companion \citep[the radial velocity or RV method;][]{struverv}. While the hot Jupiter 51~Peg~b \citep{51peg} was the first exoplanet to be recognized as such, before this, \citet{hatzes1993} had noted RV variations in Pollux \citep[$\beta$~Gem; subsequently confirmed as a planet:][]{betgemconf,betgemconf2}, Arcturus ($\alpha$~Boo, unconfirmed), and Aldebaran. After further investigation by \citet{Hatzes1998}, \citet{Hatzes2015} have now claimed a firm RV detection of a planetary-mass companion Aldebaran~b, with a period of $629.96 \pm 0.90$~d.
 
 In this paper, we present a re-analysis of these original RV data in which we not only confirm the planetary signal, but detect acoustic oscillations in Aldebaran for the first time. \citet{hatzes1993} noted night-to-night RV variability: this is the noise floor limiting the sensitivity to sub-$M_J$ planets around giants in RV surveys \citep{2005PASJ...57...97S,2014A&A...566A.113J}. We pull out the asteroseismic signal in this planet hunting noise. We validate this method and its result with new independent RV observations with the Hertzsprung SONG~Telescope, and photometry from the \ktwo Mission. By measuring the frequency of maximum power of these \emph{p}-mode oscillations, \numax, we asteroseismically determine the mass of Aldebaran to be $1.16 \pm 0.07$~\msun. This precise stellar mass allows us to calculate that Aldebaran~b and any satellites it may have, although they are now likely to be very hot, would have had equilibrium temperatures comparable to that of the Earth when Aldebaran was on the main sequence. It is possible that they may have once been habitable, billions of years ago.
 
@@ -180,9 +180,9 @@ improved. \citet{brewer2009} show that a system of driven, damped harmonic
 oscillators such as we encounter in asteroseismology can be statistically
 modelled as a Gaussian Process (GP), with a covariance kernel consisting of a sum of
 damped sinusoids. The hyperparameters of this process encode features of the
-power spectral density distributions and are insensitive to the window function. Gaussian processes with quasi-periodic kernels have previously been used to re-analyse RV data for main sequence stars \citep{2014MNRAS.443.2517H,2015MNRAS.452.2269R}, where the noise is from stellar activity, but have not previously been applied to red giant asteroseismology.
+power spectral density distributions and are insensitive to the window function. GPs with quasi-periodic kernels have previously been used to re-analyse RV data for main sequence stars \citep{2014MNRAS.443.2517H,2015MNRAS.452.2269R}, where the noise is from stellar activity, but have not previously been applied to red giant asteroseismology.
 Unfortunately, these methods are impractical for long time series, as the computational
-cost of evaluating the standard Gaussian Process likelihood function scales as
+cost of evaluating the standard GP likelihood function scales as
 $\mathcal{O}(n^3)$.
 
 Fortunately, the damped and driven harmonic oscillator GP can be written as the
@@ -201,10 +201,10 @@ the amplitude of the stochastic forcing, $\sigma$, the (possibly complex)
 eigenfrequencies of the ODE, $r_i$, and parameters describing the power spectrum
 of the stochastic forcing, $b_j$ in $\mathcal{O}\left( n \right)$ computational
 time.  Additionally, \citet{Foreman-Mackey2017} show how a dimensional expansion
-can be used to reduce the standard Gaussian Process covariance matrix for this
+can be used to reduce the standard GP covariance matrix for this
 same process,  with autocorrelation given by Eq.\ \eqref{eq:CARMA-ACF} under
 observations at times $t_k$, to a banded form that can then be
-Cholesky-decomposed in the standard Gaussian Process likelihood function in
+Cholesky-decomposed in the standard GP likelihood function in
 $\mathcal{O}\left( n \right)$ time.
 
 Here we have adopted the \citet{Kelly2014} approach.  The \texttt{CARMA.jl}
@@ -442,7 +442,7 @@ A CARMA process corresponds to the solution, $y(t)$, of the stochastic ODE
 where $p, q \in \mathbb{Z}$, $p > q \geq 0$ define the order of the process;
 $r_i \in \mathbb{C}$, $\Re r_i < 0$ are the roots of the characteristic equation
 of the ODE; $b_j \in \mathbb{C}$, $\Re b_j < 0$ are corresponding roots of the
-inverse process; and $\eta(t)$ is a white-noise Gaussian Process with
+inverse process; and $\eta(t)$ is a white-noise GP with
 $\left\langle \eta(t) \right\rangle = 0$ and $\left\langle \eta(t) \eta(t')
 \right\rangle = \sigma^2 \delta\left(t - t' \right)$.  The constraint that $\Re
 r_i < 0$ and $\Re b_j < 0$ ensures that the linear operator defining the process
@@ -538,7 +538,7 @@ The flux $f_i$ at each cadence $i$ is constructed as a weighted sum of pixel val
 
 In an improvement since \citet{White2017}, we use the \textsc{Theano} library \citep{theano} to calculate analytic derivatives for the TV objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to tens of seconds.
 
-As a final step to reduce residual uncorrected systematics, we apply the \textsc{k2sc} \citep{k2sc} Gaussian Process-based systematics correction code to the initial halo light curve, but the effect of this in the present case for Aldebaran is minimal.
+As a final step to reduce residual uncorrected systematics, we apply the \textsc{k2sc} \citep{k2sc} GP-based systematics correction code to the initial halo light curve, but the effect of this in the present case for Aldebaran is minimal.
 There is somewhat higher than usual residual noise at harmonics of $46\,\mu\mathrm{Hz}$ ($4\,\mathrm{d}^{-1}$, the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
 
 \section{Stellar Modelling}\label{sec:mod}
