@@ -254,8 +254,9 @@ Optical Astronomy Observatory (BOAO) spanning the period from 2000.01 to
 full time series spanning more than two decades from 1980.80 to 2013.71
 (Figure~\ref{alldata}) and fit this with a Keplerian model and a CARMA process.
 We find evidence for a low-quality ($Q = \HatzesQRange{}$) oscillatory mode with
-$\nu_\mathrm{max} = \HatzesNuMaxRange{} \, \mu\mathrm{Hz}$.  This is consistent
-with the presence of a number of un-resolved asteroseismic modes in the RV data.
+$\nu_\mathrm{max} = \HatzesNuMaxRange{} \, \mu\mathrm{Hz}$. 
+This is consistent with the presence of a number of un-resolved asteroseismic modes in the RV data. 
+The low Q factor in this case refers to the inverse fractional width of the band over which the modes are excited, not the quality of any individual mode.
 Our posterior for \numax{} from this data set is shown in Figure
 \ref{fig:numax-datasets}.
 
@@ -317,7 +318,7 @@ Aldebaran was observed with \ktwo \citep{howell14}, a two-wheeled revival of the
 
 As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}.
 
-Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on an average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 timeseries we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
+Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on an average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 time series we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
 
 Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this light curve, we search for transits across a wide range of periods, and find no evidence either of short-period planetary transits or an eclipsing stellar companion.
 
@@ -357,9 +358,9 @@ analysis.  The details of the stellar modelling are presented in Appendix
 constraint and run our analysis for different sets of spectroscopic estimates.
 For final values we adopt the \citet{2012Sheffield} spectroscopic solution as
 being `middle of the road' estimates.  For the analysis without constraint on
-\numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.2}
+\numax we find estimates of the stellar properties as $M = 1.27^{+0.24}_{-0.20}
 \, \mathrm{M_{\odot}}$ and age $4.9^{+3.6}_{-2.0} \, \rm Gyr$.  With the
-inclusion of \numax we find $M = 1.16^{+0.07}_{-0.07} \, \mathrm{M_{\odot}}$ and
+inclusion of \numax we find $M = 1.16\, \pm \, {0.07} \, \mathrm{M_{\odot}}$ and
 age $6.4^{+1.4}_{-1.1} \, \rm Gyr$.  It is clear that the addition of \numax
 provides substantially more precise estimates of mass and age. With this stellar
 mass, the radial velocity signal translates to an inclination-dependent
@@ -384,7 +385,7 @@ We note that this implies that the planet at a semi-major axis of $1.50\, \pm\, 
 
 With CARMA models we have confirmed the previously-suspected planet around Aldebaran using archival data, and additionally detected acoustic oscillations that permit a mass determination with a precision of $\sim 6\%$. We have confirmed both of these results with new ground-based observations, and space-based photometry with \ktwo.
 
-From this pilot study with Aldebaran, we have shown that with limited quantities of data of limited quality, we can nevertheless do asteroseismology from the ground and obtain very precise estimates of stellar parameters. Furthermore, improvements in the algorithm may also permit the detection of not only~\numax but also~\Dnu from similar measurements, permitting more sophisticated asteroseismic analysis. Sufficient radial velocity data either already exist, or are trivial to obtain, in order to do this for essentially all bright giants; while for solar-like stars, these new methods will allow significantly relaxed observing requirements. One rich archive is the series of observations with the Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and K~giants \citep[e.g.][]{frink2001,hekker2006,ortiz2016}. The method may also be useful in detecting rotational or other periodic variability in the LCES HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624 FGKM dwarfs, although the time sampling is by design too coarse to detect $p$-mode oscillations in these stars. Furthermore, CARMA models and related methods will enhance deep, all-sky, sparse photometric surveys: an immediate future test of this will be from \hipparcos; while only~58 epochs of photometry are available for Aldebaran, at a sampling we find to be insufficient for our purposes, stars at higher latitudes may often have 150--200 epochs and more even sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted by \citet{bedding2000} are an ideal first test case. This can naturally be extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground \citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic determinations will be possible. In future RV surveys, it may be possible to beat the \citet{2005PASJ...57...97S} $\sim 30$~m/s RV precision limit for red giants by taking many closely spaced observations and modelling-out the effects of stellar oscillations: this will allow us to dig deeper into this intrinsic stellar noise to detect less-massive planets around these stars.
+From this pilot study with Aldebaran, we have shown that with limited quantities of data of limited quality, we can nevertheless do asteroseismology from the ground and obtain very precise estimates of stellar parameters. Furthermore, improvements in the algorithm may also permit the detection of not only~\numax but also~\Dnu from similar measurements, permitting more sophisticated asteroseismic analysis. Sufficient radial velocity data either already exist, or are trivial to obtain, in order to do this for essentially all bright giants; while for asteroseismology of solar-like stars, these new methods will allow significantly relaxed observing requirements. One rich archive is the series of observations with the Hamilton \'{E}chelle Spectrograph at Lick Observatory, studying 373 G~and K~giants \citep[e.g.][]{frink2001,hekker2006,ortiz2016}. The method may also be useful in detecting rotational or other periodic variability in the LCES HIRES/Keck Precision Radial Velocity Exoplanet Survey \citep{butler17} of 1,624 FGKM dwarfs, although the time sampling is by design too coarse to detect $p$-mode oscillations in these stars. Furthermore, CARMA models and related methods will enhance deep, all-sky, sparse photometric surveys: an immediate future test of this will be from \hipparcos; while only~58 epochs of photometry are available for Aldebaran, at a sampling we find to be insufficient for our purposes, stars at higher latitudes may often have 150--200 epochs and more even sampling \citep{hipparcos_phot}, and the~14 bright~K giants in \hipparcos noted by \citet{bedding2000} are an ideal first test case. This can naturally be extended to \emph{Gaia} in space \citep{gaia}, or \emph{LSST} from the ground \citep{dmt,lsst,lsstbook}, from which many thousands of new asteroseismic determinations will be possible. In future RV surveys, it may be possible to beat the \citet{2005PASJ...57...97S} $\sim 30$~m/s RV precision limit for red giants by taking many closely spaced observations and modelling-out the effects of stellar oscillations: this will allow us to dig deeper into this intrinsic stellar noise to detect less-massive planets around these stars.
 
 \acknowledgments
 
@@ -508,7 +509,7 @@ $r_k$ & $1/r_k, \quad \Re r_k \in \left[ 1/ (2T), 0.05 \, \mu\mathrm{Hz}\right],
 $f_k$ & $1/f_k, \quad f_k \in \left[ 0.1, 10 \right] \mu \mathrm{Hz}$ & The frequency of oscillatory modes \\
 $Q_k$ & $1/Q_k, \quad Q_k \in \left[ 1, 1000 \right]$ & The quality factor of oscillatory modes \\
 \enddata
-\tablenotetext{a}{$\left\langle y_j \right\rangle$ and $\sigma_{y_j}$ are the mean and standard deviation of the RV timeseries from site and instrument combination $j$.}
+\tablenotetext{a}{$\left\langle y_j \right\rangle$ and $\sigma_{y_j}$ are the mean and standard deviation of the RV time series from site and instrument combination $j$.}
 \tablenotetext{b}{We actually sample in and impose a (flat) prior on $x \equiv e \cos \omega$ and $y \equiv e \sin \omega$.}
 \tablenotetext{c}{Here $T$ is the time span of the measurements over all sites.}
 \end{deluxetable}
