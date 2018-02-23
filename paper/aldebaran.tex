@@ -494,7 +494,29 @@ asteroseismic modes (see Section \ref{sec:planet-star-parameters}); we have fit
 models with more than one mode of each type, but find no improvement in
 model-selection criteria from the expanded parameter space.  The priors we
 impose in all cases on the parameters of the CARMA model, planetary RV signal,
-and instrumental and site effects are given in Table \ref{tab:parameters}.
+and instrumental and site effects are given in Table \ref{tab:parameters}.  A
+draw from the posterior for our canonical model in shown in data space in Figure
+\ref{fig:data-space}.
+
+\begin{figure}
+\plotone{data-space}
+
+\caption{\label{fig:data-space} A posterior draw from our model plotted with the
+observed radial velocities.  Each site's radial velocity has been shifted by the
+model's site-specific RV offset and errorbars have been scaled by the model's
+site-specific errorbar scaling.  Data colors are as in Figure \ref{alldata}.
+The black line gives the sum of the model's Keplerian component and the mean of
+the inferred stochastic component; the dark and light bands give the 1- and
+2-sigma uncertainty in the inferred stochastic component.  Between observations,
+the uncertainty in the stochastic component increases; it reduces near
+observations, as each observation provides some information about the stellar
+noise that propogates to nearby times because of the temporal correlation in the
+noise.  Stellar oscillations are apparent in the short-timescale wiggles in the
+stochastic component between nearby observations; there is also a significant
+long-period correlated component (represented in our model by an
+exponentially-decaying eigenmode).}
+
+\end{figure}
 
 The Kalman filter implementation of the CARMA likelihood is not unique.
 \citet{Foreman-Mackey2017} show how a dimensional expansion can be used to
