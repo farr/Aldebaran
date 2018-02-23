@@ -91,7 +91,7 @@
 \affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
 
-\author{Thomas North}
+\author{Thomas S. H. North}
 \affiliation{School of Physics and Astronomy, University of Birmingham, Birmingham, B15 2TT, United Kingdom}
 \affiliation{Stellar Astrophysics Centre, Department of Physics
 and Astronomy, Aarhus University, Ny Munkegade 120, DK-8000 Aarhus C, Denmark}
@@ -267,8 +267,8 @@ is shown in Figure \ref{fig:numax-datasets}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{all-data.pdf}
-\caption{All archival and new radial velocities used for inference in this work.}
+\plotone{all-data.pdf}
+\caption{All archival and new radial velocities used for inference in this work.  The site and instrument for each data set is indicated in the legend (see text for a full description).}
 \label{alldata}
 \end{figure}
 
@@ -323,7 +323,7 @@ Aldebaran was observed with \ktwo \citep{howell14}, a two-wheeled revival of the
 
 As Aldebaran is extremely bright, it saturates the \kepler detector and it is therefore not possible to use standard photometry pipelines to extract a K2 lightcurve. We instead use halo photometry \citep{White2017}, whereby unsaturated pixels from the outer part of the large and complicated halo of scattered light around bright stars are used to reconstruct a light curve as a weighted linear combination of individual pixel-level time series, as described in Appendix~\ref{halo}.
 
-Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on an average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 time series we were unable to measure the large frequency separation \Dnu, which is expected to be on the order of $\approx$\,0.5\muHz.
+Figure \ref{k2_lightcurve} shows the light curve and power spectrum of the K2 observations of Aldebaran. We detect clear variability on an average timescale of $\sim$\,5\,days, consistent with the expected timescale for solar-like oscillations for a high-luminosity red giant. To measure global asteroseismic parameters we model the background variability in the Fourier domain using the methodology described in \citet{huber09}, yielding a frequency of maximum power of $\numax = 2.2 \pm 0.25\,\muHz$ and amplitude per radial mode of $1850 \pm 500$\,ppm. Due to the limited frequency resolution of the 70-day K2 time series we were unable to measure the large frequency separation \Dnu, which is expected to be $\approx$\,0.5\muHz.
 
 Using the \textsc{k2ps} planet-search code \citep{k2ps,Pope2016} to examine this light curve, we search for transits across a wide range of periods, and find no evidence either of short-period planetary transits or an eclipsing stellar companion.
 
@@ -494,7 +494,29 @@ asteroseismic modes (see Section \ref{sec:planet-star-parameters}); we have fit
 models with more than one mode of each type, but find no improvement in
 model-selection criteria from the expanded parameter space.  The priors we
 impose in all cases on the parameters of the CARMA model, planetary RV signal,
-and instrumental and site effects are given in Table \ref{tab:parameters}.
+and instrumental and site effects are given in Table \ref{tab:parameters}.  A
+draw from the posterior for our canonical model in shown in data space in Figure
+\ref{fig:data-space}.
+
+\begin{figure}
+\plotone{data-space}
+
+\caption{\label{fig:data-space} A posterior draw from our model plotted with the
+observed radial velocities.  Each site's radial velocity has been shifted by the
+model's site-specific RV offset and errorbars have been scaled by the model's
+site-specific errorbar scaling.  Data colors are as in Figure \ref{alldata}.
+The black line gives the sum of the model's Keplerian component and the mean of
+the inferred stochastic component; the dark and light bands give the 1- and
+2-sigma uncertainty in the inferred stochastic component.  Between observations,
+the uncertainty in the stochastic component increases; it reduces near
+observations, as each observation provides some information about the stellar
+noise that propogates to nearby times because of the temporal correlation in the
+noise.  Stellar oscillations are apparent in the short-timescale wiggles in the
+stochastic component between nearby observations; there is also a significant
+long-period correlated component (represented in our model by an
+exponentially-decaying eigenmode).}
+
+\end{figure}
 
 The Kalman filter implementation of the CARMA likelihood is not unique.
 \citet{Foreman-Mackey2017} show how a dimensional expansion can be used to
@@ -614,7 +636,7 @@ As Table \ref{tab:spec} shows, the spectroscopic parameters of Aldebaran are som
 \label{eqn:numax}
 \end{equation}
 
-Using Eq \ref{eqn:numax} with the values in Table \ref{tab:spec} predicts $\nu_{\textrm{max}}$ in the range $0.5-6\mu$Hz. Reversing the equation to produce a predicted $\log{g}$ from the observed $\nu_{\textrm{max,obs}}=2.23\pm0.1\mu$Hz results in a predicted $\log{g}\sim1.2$ dex, using an assumed temperature of 3900K. The solar calibration values used here are $g_{\odot}=274\,$ms$^{-2}$, $\nu_{\textrm{max},\odot}=3150\,\mu$Hz and $T_{\textrm{eff},\odot}=5777\,$K.
+Using Eq \ref{eqn:numax} with the values in Table \ref{tab:spec} predicts $\nu_{\textrm{max}}$ in the range $0.5-6\mu$Hz. Reversing the equation to produce a predicted $\log{g}$ from the observed $\nu_{\textrm{max,obs}}=2.23\pm0.1\mu$Hz results in a predicted $\log{g}\sim1.2$ dex, using an assumed temperature of 3900K. The solar calibration values used here are $\log g_{\odot} / \left( \mathrm{m} \, \mathrm{s}^{-1}\right)=2.44 \, \mathrm{dex}$, $\nu_{\textrm{max},\odot}=3150\,\mu$Hz and $T_{\textrm{eff},\odot}=5777\,$K.
 
 Table \ref{tab:res_mass} shows the results, for all modelling variations, both different inputs and different constraints. It shows that results with the addition of $\nu_{\textrm{max}}$ as a constraint exhibit in general smaller uncertainties, with or without the addition of $\log{g}$ as a constraint.
 
@@ -673,7 +695,5 @@ We therefore believe that either Eltanin~b is not a false positive, or if it is,
 
 
 \bibliography{aldebaran}
-
-
 
 \end{document}
