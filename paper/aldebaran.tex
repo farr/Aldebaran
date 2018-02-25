@@ -578,7 +578,7 @@ The flux $f_i$ at each cadence $i$ is constructed as a weighted sum of pixel val
 
 \noindent and likewise second-order TV the equivalent expression in second-order finite differences. The efficacy of this method was recently confirmed by \citet{kallinger2017}, comparing BRITE-Constellation observations of Atlas to \ktwo halo photometry and finding excellent agreement in the frequency and amplitude of the reported oscillations.
 
-In an improvement since \citet{White2017}, we use the \textsc{Theano} library \citep{theano} to calculate analytic derivatives for the TV objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to tens of seconds.
+In an improvement since \citet{White2017}, we use the \textsc{autograd} library \citep{maclaurinautograd} to calculate analytic derivatives for the TV objective function, which reduces the computational time for a single halo light curve on a commercial laptop from tens of minutes to a few seconds.
 
 As a final step to reduce residual uncorrected systematics, we apply the \textsc{k2sc} \citep{k2sc} GP-based systematics correction code to the initial halo light curve, but the effect of this in the present case for Aldebaran is minimal.
 There is somewhat higher than usual residual noise at harmonics of $46\,\mu\mathrm{Hz}$ ($4\,\mathrm{d}^{-1}$, the satellite thruster firing frequency), but this is nevertheless very small in comparison to the signal from Aldebaran, and may be ascribed to the large fraction of the pixel mask occupied by the bleed column from this extremely bright star.
