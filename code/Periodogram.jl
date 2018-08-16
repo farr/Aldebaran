@@ -79,4 +79,30 @@ function residual(ts, ys, dys, f, pgram)
     rs
 end
 
+function basis_pursuit_pgram(ts, ys, dys, fs_init, df_window, nbasis)
+    fspeak = Float64[]
+
+    while length(fspeak) < nbasis
+        As = Float64[]
+        Bs = Float64[]
+
+        sel = trues(length(fs_init))
+        for f in fspeak
+            sel = sel .& (abs.(fs_init - f) .> df_window)
+        end
+
+        for f in fs_init[sel]
+            ff = vcat(fspeak, [f])
+            c = pgram(ts, ys, dys, ff)
+            push!(As, c[end-1])
+            push!(Bs, c[end])
+        end
+        power = sqrt.(As.*As + Bs.*Bs)
+
+        push!(fspeak, fs_init[sel][indmax(power)])
+    end
+
+    fspeak
+end
+
 end

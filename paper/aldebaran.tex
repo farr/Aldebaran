@@ -382,17 +382,19 @@ sets of spectroscopic estimates.  For final values we adopt the
 \citet{2012Sheffield} spectroscopic solution as being `middle of the road'
 estimates.  For the analysis without constraint on \numax we find estimates of
 the stellar properties as $M = 1.27^{+0.24}_{-0.20} \, \mathrm{M_{\odot}}$ and
-age $4.9^{+3.6}_{-2.0} \, \rm Gyr$.  With the inclusion of \numax we find $M =
-1.16\, \pm \, {0.07} \, \mathrm{M_{\odot}}$ and age $6.4^{+1.4}_{-1.1} \, \rm
-Gyr$.  It is clear that the addition of \numax provides substantially more
-precise estimates of mass and age. With this stellar mass, the radial velocity
-signal translates to an inclination-dependent planetary mass of $M\,\sin\,{i} =
-5.8 \pm 0.7~M_J$ \citep[Equation~1]{Torres2008}, a massive giant planet; for
-sufficiently high inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may
-exceed $13~M_J$, making it a possible low-mass brown dwarf candidate. A recent
-study by \citet{2018arXiv180105239H} has cast doubt on the validity of the
-detection of the massive planet $\gamma$~Draconis~b, and by extension similar
-planets around similar K~giants such as Aldebaran. We remain convinced that the
+age $4.9^{+3.6}_{-2.0} \, \rm Gyr$.  This value and uncertainty are consistent
+with those obtained from other non-asteroseismic analyses of Aldebaran
+\cite[e.g.][]{Abia2012,Hatzes2015}. With the inclusion of \numax we find $M = 1.16\, \pm
+\, {0.07} \, \mathrm{M_{\odot}}$ and age $6.4^{+1.4}_{-1.1} \, \rm Gyr$.  It is
+clear that the addition of \numax provides substantially more precise estimates
+of mass and age. With this stellar mass, the radial velocity signal translates
+to an inclination-dependent planetary mass of $M\,\sin\,{i} = 5.8 \pm 0.7~M_J$
+\citep[Equation~1]{Torres2008}, a massive giant planet; for sufficiently high
+inclinations ($\gtrsim 45^\circ$), the mass of Aldebaran~b may exceed $13~M_J$,
+making it a possible low-mass brown dwarf candidate. A recent study by
+\citet{2018arXiv180105239H} has cast doubt on the validity of the detection of
+the massive planet $\gamma$~Draconis~b, and by extension similar planets around
+similar K~giants such as Aldebaran. We remain convinced that the
 $\gamma$~Draconis problem is not an issue in this case, and Aldebaran~b is a
 bona fide planet, for reasons outlined in Appendix~\ref{gamma_dra}.
 
@@ -419,7 +421,9 @@ From this pilot study with Aldebaran, we have shown that with limited quantities
 
 \acknowledgments
 
-We would like to thank Tim Bedding, David Hogg and Dan Foreman-Mackey for their helpful discussions.
+We would like to thank Tim Bedding, David Hogg and Dan Foreman-Mackey for their
+helpful discussions.  We would like to thank the anonymous referee for their
+efforts and their comments.
 
 We would like to commend the authors of \citet{Hatzes2015} for making their data
 publicly available on SIMBAD.
@@ -429,7 +433,7 @@ The authors would like to acknowledge the Gadigal people of the Eora Nation on w
 
 BP is grateful for funding from the Breakthrough Prize Foundation. This work was performed in part under contract with the Jet Propulsion Laboratory (JPL) funded by NASA through the Sagan Fellowship Program executed by the NASA Exoplanet Science Institute.
 TRW acknowledges the support of the Villum Foundation (research grant 10118).
-D.H. acknowledges support by the Australian Research Council's Discovery Projects funding scheme (project number DE140101364) and support by the National Aeronautics and Space Administration under Grants NNX14AB92G and NNX17AF76G issued through the Kepler Participating Scientist Program and the K2 Guest Observer Program.
+D.H. acknowledges support by the National Aeronautics and Space Administration under Grants NNX14AB92G, NNX17AF76G and 80NSSC18K0362 issued through the Kepler Participating Scientist Program and the K2 Guest Observer Program.
 
 Funding for the Stellar Astrophysics Centre is provided by the Danish National Research Foundation.
 This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and NASA's Astrophysics Data System. The \kepler data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX13AC07G and by other grants and contracts.
@@ -606,6 +610,7 @@ There is somewhat higher than usual residual noise at harmonics of $46\,\mu\math
 We used our determination of \numax and several combinations of the asteroseismic and spectroscopic parameters, along with luminosity, to estimate the fundamental stellar parameters, via fitting to stellar models. We used \textsc{MESA} models \citep{2011Paxton,2013Paxton} in conjunction with the Bayesian code \textsc{PARAM} \citep{2006dasilva, 2017Rod}.  A summary of our selected ``benchmark'' options is as follows;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{itemize}%GUY THIS BIT COULD PROBABLY BE DROPPED AND REFERENCED OUT TO \citep{2017Rod}
+\item Medalist scale from \citet{Grevesse93} as described in \citet{2017Rod}.
 \item Heavy element partitioning from \cite{1993Grevesse}.
 \item OPAL equation of state \citep{2002Rogers} along with OPAL opacities \citep{1996Iglesias}, with complementary values at low temperatures from \cite{2005Ferguson}.
 \item Nuclear reaction rates from NACRE \citep{1999Angulo}.
