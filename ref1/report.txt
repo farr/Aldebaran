@@ -1,0 +1,52 @@
+Reviewer's Comments:
+
+This is an interesting paper and a clever use of statistical techniques to use
+historical data. I would like a few comments addressed and some revisions made
+before I recommend publication.
+
+I do find the title somewhat over the top given the uncertainties in Fig. 6! To
+me the paper is more about applying a novel (to astronomers!) statistical method
+to measure parameters that we otherwise would not be able to. [Ed: A little over
+the top is OK for an ApJL title... ]
+
+Comments and concerns:
+
+(1) Since Kepler is mentioned so prominently in the abstract, SONG should be
+too, and judging by Fig 1, TLS may be worth a mention too.
+
+(2) Discussion of the scaling relations: Given that there is work that shows
+that there might be a mean-molecular weight term in the numax scaling relation,
+a discussion of that and the reference to the paper to be given. This is
+relevant both after Eq. 3 and Eq. C7.
+
+(3) I understand that the statistical method used has the acronym CARMA,
+however, for most astronomers CARMA is a radio array (Combined Array for
+Research in Millimeter-wave Astronomy). The caption of Fig 4 was thus very
+confusing when I first read it (I, like many others, look at figures before
+reading), and for a few moments I thought we could use radio observations to
+study pulsations. Please change that to Something like "Power spectral density
+derived from the CARMA analysis ..."
+
+(4) Were the same set of stellar models used for calculating Aldebaran's
+properties using PARAM and the results in Fig 6? The text is not clear about
+this and for consistent results, the same models should be used.
+
+(5) The medalist scale of the models is not mentioned in Section C.1. I.e., what
+solar metallicity and abundance mixture was assumed? Grevesse & Sauval (1998),
+Asplund et al. (2009)? Please specify. The difference is enough to cause a large
+effective change in Z/X and hence deduced stellar properties.
+
+(6) There are other (non-seismic) works that deal with modelling Aldebaran
+(e.g., Abia et al. 2012). How do the results obtained in this paper compare with
+literature values?
+
+(7) Massarotti et al. are not the only ones who report a low metallicity for
+Aldebaran, Liu et al. 2017 report [Fe/H]=-0.27. Sharma et al. (2016) claim
+-0.16. The choice of values in Table~2 should therefore be justified.
+
+--------
+Data Editor's comments:
+
+The authors should provide the RV data shown in Figure 3 as Data behind the
+Figure (DbF). The readers would surely appreciate having this important data set
+available with the published article.
