@@ -1,0 +1,17 @@
+================================================================================
+Title: Aldebaran b's temperate past uncovered in planet search data
+Authors: Farr W.M., Pope B.J.S., Davies G.R., North T.S.H., White T.R.,
+         Barrett J.W., Miglio A., Lund M.N., Antoci V., Andersen M.F.,
+         Grundahl F., Huber D.
+================================================================================
+
+Description of contents: A HDF5 file, psd-zoom.h5, giving the median, one-, and
+  two-sigma upper and lower limits from the posterior on the RV PSD over our
+  canonical model a range of frequencies surrounding our inferred numax.
+
+System requirements: Tools and software to read HDF5 files are provided at
+ the HDF support group's site:
+
+ https://support.hdfgroup.org/products/hdf5_tools/
+
+================================================================================

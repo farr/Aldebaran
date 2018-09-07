@@ -1,0 +1,16 @@
+================================================================================
+Title: Aldebaran b's temperate past uncovered in planet search data
+Authors: Farr W.M., Pope B.J.S., Davies G.R., North T.S.H., White T.R.,
+         Barrett J.W., Miglio A., Lund M.N., Antoci V., Andersen M.F.,
+         Grundahl F., Huber D.
+================================================================================
+
+Description of contents: A HDF5 file, numax.h5, containing posterior samples of
+  the peak asteroseismic power, numax, from models of three different data sets.
+
+System requirements: Tools and software to read HDF5 files are provided at
+ the HDF support group's site:
+
+ https://support.hdfgroup.org/products/hdf5_tools/
+
+================================================================================

@@ -1,0 +1,18 @@
+================================================================================
+Title: Aldebaran b's temperate past uncovered in planet search data
+Authors: Farr W.M., Pope B.J.S., Davies G.R., North T.S.H., White T.R.,
+         Barrett J.W., Miglio A., Lund M.N., Antoci V., Andersen M.F.,
+         Grundahl F., Huber D.
+================================================================================
+Description of contents: A HDF5 file, all-data.h5, containing all of the
+ archival and new radial velocites used for inference in this work.
+
+System requirements: Tools and software to read HDF5 files are provided at
+ the HDF support group's site:
+
+ https://support.hdfgroup.org/products/hdf5_tools/
+
+Additional comments: The site and instrument information for each data set
+ is provided in Section 4.
+
+================================================================================
